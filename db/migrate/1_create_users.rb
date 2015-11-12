@@ -6,6 +6,7 @@ class CreateUsers < ActiveRecord::Migration
     	t.string :username, null: false
     	t.string :password, null: false
     	t.text :bio, null: false
+    	# t.text :profile_pic
     	# t.integer :votes, null: false
  
       t.timestamps null: false
