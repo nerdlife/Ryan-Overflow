@@ -36,7 +36,6 @@ ActiveRecord::Schema.define(version: 3) do
     t.string   "email",      null: false
     t.string   "name",       null: false
     t.string   "username",   null: false
-    # t.text "profile_pic",
     t.string   "password",   null: false
     t.text     "bio",        null: false
     t.datetime "created_at", null: false
