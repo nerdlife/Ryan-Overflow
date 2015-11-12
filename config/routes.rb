@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
-  root 'questions/index'
+  root to: 'questions#index'
 
-  get 'answers/index'
+  resources :users do
+  	resource :questions
+  	resource :answers
+  end
 
-  get 'questions/index'
-
-  get 'users/index'
-
-  
+  resources :questions do
+  	resource :answers
+  end
+ 
 end
