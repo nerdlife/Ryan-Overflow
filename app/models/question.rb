@@ -14,4 +14,5 @@ class Question < ActiveRecord::Base
                     too_long: "%{count} Question Title must be between 15 - 1250 characters"
                     		   }
 
+
 end
