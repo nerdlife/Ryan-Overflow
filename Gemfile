@@ -15,7 +15,7 @@ gem 'shoulda-matchers'
 gem 'factory_girl'
 gem 'faker'
 gem 'dynamic_form'
-
+ 
 group :development, :test do
 	gem 'byebug'
 end

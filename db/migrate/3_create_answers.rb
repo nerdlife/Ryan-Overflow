@@ -10,3 +10,4 @@ class CreateAnswers < ActiveRecord::Migration
     end
   end
 end
+ 
