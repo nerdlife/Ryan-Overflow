@@ -1,0 +1,101 @@
+/*
+=====================================================================
+www.RyanUrie.com 
+=====================================================================
+*/
+
+html {
+	color: #4C4646 ;
+}
+
+a {
+	color: #4C4646 ;
+}
+
+a:hover {
+	color: #bad999;
+}
+
+main {
+	margin-top: 0px;
+}
+
+.section-header {
+	text-align: center;
+	font-size: 3em;
+	font-family: 'VT323';
+	text-decoration: underline;
+	color: #4C4646 ;
+	margin-bottom: 1em;
+}
+
+.eightbit-numerical-text-font {
+	font-family: 'VT323';
+}
+
+.pholder-text::-webkit-input-placeholder { color: #709dc4; }
+.pholder-text:-moz-placeholder { color: #709dc4; }
+.pholder-text::-moz-placeholder { color: #709dc4; }
+.pholder-text:-ms-input-placeholder { color: #709dc4; }
+
+
+.nav > li{
+  margin-right: -5px;
+} 
+
+
+.btn {
+	margin-top: 8px;
+}
+
+.btn a:hover {
+	background: transparent;
+	color: #709dc4;
+}
+
+.left-nav-button {
+	margin-right: 15px;
+}
+
+.username-text-font {
+	font-family: 'VT323';
+	font-size: 1.5em;
+}
+
+footer {
+	width: 100%;
+	/*position: fixed;*/
+	bottom: 0;
+	text-align: center;
+	background: #f8f8f8;
+	border-top: 1px solid #000; 
+}
+
+
+
+
+
+
+
+// ------------------------------------------ Mobile Media Query ------------------------------------------
+@media (max-width: 767px) and (min-width: 2px){
+	.btn {
+	width: 70%;
+	margin-bottom: 15px;
+	margin-left: 15%;
+	margin-right: 15%;
+	}
+
+	.search-nav-item {
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+	}
+
+	nav li a{
+	text-align: center;
+	}
+
+	
+}
+// ------------------------------------------ End Mobile Smartphones ------------------------------------------

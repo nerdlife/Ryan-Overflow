@@ -1,19 +1,39 @@
-<h1>Questions</h1>
+<h3 class="section-header">Questions</h3>
+	<table id="questions-index-table">
+		<thead>
+			<tr>
+				<th class="questions-table-headings">Title</th>
+				<th class="questions-table-headings">Content</th>
+				<th class="questions-table-headings">Votes</th>
+				<th class="questions-table-headings">Answers</th>
+				<th class="questions-table-headings">Asked By</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @questions.each do |question| %>
+			<tr class="questions-index-row">
+				<td>
+					<span style="font-size: 26px;">
+					<%= link_to question.title, question %>
+				</td>
 
-
-<% @questions.each do |question| %>
-Title: <%= question.title %>
-<br>
-Content: <%= question.content %>
-<br>
-Asked By: <%= question.user.name %>
-<br>
-
-
-Answer: <% answers =  question.answers %>
-<% answers.each do |answer| %>
-<%= answer.content %>
+				<td>
+					<%= link_to question.content, question %>
+					<br>
+					<span class="eightbit-numerical-text-font">
+						<%= question.created_at %></span>
+					</div>
+				</td>
+				<td>
+					Vote Num
+				</td>
+				<td>
+					Answer Num
+				</td>
+				<td>
+					User Thumbnail
+				</td>
 <% end %>
-
-
-<% end %>
+			</tr>
+		</tbody>
+	</table>

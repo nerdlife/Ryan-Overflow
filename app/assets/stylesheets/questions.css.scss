@@ -1,3 +1,21 @@
-// Place all the styles related to the questions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// ------------------------------------------ Questions ------------------------------------------
+#questions-index-table {
+	width: 90%;
+	margin: 0 auto;
+	outline: 2px solid #4C4646;
+}
+
+.questions-index-row {
+	border-top: 2px solid #4C4646;
+	text-align: center;
+}
+
+.questions-table-logo {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.questions-table-headings {
+	margin-right: 15px;
+	text-align: center;
+}
