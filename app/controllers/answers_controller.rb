@@ -14,7 +14,13 @@ class AnswersController < ApplicationController
 
   def create
   	@answer = Answer.create(answer_params)
-  	redirect_to root_path
+  	# @answer.user_id = current_user.id
+  	if @answer.save
+  		flash[:success] = "answer created"
+  		redirect_to root_path
+  	else
+  		render 'new'
+  	end
   end
 
 

@@ -1,15 +1,39 @@
-<%= form_for @question do |f| %>
-	Question Title:
-	<br>
-	<%= f.text_field :title %> 
-	<br>
-	Question Content
-	<br>
-	<%= f.text_area :content %> 
-	<br>
-	User ID
-	<br>
-	<%= f.text_area :user_id %> 
-	<br>
-	<%= f.submit %>
-<% end %>
+  <%= form_for @question do |f| %>
+  
+  		<div class="form-group">
+			<div class="ryan-overflow-form-label">
+				Question Title
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.text_field :title, :placeholder => 'Question Title', class: "form-control" %>
+			</div>
+		</div>
+		<br>
+		<br>
+
+		<div class="form-group">
+			<div class="ryan-overflow-form-label">
+				Question Content
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.text_field :content, :placeholder => 'Question Content', class: "form-control" %>
+			</div>
+		</div>
+		<br>
+		<br>
+
+		<div class="form-group">
+			<div class="ryan-overflow-form-label">
+				User ID
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.text_area :user_id, placeholder: 'User ID', rows: 5, class: "form-control input-xlg" %>
+				<div class="ryan-overflow-form-button">
+					<%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+				</div>
+			</div>
+		</div>
+		<br>
+		<br>
+
+	<% end %>

@@ -38,8 +38,9 @@
 <%= render partial: "navigation/navbar" %>
 
 <!-- Main Content ––––––––––––––––––––––––––––––––––––––-->
-<%= yield %>
-
+<div id="page-main-content">
+	<%= yield %>
+</div>
 <!-- Footer ––––––––––––––––––––––––––––––––––––––-->
 	<footer>
 		<%= link_to "Ryan Overflow", root_path %>
