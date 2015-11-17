@@ -1,0 +1,42 @@
+
+<div class="ryan-overflow-form">
+	<%= form_for @answer do |f| %>
+		<div class="form-group">
+			<div class="ryan-overflow-form-label">
+				Content
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.text_field :content, :placeholder => 'Answer Content', class: "form-control" %>
+			</div>
+		</div>
+		<br>
+		<br>
+
+		<div class="form-group">
+			<div class="ryan-overflow-form-label">
+				Question ID
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.text_field :question_id, :placeholder => 'Question ID', class: "form-control" %>
+			</div>
+		</div>
+		<br>
+		<br>
+
+		<div class="form-group">
+			<div class="ryan-overflow-form-label">
+				User ID
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.text_field :user_id, :placeholder => 'User ID', class: "form-control input-xlg" %>
+			</div>
+		</div>
+		<br>
+		<br>
+
+		<div class="ryan-overflow-form-button">
+			<%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+		</div>
+		
+	<% end %>
+</div>

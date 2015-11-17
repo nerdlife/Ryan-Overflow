@@ -1,2 +1,10 @@
-<h1>Answers#index</h1>
-<p>Find me in app/views/answers/index.html.erb</p>
+<% @answers.each do |answer| %>
+Id:<%= answer.id %> 
+<br>
+Question #: <%= answer.question.id %>
+<br>
+Answer Content: <%= answer.content %>
+<br>
+-----------------
+<br>
+<% end %>

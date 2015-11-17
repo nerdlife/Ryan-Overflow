@@ -1,0 +1,74 @@
+<!-- SHOW QUESTION VIEW -->
+
+<div class="question-show">
+	<h3>
+		# <%= @question.id %>  &nbsp
+		<strong><%= @question.title %></strong>
+	</h3>
+	<p>
+		<%= @question.content %>
+	</p>
+	<p>
+		<strong>Votes:</strong>
+		<span class="eightbit-numerical-text-font"> Votes Num </span>
+	</p>
+	<p>
+		<strong>Asked on</strong>
+		<span class="eightbit-numerical-text-font"><%= @question.created_at %></span>
+	</p>
+	<p>
+		<strong>User Id</strong>
+		<%= @question.user.id %>
+		<br>
+		<strong>Asked by</strong>
+		<%= @question.user.username %>
+	</p>
+</div>
+
+<!-- <button type="button" class="btn btn-default"> -->
+<%-# link_to 'Edit', edit_question_path(@question) %>
+<!-- </button> -->
+<!-- <button type="button" class="btn btn-default"> -->
+<%-# link_to 'Answer', questions_path %>
+<!-- </button> -->
+
+<!-- <button type="button" class="btn btn-default"> -->
+<%-# link_to 'Back', questions_path %>
+<!-- </button> -->
+
+<!-- Answers ––––––––––––––––––––––––––––––––––––––-->
+<table class="answer-table">
+	<th colspan="2">
+		<h3>Answers</h3>
+	</th>
+	<% @answers.each do |answer| %>
+	<tr>
+		<td>
+			<%= answer.content %>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			Votes:
+			<%-# answer.votes %>
+		</td> 
+		<td class="question-answer-created-on">
+			<strong>Answered on</strong>
+			<span class="eightbit-numerical-text-font"><%= answer.created_at %></span>
+			<td>
+			</tr>
+			<tr>
+				<td class="question-answer">
+					<strong>Answered by:</strong>
+					<br>
+					ID# <span class="eightbit-numerical-text-font"><%= answer.user_id %> &nbsp</span>
+					Username:<%= answer.user.username %> 
+					<br><br><br>
+				</td>
+			</tr>
+			<% end %>
+		</table>
+
+		<%= render partial: 'answers/form', locals: {answer: @answer} %>
+
+

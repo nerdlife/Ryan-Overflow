@@ -1,48 +1,55 @@
 <nav class="navbar navbar-default" role="navigation">
-    <div class="container">
-          <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-<!-- Home Link ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-                <%= link_to "Ryan Overflow", root_path, class: 'navbar-brand' %>
-          </div>
-          <div class="navbar-collapse collapse" id="navbar-collapsible">
-<!-- Nav Items ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-                <ul class="nav navbar-nav navbar-right">
-                   
-	    <li>
-	 		<%= link_to "Questions", "/questions"  %>
-		 </li>
-		 <li>
-		 	<%= link_to "Ask", "/questions"  %>
-		 </li>
-		 <li>
-		 	<%= link_to "Users", "/questions"  %>
-		 </li>
-<!--Search Box  ––––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-	    <li class="search-nav-item">
-		  <%= form_tag(questions_path, :method => "get", class: "navbar-form", id: "search-form") do %>
-			  <div class="form-group" style="display:inline;">
-			  <div class="input-group">
-			  	<%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow" %>
-					<span class="input-group-addon">
-						<button type="submit">
-							<span class="glyphicon glyphicon-search">	
-							</span>
-						</button>
-					</span>
-			  </div>
-			</div>
-		</li>
-		  <% end %>
-<!-- Buttons - Log In & Sign Up –––––––––––––––––––––––––––––––––––––-->
-	  <li><button type="button" class="btn btn-default left-nav-button"><%= link_to 'Log In', "/questions" %></button></li>
-	  <li><button type="button" class="btn btn-default"><%= link_to 'Sign up', "/questions" %></button></li>
-                </ul>
-          </div>
-    </div>
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+<!-- Home Brand Link –––––––––––––––––––––––––––––––––––––––––-->
+			<%= link_to "Ryan Overflow", root_path, class: 'navbar-brand' %>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-collapsible">
+<!-- Nav Items –––––––––––––––––––––––––––––––––––-->
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<%= link_to "Questions", "/questions"  %>
+				</li>
+				<li>
+					<%= link_to "Ask", "/answers/new"  %>
+				</li>
+				<li>
+					<%= link_to "Users", "/users"  %>
+				</li>
+<!--Search Box  ––––––––––––––––––––––––––––––––––––––-->
+				<li class="search-nav-item">
+					<%= form_tag(questions_path, :method => "get", class: "navbar-form", id: "search-form") do %>
+						<div class="form-group" style="display:inline;">
+							<div class="input-group">
+								<%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow" %>
+								<span class="input-group-addon">
+									<button type="submit">
+										<span class="glyphicon glyphicon-search">	
+										</span>
+									</button>
+								</span>
+							</div>
+						</div>
+					<% end %>
+				</li>
+<!-- Buttons - Log In & Sign Up ––––––––––––––––––––––––-->
+				<li>
+					<button type="button" class="btn btn-default left-nav-button">
+						<%= link_to 'Log In', "/questions" %>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="btn btn-default">
+						<%= link_to 'Sign up', "/questions" %>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
 </nav>

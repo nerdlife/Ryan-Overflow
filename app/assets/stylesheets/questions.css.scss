@@ -1,4 +1,4 @@
-// ------------------------------------------ Questions ------------------------------------------
+// ------------------------------------------ Questions Index------------------------------------------
 #questions-index-table {
 	width: 90%;
 	margin: 0 auto;
@@ -18,4 +18,25 @@
 .questions-table-headings {
 	margin-right: 15px;
 	text-align: center;
+}
+
+// ------------------------------------------ Question Show------------------------------------------
+.question-show {
+	width: 90%;
+	margin: 0 auto;
+	text-align: center;
+	border: 2px solid #4C4646;
+}
+
+// ------------------------------------------ Answers ------------------------------------------
+.question-show-answers {
+	
+	background: red;
+}
+
+.answer-table {
+	width: 90%;
+	margin: 0 auto;
+	border: 2px solid #4C4646;
+	background: #eee;
 }

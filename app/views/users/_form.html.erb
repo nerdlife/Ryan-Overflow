@@ -1,0 +1,32 @@
+<%= form_for @user do |f| %>
+	Email Address
+	<br>
+	<%= f.text_area :email %> 
+	<br>
+	Name
+	<br>
+	<%= f.text_area :name %> 
+	<br>
+	Username
+	<br>
+	<%= f.text_area :username %> 
+	<br>
+	Password
+	<br>
+	<%= f.text_area :password %> 
+	<br>
+	Bio
+	<br>
+	<%= f.text_area :bio %> 
+	<br>
+	<%= f.submit %>
+<% end %>
+
+		<div class="form-group">
+			<div class="ryan-overflow-form-label">
+				Password
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.text_field :password, :placeholder => 'User ID', :type => "password", class: "form-control input-xlg" %>
+			</div>
+		</div>

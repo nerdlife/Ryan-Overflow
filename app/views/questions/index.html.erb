@@ -1,42 +1,42 @@
 <h3 class="section-header">Questions</h3>
-	<table id="questions-index-table">
-		<thead>
-			<tr>
-				<th class="questions-table-headings">Title</th>
-				<th class="questions-table-headings">Content</th>
-				<th class="questions-table-headings">Votes</th>
-				<th class="questions-table-headings">Answers</th>
-				<th class="questions-table-headings">Asked By</th>
-			</tr>
-		</thead>
-		<tbody>
-			<% @questions.each do |question| %>
-			<tr class="questions-index-row">
-				<td>
-					<span style="font-size: 26px;">
-					<%= link_to question.title, question %>
-				</td>
+<table id="questions-index-table">
+	<thead>
+<!-- Question Index Header Row ––––––––––––––––––––––––––––––––––––––-->
+		<tr>
+			<th class="questions-table-headings">Title</th>
+			<th class="questions-table-headings">Content</th>
+			<th class="questions-table-headings">Votes</th>
+			<th class="questions-table-headings">Answers</th>
+			<th class="questions-table-headings">Asked By</th>
+		</tr>
+	</thead>
+<!-- Question Rows ––––––––––––––––––––––––––––––––––––––-->
+	<tbody>
+		<% @questions.each do |question| %>
+		<tr class="questions-index-row">
+			<td>
+				<%= link_to question.title, question %>
+			</td>
+			<td>
+				<%= link_to question.content, question %>
+				<br>
+				<span class="eightbit-numerical-text-font">
+					<%= question.created_at %></span>
+				</div>
+			</td>
+			<td>
+				Vote Num
+			</td>
+			<td>
+				Answer Num
+			</td>
+			<td>
+				User Thumbnail
+			</td>
+			<% end %>
+		</tr>
+	</tbody>
 
-				<td>
-					<%= link_to question.content, question %>
-					<br>
-					<span class="eightbit-numerical-text-font">
-						<%= question.created_at %></span>
-					</div>
-				</td>
-				<td>
-					Vote Num
-				</td>
-				<td>
-					Answer Num
-				</td>
-				<td>
-					User Thumbnail
-				</td>
-<% end %>
-			</tr>
-		</tbody>
-		<footer>
-		Ryan Overflow
-	</footer>
-	</table>
+
+
+</table>
