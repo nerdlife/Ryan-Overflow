@@ -21,17 +21,27 @@
 				<%= link_to question.content, question %>
 				<br>
 				<span class="eightbit-numerical-text-font">
-					<%= question.created_at %></span>
+					<%= question.created_at %>
+				</span>
+				<br>
+				<%= question.tags %>
 				</div>
 			</td>
 			<td>
-				Vote Num
+				<%= question.votes %>
 			</td>
 			<td>
-				Answer Num
+				<%= question.answers.count %>
 			</td>
 			<td>
-				User Thumbnail
+				<%= link_to question.user do %>
+						<img src="<%= question.user.profile_pic %>" style="width: 54px; height: 54px; border: 1px solid #4C4646; padding: 3px; margin-top: 5px;">
+					<% end %>
+				<br>
+				<%= link_to question.user.username, question.user %>
+				<br>
+				<%= link_to question.user.email, question.user %>
+				<br>
 			</td>
 			<% end %>
 		</tr>

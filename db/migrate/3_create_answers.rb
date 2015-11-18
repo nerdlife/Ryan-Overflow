@@ -4,8 +4,8 @@ class CreateAnswers < ActiveRecord::Migration
     	t.text :content, null: false
     	t.integer :question_id, null: false
     	t.integer :user_id, null: false
-    	# t.integer :votes, null: false
-    	# # t.text :tags
+    	t.integer :votes
+    	t.text :tags
     	
       t.timestamps null: false
     end

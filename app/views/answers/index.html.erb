@@ -1,10 +1,41 @@
-<% @answers.each do |answer| %>
-Id:<%= answer.id %> 
-<br>
-Question #: <%= answer.question.id %>
-<br>
-Answer Content: <%= answer.content %>
-<br>
------------------
-<br>
-<% end %>
+<!-- ANSWER INDEX -->
+<h3 class="section-header">Answers </h3>
+	<table id="answers-index-table">
+		<thead>
+			<tr>
+				<th class="answers-table-headings">Question#</th>
+				<th class="answers-table-headings">Content</th>
+				<th class="answers-table-headings">Votes</th>
+				<th class="answers-table-headings">Answered By</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @answers.each do |answer| %>
+			<tr class="answers-index-row">
+				<td  class="answers-index-row-item">
+					<%= link_to answer.question.id, answer.question %>
+				</td>
+				<td  class="answers-index-row-item">
+					<%= link_to answer.content, answer %>
+					<br>
+					<%= link_to answer.tags, answer %>
+				</td>
+				<td  class="answers-index-row-item eightbit-numerical-text-font">
+					<%= answer.votes %>
+				</td>
+				<td  class="answers-index-row-item username-text-font">
+					<div class="profile-thumb">
+						<%= link_to answer.user  do %>
+								<img src="<%= answer.user.profile_pic %>" style="width: 48px; height: 48px;">
+						<%= link_to answer.user.username %>
+						<% end %>
+					</div>
+				</td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+
+	<button>
+		<%= link_to 'Ask A Question', new_question_path %>
+	</button>

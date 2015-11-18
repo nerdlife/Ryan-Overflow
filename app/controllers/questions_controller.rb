@@ -15,7 +15,6 @@ class QuestionsController < ApplicationController
 
   def create
   	@question = Question.create(question_params)
-  	# @question.user_id = current_user.id
   	if @question.save
   		flash[:success] = "question created"
   		redirect_to root_path

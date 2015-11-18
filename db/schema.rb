@@ -20,6 +20,8 @@ ActiveRecord::Schema.define(version: 3) do
     t.text     "content",     null: false
     t.integer  "question_id", null: false
     t.integer  "user_id",     null: false
+    t.integer  "votes"
+    t.text     "tags"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -28,18 +30,22 @@ ActiveRecord::Schema.define(version: 3) do
     t.text     "title",      null: false
     t.text     "content",    null: false
     t.integer  "user_id",    null: false
+    t.integer  "votes"
+    t.text     "tags"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",      null: false
-    t.string   "name",       null: false
-    t.string   "username",   null: false
-    t.string   "password",   null: false
-    t.text     "bio",        null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "email",           null: false
+    t.string   "name"
+    t.string   "username"
+    t.string   "password_digest"
+    t.text     "bio"
+    t.text     "profile_pic"
+    t.integer  "votes"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
