@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
-  # root to: 'questions#index'
-  root to: 'users#new'
+  root to: 'questions#index'
+# SIGN UP
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
+# LOGIN
+  get '/login' => 'users#login'
 
   resources :users do
   	resource :questions
