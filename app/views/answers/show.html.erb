@@ -1,7 +1,7 @@
 <!-- Answers ––––––––––––––––––––––––––––––––––––––-->
 <table class="answer-table">
 	<th colspan="2">
-		<h3>Answer to: <%= @answer.question.title %> </h3>
+		<h3>Answer to: <%= link_to @answer.question.title,  @answer.question %> </h3>
 	</th>
 	
 	<tr>

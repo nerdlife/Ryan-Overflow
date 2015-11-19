@@ -25,9 +25,14 @@
 	</p>
 </div>
 
-<button type="button" class="btn btn-default">
-<%= link_to 'Edit', edit_question_path(@question) %>
-</button>
+<!-- <button type="button" class="btn btn-default"> -->
+<%-# link_to 'Edit', edit_question_path(@question) %>
+<!-- </button> -->
+
+<div class="ryan-overflow-form-button">	
+<%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+</div>	
+
 <!-- <button type="button" class="btn btn-default"> -->
 <%-# link_to 'Answer', questions_path %>
 <!-- </button> -->
