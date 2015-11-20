@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root to: 'questions#index'
-# SIGN UP
+
+# # SIGN UP
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
-# LOGIN
-  get '/login' => 'users#login'
+# # LOGIN
+  get '/login' => 'sessions#login'
+  post '/sessions' => 'sessions#create'
 
   resources :users do
   	resource :questions

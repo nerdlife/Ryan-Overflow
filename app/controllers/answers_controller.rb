@@ -11,6 +11,7 @@ class AnswersController < ApplicationController
 	def create
 		@answer = Answer.create(answer_params)
 		if @answer.save
+			flash[:success] = "Answer added"
 			redirect_to @answer.question
 		else
 			render 'new'
@@ -41,9 +42,8 @@ class AnswersController < ApplicationController
 		redirect_to root_path
 	end
 
-
-
 	private
+
 	def answer_params
 		params.require(:answer).permit( :content, :question_id, :user_id)
 	end

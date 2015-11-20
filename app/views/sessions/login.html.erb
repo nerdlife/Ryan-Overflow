@@ -1,0 +1,27 @@
+<h3>Ryan Overflow Login</h3>
+<br>
+<%= form_tag(:action => 'create') do %>
+		<div class="form-group">
+		<div class="ryan-overflow-form-label">
+			Login Email
+		</div>
+		<div class="col-xs-8 col-xs-offset-5">
+			<%= text_field_tag :email %>
+		</div>
+	</div>
+	<br>
+	<br>
+	<div class="form-group">
+		<div class="ryan-overflow-form-label">
+			Ryan Overflow Password
+		</div>
+		<div class="col-xs-8 col-xs-offset-5">
+			<%= password_field_tag :password %>
+		</div>
+	</div>
+	<br>
+	 <div class="ryan-overflow-form-button">
+		  <%= submit_tag "Login", class: "btn btn-default btn-primary" %>
+	</div>
+							
+<% end %>

@@ -45,6 +45,7 @@
 <table class="answer-table">
 	<th colspan="2">
 		<h3>Answers</h3>
+		<% if !@question.answers.empty? %>
 	</th>
 	<% @question.answers.each do |answer| %>
 	<tr>
@@ -72,6 +73,13 @@
 				</td>
 			</tr>
 			<% end %>
+			<% else %>
+			<tr>
+				<td>
+					<strong>No Answers Yet</strong>
+				</td>
+			</tr>
+				<% end %>
 		</table>
 
 		<%= render partial: 'answers/form', locals: {answer: @answer} %>

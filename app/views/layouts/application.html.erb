@@ -39,6 +39,11 @@
 
 <!-- Main Content ––––––––––––––––––––––––––––––––––––––-->
 <div id="page-main-content">
+	<div class="error-message-alert">
+		<% flash.each do |k, message| %>
+		  	<%=  message %>
+		<% end %>
+	</div>
 	<%= yield %>
 </div>
 <!-- Footer ––––––––––––––––––––––––––––––––––––––-->

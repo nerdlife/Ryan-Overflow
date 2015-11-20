@@ -53,6 +53,7 @@
 		</tr>
 	</thead>
 	<tbody>
+	<% if !@user.questions.empty? %>
 		<% @user.questions.each do |question| %>
 		<tr>
 			<td>
@@ -74,6 +75,13 @@
 			</td>
 		</tr>
 		<% end %>
+			<% else %>
+			<tr>
+				<td>
+					<strong><%= @user.username %> hasn't asked any questions yet</strong>
+				</td>
+			</tr>
+				<% end %>
 	</tbody>
 </table>
 
@@ -88,10 +96,11 @@
 		</tr>
 	</thead>
 	<tbody>
+		<% if !@user.answers.empty? %>
 		<% @user.answers.each do |answer| %>
 		<tr class="answers-index-row">
 			<td  class="answers-index-row-item">
-				<%= link_to answer.question.id, answer.question %>
+				<%= link_to answer.question, answer.question %>
 			</td>
 			<td  class="answers-index-row-item">
 				<%= link_to answer.content, answer %>
@@ -110,6 +119,12 @@
 			</td>
 		</tr>
 		<% end %>
+		<tr>
+				<td>
+					<strong>No answers for this  question yet</strong>
+				</td>
+			</tr>
+				<% end %>
 	</tbody>
 </table>
 
