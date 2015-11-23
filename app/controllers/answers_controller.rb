@@ -38,7 +38,6 @@ class AnswersController < ApplicationController
 	def destroy
 		@answer = Answer.find(params[:id])
 		@answer.destroy
-
 		redirect_to root_path
 	end
 

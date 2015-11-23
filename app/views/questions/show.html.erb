@@ -23,23 +23,14 @@
 		<strong>Asked by</strong>
 		<%= @question.user.username %>
 	</p>
+<!-- <div class="ryan-overflow-form-button">	
+<%-# link_to 'Edit', edit_question_path(@question), class: "btn btn-default btn-primary"  %>
+<%-# link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+</div>	 -->
+<br>
 </div>
-
-<!-- <button type="button" class="btn btn-default"> -->
-<%-# link_to 'Edit', edit_question_path(@question) %>
-<!-- </button> -->
-
-<div class="ryan-overflow-form-button">	
-<%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
-</div>	
-
-<!-- <button type="button" class="btn btn-default"> -->
-<%-# link_to 'Answer', questions_path %>
-<!-- </button> -->
-
-<!-- <button type="button" class="btn btn-default"> -->
-<%-# link_to 'Back', questions_path %>
-<!-- </button> -->
+<br>
+<br>
 
 <!-- Answers ––––––––––––––––––––––––––––––––––––––-->
 <table class="answer-table">
@@ -56,7 +47,7 @@
 	<tr>
 		<td>
 			Votes:
-			<%-# answer.votes %>
+			<%= answer.votes %>
 		</td> 
 		<td class="question-answer-created-on">
 			<strong>Answered on</strong>
@@ -72,6 +63,14 @@
 					<br><br><br>
 				</td>
 			</tr>
+			<!-- <tr>
+				<td>
+					<div class="ryan-overflow-form-button">
+						<%-# link_to 'Edit', edit_answer_path(@question), class: "btn btn-default btn-primary"  %>
+						<%-# link_to 'Delete', @question.answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+					</div>	
+				</td>
+			 </tr> -->
 			<% end %>
 			<% else %>
 			<tr>
@@ -80,6 +79,10 @@
 				</td>
 			</tr>
 				<% end %>
+
+			
+
+
 		</table>
 
 		<%= render partial: 'answers/form', locals: {answer: @answer} %>

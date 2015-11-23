@@ -1,5 +1,5 @@
 <h3> <%= @user.username %>'s Profile </h3>
-<table  id="users-index-table">
+<table  class="users-index-table">
 	<thead>
 		<tr>
 			<th>Image</th>
@@ -8,6 +8,8 @@
 			<th>Bio</th>
 			<th>Name</th>
 			<th>Votes</th>
+			<th> Edit </th>
+			<th> Delete </th>
 		</tr>
 	</thead>
 	<tbody>
@@ -34,6 +36,8 @@
 				<div class="ryan-overflow-form-button">
 					<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-default btn-primary"  %>
 				</div>
+			</td>
+			<td>
 				<div class="ryan-overflow-form-button">	
 					<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
 				</div>
@@ -49,7 +53,8 @@
 			<th class="questions-table-headings">Question</th>
 			<th class="questions-table-headings">Content</th>
 			<th class="questions-table-headings">Votes</th>
-			<th class="questions-table-headings">Edit / Delete</th>
+			<th class="questions-table-headings">Edit </th>
+			<th class="questions-table-headings">Delete </th>
 		</tr>
 	</thead>
 	<tbody>
@@ -69,13 +74,16 @@
 				<div class="ryan-overflow-form-button">
 					<%= link_to 'Edit', edit_question_path(question), class: "btn btn-default btn-primary"  %>
 				</div>
+			</td>
+			<td>
 				<div class="ryan-overflow-form-button">	
 					<%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
 				</div>	
 			</td>
 		</tr>
+		
 		<% end %>
-			<% else %>
+		<% else %>
 			<tr>
 				<td>
 					<strong><%= @user.username %> hasn't asked any questions yet</strong>
@@ -92,34 +100,38 @@
 			<th class="answers-table-headings">Question</th>
 			<th class="answers-table-headings">Answer</th>
 			<th class="answers-table-headings">Votes</th>
-			<th class="answers-table-headings">Edit / Delete</th>
+			<th class="answers-table-headings">Edit </th>
+			<th class="answers-table-headings"> Delete</th>
 		</tr>
 	</thead>
 	<tbody>
 		<% if !@user.answers.empty? %>
-		<% @user.answers.each do |answer| %>
-		<tr class="answers-index-row">
-			<td  class="answers-index-row-item">
-				<%= link_to answer.question, answer.question %>
-			</td>
-			<td  class="answers-index-row-item">
-				<%= link_to answer.content, answer %>
-			</td>
-			<td class="answers-index-row eightbit-numerical-text-font">
-				<%= answer.votes %>
-			</td>
-			
-			<td>
-				<div class="ryan-overflow-form-button">
-					<%= link_to 'Edit', edit_answer_path(answer) , class: "btn btn-default btn-primary"  %>
-				</div>
-				<div class="ryan-overflow-form-button">
-					<%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-primary"  %>
-				</div>
-			</td>
-		</tr>
+			<% @user.answers.each do |answer| %>
+			<tr class="answers-index-row">
+				<td  class="answers-index-row-item">
+					<%= link_to answer.question.id, answer.question %>
+				</td>
+				<td  class="answers-index-row-item">
+					<%= link_to answer.content, answer %>
+				</td>
+				<td class="answers-index-row eightbit-numerical-text-font">
+					<%= answer.votes %>
+				</td>
+				
+				<td>
+					<div class="ryan-overflow-form-button">
+						<%= link_to 'Edit', edit_answer_path(answer) , class: "btn btn-default btn-primary"  %>
+					</div>
+				</td>
+				<td>
+					<div class="ryan-overflow-form-button">
+						<%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-primary"  %>
+					</div>
+				</td>
+			</tr>
 		<% end %>
 		<tr>
+		<% else %>
 				<td>
 					<strong>No answers for this  question yet</strong>
 				</td>
