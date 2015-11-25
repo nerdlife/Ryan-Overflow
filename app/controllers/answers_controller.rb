@@ -1,4 +1,5 @@
 class AnswersController < ApplicationController
+	before_action :current_user
 
 	def index
 		@answers = Answer.all
@@ -6,10 +7,12 @@ class AnswersController < ApplicationController
 
 	def new
 		@answer = Answer.new
+		@question = Question.find(params[:id])
 	end
 
 	def create
-		@answer = Answer.create(answer_params)
+		@answer = Answer.new(answer_params)
+		@answer.user_id = @current_user.id
 		if @answer.save
 			flash[:success] = "Answer added"
 			redirect_to @answer.question
@@ -41,10 +44,11 @@ class AnswersController < ApplicationController
 		redirect_to root_path
 	end
 
+
 	private
 
 	def answer_params
-		params.require(:answer).permit( :content, :question_id, :user_id)
+		params.require(:answer).permit(:content, :question_id)
 	end
 
 end

@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+	before_action :current_user,
+	except: [
+		:new, :create
+	]
 
 	def index
 		@users = User.all
@@ -44,7 +48,7 @@ class UsersController < ApplicationController
 		redirect_to root_path
 	end
 
-	
+
 	private
 
 	def user_params

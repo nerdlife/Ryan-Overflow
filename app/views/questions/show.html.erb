@@ -78,13 +78,13 @@
 					<strong>No Answers Yet</strong>
 				</td>
 			</tr>
-				<% end %>
 
 			
-
-
+				<% end %>
 		</table>
 
-		<%= render partial: 'answers/form', locals: {answer: @answer} %>
+
+
+		<%= render partial: 'answers/form', :locals => { :question => @question } %>
 
 

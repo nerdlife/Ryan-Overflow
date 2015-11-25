@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+	before_action :current_user
 
 	def index
 		@questions = Question.all
@@ -9,7 +10,8 @@ class QuestionsController < ApplicationController
 	end
 
 	def create
-		@question = Question.create(question_params)
+		@question = Question.new(question_params)
+		@question.user_id = @current_user.id
 		if @question.save
 			flash[:success] = "Your question has been added to Ryan Overflow"
 			redirect_to root_path
@@ -21,6 +23,7 @@ class QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		@answer = Answer.new
+		@answer.question_id = @question.id
 	end
 
 	def edit 
@@ -43,10 +46,10 @@ class QuestionsController < ApplicationController
 	end
 
 
-
 	private
+
 	def question_params
-		params.require(:question).permit(:title, :content, :user_id)
+		params.require(:question).permit(:title, :content)
 	end
 
 end
