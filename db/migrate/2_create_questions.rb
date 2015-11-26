@@ -4,7 +4,7 @@
     	t.text :title, null: false
     	t.text :content, null: false
     	t.integer :user_id, null: false
-    	t.integer :votes
+    	t.integer :votes, default: 0
     	t.text :tags
 
       t.timestamps null: false

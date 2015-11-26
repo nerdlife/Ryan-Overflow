@@ -1,7 +1,18 @@
 	<%= form_for(:answer, url: {controller: 'answers', action: 'create'}) do |f|  %>
 		<div class="form-group">
 			<div class="ryan-overflow-form-label">
-				Content
+				Answer Content
+			</div>
+			<div class="col-md-8 col-md-offset-2">
+				<%= f.text_field :content, :placeholder => 'Answer Content', class: "form-control" %>
+			</div>
+		</div>
+		<br>
+		<br>
+
+		<div class="form-group">
+			<div class="ryan-overflow-form-label">
+				Answer Tags
 			</div>
 			<div class="col-md-8 col-md-offset-2">
 				<%= f.text_field :content, :placeholder => 'Answer Content', class: "form-control" %>

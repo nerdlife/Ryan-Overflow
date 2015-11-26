@@ -17,35 +17,35 @@ ActiveRecord::Schema.define(version: 3) do
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.text     "content",     null: false
-    t.integer  "question_id", null: false
-    t.integer  "user_id",     null: false
-    t.integer  "votes"
+    t.text     "content",                 null: false
+    t.integer  "question_id",             null: false
+    t.integer  "user_id",                 null: false
+    t.integer  "votes",       default: 0
     t.text     "tags"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.text     "title",      null: false
-    t.text     "content",    null: false
-    t.integer  "user_id",    null: false
-    t.integer  "votes"
+    t.text     "title",                  null: false
+    t.text     "content",                null: false
+    t.integer  "user_id",                null: false
+    t.integer  "votes",      default: 0
     t.text     "tags"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",           null: false
+    t.string   "email",                                                                                                                null: false
     t.string   "name"
     t.string   "username"
     t.string   "password_digest"
-    t.text     "bio"
-    t.text     "profile_pic"
-    t.integer  "votes"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.text     "bio",             default: "This is my empty bio that I will fill out soon"
+    t.text     "profile_pic",     default: "http://static1.businessinsider.com/image/525bfb4a69bedda83f84c289-480/bill-belichick.jpg"
+    t.integer  "votes",           default: 0
+    t.datetime "created_at",                                                                                                           null: false
+    t.datetime "updated_at",                                                                                                           null: false
   end
 
 end
