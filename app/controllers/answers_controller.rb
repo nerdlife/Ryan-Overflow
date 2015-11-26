@@ -17,6 +17,7 @@ class AnswersController < ApplicationController
 			flash[:success] = "Answer added"
 			redirect_to @answer.question
 		else
+			flash[:error] = @answer.errors.empty? ? "Error" : @answer.errors.full_messages.to_sentence
 			render 'new'
 		end
 	end
@@ -34,6 +35,7 @@ class AnswersController < ApplicationController
 		if @answer.update(answer_params)
 			redirect_to @answer
 		else
+			flash[:error] = @answer.errors.empty? ? "Error" : @answer.errors.full_messages.to_sentence
 			render 'edit'
 		end
 	end
@@ -48,7 +50,7 @@ class AnswersController < ApplicationController
 	private
 
 	def answer_params
-		params.require(:answer).permit(:content, :question_id, :tags)
+		params.require(:answer).permit(:content, :question_id, :tags => [])
 	end
 
 end

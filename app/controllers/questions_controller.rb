@@ -26,6 +26,7 @@ class QuestionsController < ApplicationController
 			flash[:success] = "Your question has been added to Ryan Overflow"
 			redirect_to root_path
 		else
+			flash[:error] = @question.errors.empty? ? "Error" : @question.errors.full_messages.to_sentence
 			render 'new'
 		end
 	end
@@ -45,6 +46,7 @@ class QuestionsController < ApplicationController
 		if @question.update(question_params)
 			redirect_to @question
 		else
+			flash[:error] = @question.errors.empty? ? "Error" : @question.errors.full_messages.to_sentence
 			render 'edit'
 		end
 	end

@@ -13,9 +13,11 @@
 		<div class="form-group">
 			<div class="ryan-overflow-form-label">
 				Answer Tags
+				<br>
+				( select all that apply with Apple/Control + Click )
 			</div>
 			<div class="col-md-8 col-md-offset-2">
-				<%= f.text_field :content, :placeholder => 'Answer Content', class: "form-control" %>
+				<%= f.select :tags, [ ["HTML", "html"], ["CSS", "css"], ["Javascript", "javascript"], ["Rails", "rails"], ["Meteor", "meteor"], ["Git", "git"], ["Php", "php"], ["Pyhthon", "pyhthon"], ["SQL", "sql"], ["Model View Controller", "mvc"], ["Object Orientated Programming", "oop"], ["Wordpress", "wp"] ], {prompt: "Choose Question Tags"}, {:multiple => true, class: "form-control"}  %>
 			</div>
 		</div>
 		<br>

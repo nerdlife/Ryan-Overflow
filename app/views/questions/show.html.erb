@@ -9,6 +9,11 @@
 		<%= @question.content %>
 	</p>
 	<p>
+		<strong>Tags:</strong>
+		<br>
+		<span class="eightbit-numerical-text-font"> <%= @question.tags %> </span>
+	</p>
+	<p>
 		<strong>Votes:</strong>
 		<span class="eightbit-numerical-text-font"> Votes Num </span>
 	</p>
@@ -41,7 +46,7 @@
 	<% @question.answers.each do |answer| %>
 	<tr>
 		<td>
-			<%= answer.content %>
+			<h4> <%= answer.content %> </h4>
 		</td>
 	</tr>
 	<tr>
@@ -62,7 +67,14 @@
 					Username:<%= answer.user.username %> 
 					<br><br><br>
 				</td>
+				<td>
+					<strong>Tags:</strong>
+					<br>
+					<span class="eightbit-numerical-text-font"> <%= answer.tags %> </span>
+				</td>
 			</tr>
+			<br>
+			<br>
 			<!-- <tr>
 				<td>
 					<div class="ryan-overflow-form-button">

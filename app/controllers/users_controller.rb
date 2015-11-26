@@ -18,6 +18,7 @@ class UsersController < ApplicationController
 			flash[:success] = "Thanks for Joining Ryan Overflow #{@user.username}"
 			redirect_to root_path
 		else
+			flash[:error] = @user.errors.empty? ? "Error" : @user.errors.full_messages.to_sentence
 			flash[:notice] = "Please complete registration for Ryan Overflow"
 			redirect_to '/users/new'
 		end
@@ -37,6 +38,7 @@ class UsersController < ApplicationController
 			flash[:success] = "Profile updated successfully"
 			redirect_to @user
 		else
+			flash[:error] = @user.errors.empty? ? "Error" : @user.errors.full_messages.to_sentence
 			render 'edit'
 		end
 	end
