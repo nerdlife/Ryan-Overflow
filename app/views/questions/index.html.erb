@@ -46,7 +46,52 @@
 			<% end %>
 		</tr>
 	</tbody>
-
-
-
 </table>
+
+
+
+<h3 class="section-header">Answers</h3>
+<table id="questions-index-table">
+	<thead>
+<!-- Answer Search Matches ––––––––––––––––––––––––––––––––––––––-->
+		<tr>
+			<th class="questions-table-headings">Content</th>
+			<th class="questions-table-headings">Votes</th>
+			<th class="questions-table-headings">Asked By</th>
+		</tr>
+	</thead>
+<!-- Answer Rows ––––––––––––––––––––––––––––––––––––––-->
+	<tbody>
+
+<% unless @answer_search_match.blank? %>
+		<% @answer_search_match.each do |answer| %>
+		<tr class="questions-index-row">
+			<td>
+				<%= link_to answer.content, answer %>
+				<br>
+				<span class="eightbit-numerical-text-font">
+					<%= answer.created_at %>
+				</span>
+				<br>
+				<%= answer.tags %>
+				</div>
+			</td>
+			<td>
+				<%= answer.votes %>
+			</td>
+			
+			<td>
+				<%= link_to answer.user do %>
+						<img src="<%= answer.user.profile_pic %>" style="width: 54px; height: 54px; border: 1px solid #4C4646; padding: 3px; margin-top: 5px;">
+					<% end %>
+				<br>
+				<%= link_to answer.user.username, answer.user %>
+				<br>
+				<%= link_to answer.user.email, answer.user %>
+				<br>
+			</td>
+			<% end %>
+		<% end %>
+		</tr>
+	</tbody>
+	</table>

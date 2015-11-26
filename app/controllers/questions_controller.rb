@@ -1,8 +1,18 @@
 class QuestionsController < ApplicationController
-	before_action :current_user
+	before_action :current_user,
+			except: [:index]
 
 	def index
 		@questions = Question.all
+		@answers = Answer.all
+
+		unless (params[:search]).blank?
+			@questions = Question.search(params[:search]).order("votes desc")
+			@answer_search = Answer.search(params[:search])
+		else
+			@questions = Question.order("votes desc")
+		end
+			@answer_search_match = @answer_search
 	end
 
 	def new
@@ -51,5 +61,6 @@ class QuestionsController < ApplicationController
 	def question_params
 		params.require(:question).permit(:title, :content)
 	end
+
 
 end

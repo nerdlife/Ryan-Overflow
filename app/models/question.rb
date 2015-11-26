@@ -14,5 +14,8 @@ class Question < ActiveRecord::Base
                     too_long: "%{count} Question Title must be between 15 - 1250 characters"
                     		   }
 
+	def self.search(query)
+    		where("title || content  ilike ?", "%#{query}%")
+    	end
  
 end
