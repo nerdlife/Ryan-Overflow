@@ -15,7 +15,7 @@ class Question < ActiveRecord::Base
                     		   }
 
 	def self.search(query)
-    		where("title || content  ilike ?", "%#{query}%")
+    		where("title || content || tags  ilike ?", "%#{query}%")
     	end
  
 end

@@ -9,7 +9,7 @@ class Answer < ActiveRecord::Base
                       		     }
 
      def self.search(query)
-		where("content  ilike ?", "%#{query}%")
+		where("content || tags  ilike ?", "%#{query}%")
      end
 
 end
