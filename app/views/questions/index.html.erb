@@ -50,6 +50,7 @@
 
 
 
+<% unless @answer_search_match.blank? %>
 <h3 class="section-header">Answers</h3>
 <table id="questions-index-table">
 	<thead>
@@ -63,7 +64,6 @@
 <!-- Answer Rows ––––––––––––––––––––––––––––––––––––––-->
 	<tbody>
 
-<% unless @answer_search_match.blank? %>
 		<% @answer_search_match.each do |answer| %>
 		<tr class="questions-index-row">
 			<td>

@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
-	before_action :current_user,
-			except: [:index]
+	before_action :current_user
+			
 
 	def index
 		@questions = Question.all
