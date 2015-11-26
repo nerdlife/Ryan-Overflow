@@ -43,6 +43,12 @@
 		<% flash.each do |k, message| %>
 		  	<%=  message %>
 		<% end %>
+		<%-# flash.errors.each do |k, message_array| %>
+			<%-# message_array.each do |message| %>
+			  	<%-#  message %>
+			  	<!-- <br> -->
+			<%-# end %>
+		<%-# end %>
 	</div>
 	<%= yield %>
 </div>

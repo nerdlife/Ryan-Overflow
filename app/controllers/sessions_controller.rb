@@ -5,13 +5,18 @@ class SessionsController < ApplicationController
 	]
 
 	def user_login  	
-		logged_in_user = (User.where(email: params[:email]).take).authenticate(params[:password])
-		if logged_in_user
-			session[:user_id] = logged_in_user.id
-			flash[:notice] = "Welcome back #{logged_in_user.username} to Ryan Overflow"
-			redirect_to root_path
+		if params[:email].present? && User.where(email: params[:email]).take
+			logged_in_user = User.where(email: params[:email]).take.authenticate(params[:password])
+			if logged_in_user
+				session[:user_id] = logged_in_user.id
+				flash[:notice] = "Welcome back #{logged_in_user.username} to Ryan Overflow"
+				redirect_to root_path
+			else
+				flash[:notice] = "Incorrect Password, try again"
+				redirect_to(action: 'login')
+			end
 		else
-			flash[:notice] = "Wrong Email or Password, try again"
+			flash[:notice] = "That Email address is not registered"
 			redirect_to(action: 'login')
 		end
 	end
