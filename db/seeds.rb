@@ -9,8 +9,17 @@ Answer.create(content: 'Ryan User 1.....2nd Answer Content Is  Here For Question
 User.create(email: 'moses@moses.com',username: 'MosesUsername',name: 'Moses Magoo', password: 'ryanurie', password_confirmation: 'ryanurie', profile_pic: "http://helpacoder.com/wp-content/uploads/2015/07/angular.jpeg", bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et leo hendrerit, efficitur ligula sed, viverra mauris. Nulla semper luctus dui, id interdum diam sodales at. Nulla tincidunt dolor vitae facilisis ultrices. Nam eu erat at erat vulputate posuere nec id ipsum. Nam gravida nibh magna, vitae faucibus odio ultrices vitae. Cum sociis .' )
 # , votes: 99
 Question.create(title: 'Moses User 2...SECOND Question Title', content: 'Moses User 2..Second Question Content Is  Here', user_id: 2, votes: 5, tags: ["Mean", "Angular", "React"])
+Question.create(title: 'Seed for test', content: 'Moses User 2..Second Question Content Is  Here', user_id: 2, votes: 51, tags: ["Mean", "Angular", "React"])
+Question.create(title: 'Ugiluerihuer fierhiuerw ', content: 'Moses User 2..Second Question Content Is  Here', user_id: 2, votes: 2, tags: ["Mean", "Angular", "React"])
+Question.create(title: '3646546861156', content: 'Moses User 2..Second Question Content Is  Here', user_id: 2, votes: 19, tags: ["Mean", "Angular", "React"])
+# Question Vote total = 77
+# Answer  Vote total = 25
 Answer.create(content: 'Moses User 2....FIRST Answer Content Is Here For Question ID 1', question_id: 1, user_id: 2 , votes: 2, tags: ["Mean", "Angular", "React"])
 Answer.create(content: 'Moses User 2....2nd Answer Content Is Here For Question ID 1', question_id: 1, user_id: 2 , votes: 2, tags: ["Mean", "Angular", "React"])
+Answer.create(content: 'Moses User 2....2nd Answer Content Is Here For Question ID 1', question_id: 1, user_id: 2 , votes: 7, tags: ["Mean", "Angular", "React"])
+Answer.create(content: 'Moses User 2....2nd Answer Content Is Here For Question ID 1', question_id: 1, user_id: 2 , votes: 5, tags: ["Mean", "Angular", "React"])
+Answer.create(content: 'Moses User 2....2nd Answer Content Is Here For Question ID 1', question_id: 1, user_id: 2 , votes: 9, tags: ["Mean", "Angular", "React"])
+
 
 
 

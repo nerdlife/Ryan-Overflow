@@ -5,25 +5,27 @@
 				<th class="index-table-headings index-row-cell" style="border-left: none;">
 					Profile Picture
 				</th>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
+				<th class="index-table-headings index-row-cell">
 					Username
 				</th>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
+				<th class="index-table-headings index-row-cell">
 					Email
 				</th>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
+				<th class="index-table-headings index-row-cell">
 					Questions
 				</th>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
+				<th class="index-table-headings index-row-cell">
 					Answers
 				</th>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
+				<th class="index-table-headings index-row-cell">
 					Votes
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<% @users.each do |user| %>
+
+<% @users.each do |user| %>
+
 				<tr class="index-row">
 					<td  class="index-row-cell">
 						<%= link_to user do %>
@@ -39,26 +41,34 @@
 						</span>
 					</td>
 					<td  class="index-row-cell" >
-						<%= link_to user.questions.count, user %>
+						<span class="index-answers">
+							<%= link_to user.questions.count, user %>
+						</span>
 					</td>
 					<td  class="index-row-cell" >
-						<%= link_to user.answers.count, user %>
+						<span class="index-answers">
+							<%= link_to user.answers.count, user %>
+						</span>
 					</td>
 					<td  class="index-row-cell" >
-						Votes/Points
+						<span class="index-votes">
+							<%= link_to user.votes, user %>
+						</span>
 					</td>
-					<td  class="index-row-cell">
+					<!-- <td  class="index-row-cell">
 						<button>
-							<%= link_to 'Edit', edit_user_path(user) %>
+							<%-# link_to 'Edit', edit_user_path(user) %>
 						</button>
 					</td>
 					<td  class="index-row-cell">
 						<button>
-							<%= link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+							<%-# link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
 						</button>
-					</td>
+					</td> -->
 				</tr>
-			<% end %>
+
+<% end %>
+			
 		</tbody>
 	</table>
 

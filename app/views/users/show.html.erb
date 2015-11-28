@@ -1,142 +1,193 @@
+<!-- -----------------------------USERS SHOW ------------------------------------ -->
 <h3> <%= @user.username %>'s Profile </h3>
-<table  class="users-index-table">
-	<thead>
-		<tr>
-			<th>Image</th>
-			<th>Username</th>
-			<th>Email</th>
-			<th>Bio</th>
-			<th>Name</th>
-			<th>Votes</th>
-			<th> Edit </th>
-			<th> Delete </th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr class="users-index-row">
-			<td class="users-table-logo">
-				<img src="<%= @user.profile_pic %>" alt="<%= @user.username %>" style="width: 48px; height: 48px;">
-			</td>
-			<td>
-				<%= @user.username %>
-			</td>
-			<td>
-				<%= @user.email %>
-			</td>
-			<td>
-				<%= @user.bio %>
-			</td>
-			<td>
-				<%= @user.name %>
-			</td>
-			<td class="eightbit-numerical-text-font">
-			Vote #
-			</td>
-			<td>
-				<div class="ryan-overflow-form-button">
-					<%= link_to 'Edit', edit_user_path(@user), class: "btn btn-default btn-primary"  %>
-				</div>
-			</td>
-			<td>
-				<div class="ryan-overflow-form-button">	
-					<%= link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
-				</div>
-			</td>
-		</tr>
-	</tbody>
-</table>
 
-<h3> Questions: </h3>
-<table id="questions-index-table">
-	<thead>
-		<tr>
-			<th class="questions-table-headings">Question</th>
-			<th class="questions-table-headings">Content</th>
-			<th class="questions-table-headings">Votes</th>
-			<th class="questions-table-headings">Edit </th>
-			<th class="questions-table-headings">Delete </th>
-		</tr>
-	</thead>
-	<tbody>
-	<% if !@user.questions.empty? %>
-		<% @user.questions.each do |question| %>
-		<tr>
-			<td>
-				<%= link_to question.title, question %>
-			</td>
-			<td>
-				<%= link_to question.content, question %>
-			</td>
-			<td class="eightbit-numerical-text-font">
-				<%= question.votes %>
-			</td>
-			<td>
-				<div class="ryan-overflow-form-button">
-					<%= link_to 'Edit', edit_question_path(question), class: "btn btn-default btn-primary"  %>
-				</div>
-			</td>
-			<td>
-				<div class="ryan-overflow-form-button">	
-					<%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
-				</div>	
-			</td>
-		</tr>
-		
-		<% end %>
-		<% else %>
+	<table class="index-table">
+		<thead>
 			<tr>
-				<td>
-					<strong><%= @user.username %> hasn't asked any questions yet</strong>
-				</td>
+				<th class="index-table-headings index-row-cell" style="border-left: none;">Image</th>
+				<th class="index-table-headings index-row-cell">Username</th>
+				<th class="index-table-headings index-row-cell">Email</th>
+				<th class="index-table-headings index-row-cell">Bio</th>
+				<th class="index-table-headings index-row-cell">Name</th>
+				<th class="index-table-headings index-row-cell">Votes</th>
+				<!-- <th class="index-table-headings index-row-cell"> Edit </th> -->
+				<!-- <th class="index-table-headings index-row-cell"> Delete </th> -->
 			</tr>
-				<% end %>
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+			<tr class="index-row">
+				<td class="index-row-cell">
+					<img class="index-profile-image" src="<%= @user.profile_pic %>" alt="<%= @user.username %>">
+				</td>
+				<td class="index-row-cell">
+					<span class="index-email">
+						<%= @user.username %>
+					</span>
+				</td>
+				<td class="index-row-cell">
+					<span class="index-email">
+						<%= @user.email %>
+					</span>
+				</td>
+				<td class="index-row-cell">
+					<span class="index-email">
+						<%= @user.bio %>
+					</span>
+				</td>
+				<td class="index-row-cell">
+					<span class="index-email">
+						<%= @user.name %>
+					</span>
+				</td>
+				<td class="index-row-cell">
+					<span class="index-votes">
+						Vote #
+					</span>	
+				</td>
+				<!-- <td class="index-row-cell">
+					<span class="index-email">
+						<div class="ryan-overflow-form-button">
+							<%-# link_to 'Edit', edit_user_path(@user), class: "btn btn-default btn-primary"  %>
+						</div>
+					</span>
+				</td>
+				<td class="index-row-cell">
+					<span class="index-email">
+						<div class="ryan-overflow-form-button">	
+							<%-# link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+						</div>
+					</span>
+				</td> -->
+			</tr>
+		</tbody>
+	</table>
 
-<h3> Answers: </h3>
-<table id="answers-index-table">
-	<thead>
-		<tr>
-			<th class="answers-table-headings">Question</th>
-			<th class="answers-table-headings">Answer</th>
-			<th class="answers-table-headings">Votes</th>
-			<th class="answers-table-headings">Edit </th>
-			<th class="answers-table-headings"> Delete</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% if !@user.answers.empty? %>
-			<% @user.answers.each do |answer| %>
-			<tr class="answers-index-row">
-				<td  class="answers-index-row-item">
-					<%= link_to answer.question.id, answer.question %>
+<!-- -----------------------------USERS Questions ------------------------------------ -->
+	<h3> Questions: </h3>
+	<table class="index-table">
+		<thead>
+			<tr>
+				<th class="index-table-headings index-row-cell" style="border-left: none;">Question</th>
+				<th class="index-table-headings index-row-cell">Content</th>
+				<th class="index-table-headings index-row-cell">Votes</th>
+				<!-- <th class="index-table-headings index-row-cell">Edit </th> -->
+				<!-- <th class="index-table-headings index-row-cell">Delete </th> -->
+			</tr>
+		</thead>
+		<tbody>
+
+<% if !@user.questions.empty? %>
+<% @user.questions.each do |question| %>
+		
+			<tr class="index-row">
+				<td class="index-row-cell">
+					<span class="index-email">
+						<%= link_to question.title, question %>
+					</span>
 				</td>
-				<td  class="answers-index-row-item">
-					<%= link_to answer.content, answer %>
+				<td class="index-row-cell">
+					<span class="index-email">
+						<%= link_to question.content, question %>
+					</span>
 				</td>
-				<td class="answers-index-row eightbit-numerical-text-font">
-					<%= answer.votes %>
+				<td class="index-row-cell">
+					<span class="index-votes">
+						<%= question.votes %>
+					</span>
 				</td>
-				
-				<td>
-					<div class="ryan-overflow-form-button">
-						<%= link_to 'Edit', edit_answer_path(answer) , class: "btn btn-default btn-primary"  %>
-					</div>
+				<!-- <td class="index-row-cell">
+					<span class="index-email">
+						<div class="ryan-overflow-form-button">
+						<%-# link_to 'Edit', edit_question_path(question), class: "btn btn-default btn-primary"  %>
+						</div>
+					</span>
 				</td>
-				<td>
-					<div class="ryan-overflow-form-button">
-						<%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-primary"  %>
-					</div>
+				<td class="index-row-cell">
+					<span class="index-email">
+						<div class="ryan-overflow-form-button">	
+						<%-# link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+						</div>
+					</span>
+				</td> -->
+			</tr>
+
+<% end %>
+<% else %>
+
+			<tr class="index-row">
+				<td class="index-row-cell">
+					<span class="index-email">
+						<strong><%= @user.username %> hasn't asked any questions yet</strong>
+					</span>
 				</td>
 			</tr>
-		<% end %>
-		<tr>
-		<% else %>
-				<td>
-					<strong>No answers for this  question yet</strong>
-				</td>
+
+<% end %>
+
+		</tbody>
+	</table>
+
+<!-- -----------------------------USERS Answers ------------------------------------ -->
+	<h3> Answers: </h3>
+	<table class="index-table">
+		<thead>
+			<tr>
+				<th class="index-table-headings index-row-cell" style="border-left: none;">Question #</th>
+				<th class="index-table-headings index-row-cell">Answer</th>
+				<th class="index-table-headings index-row-cell">Votes</th>
+				<!-- <th class="index-table-headings index-row-cell">Edit </th> -->
+				<!-- <th class="index-table-headings index-row-cell"> Delete</th> -->
 			</tr>
-				<% end %>
-	</tbody>
-</table>
+		</thead>
+		<tbody>
+
+<% if !@user.answers.empty? %>
+<% @user.answers.each do |answer| %>
+		
+				<tr class="index-row">
+					<td class="index-row-cell">
+						<span class="index-votes">
+							<%= link_to answer.question.id, answer.question %>
+						</span>
+					</td>
+					<td class="index-row-cell">
+						<span class="answer-content">
+							<%= link_to answer.content, answer %>
+						</span>
+					</td>
+					<td class="index-row-cell">
+						<span class="index-votes">
+							<%= answer.votes %>
+						</span>
+					</td>
+					
+					<!-- <td class="index-row-cell">
+							<div class="ryan-overflow-form-button">
+							<%-# link_to 'Edit', edit_answer_path(answer) , class: "btn btn-default btn-primary"  %>
+							</div>
+					</td>
+					<td class="index-row-cell">
+							<div class="ryan-overflow-form-button">
+								<%-# link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-primary"  %>
+							</div>
+					</td> -->
+				</tr>
+
+<% end %>
+
+			<tr class="index-row">
+
+<% else %>
+
+					<td class="index-row-cell">
+						<span class="index-email">
+							<strong>No answers for this  question yet</strong>
+						</span>
+					</td>
+				</tr>
+
+<% end %>
+
+		</tbody>
+	</table>
 

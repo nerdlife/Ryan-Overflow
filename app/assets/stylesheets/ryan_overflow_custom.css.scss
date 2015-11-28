@@ -126,11 +126,12 @@ footer {
 	 margin-top: 5px;
 }
 
-.index-tags {
-
-}
 
 // ------------------------------------- Numerical Styles -----------------------------------
+.index-tags {
+	font-family: 'VT323';
+}
+
 .index-votes {
 	font-family: 'VT323';
 }
@@ -143,7 +144,17 @@ footer {
 	font-family: 'VT323';
 }
 
+.question-title {
 
+}
+
+.question-content {
+
+}
+
+.answer-content {
+	
+}
 
 // ------------------------------------------ Mobile Media Query ------------------------------------------
 @media (max-width: 767px) and (min-width: 2px){

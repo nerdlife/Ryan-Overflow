@@ -1,44 +1,48 @@
 <!-- ANSWER INDEX -->
 <h3 class="section-header">Answers </h3>
+	<h4>  Question #2 (77)--- Votes Test: <%= @question_votes %> </h4>
+	<h4>  Answer #2 (25)---  Votes Test:<%= @answer_votes %> </h4>
 
-<table class="index-table">
-	<thead>
-		<tr>
-			<th class="index-table-headings index-row-cell" style="border-left: none;">Question#</th>
-			<th class="index-table-headings index-row-cell">Content</th>
-			<th class="index-table-headings index-row-cell">Votes</th>
-			<th class="index-table-headings index-row-cell">Answered By</th>
-		</tr>
-	</thead>
-	<tbody>
-		<% @answers.each do |answer| %>
-			<tr class="index-row">
-				<td  class="index-row-cell">
-					<%= link_to answer.question.id, answer.question %>
-				</td>
-				<td  class="index-row-cell">
-						<%= link_to answer.content, answer %>
-					<br>
-					<span class="index-tags">
-						<%= link_to answer.tags, answer %>
-					</span>
-				</td>
-				<td  class="index-row-cell">
-					<span class="index-votes">
-						<%= answer.votes %>
-					</span>
-				</td>
-				<td  class="index-row-cell">
-						<%= link_to answer.user  do %>
-								<img class="index-profile-image" src="<%= answer.user.profile_pic %>">
-						<% end %>
-						<%= link_to answer.user.username %>
-				</td>
+	<br>
+	<br>
+	<br>
+	<table class="index-table">
+		<thead>
+			<tr>
+				<th class="index-table-headings index-row-cell" style="border-left: none;">Question #</th>
+				<th class="index-table-headings index-row-cell">Content</th>
+				<th class="index-table-headings index-row-cell">Votes</th>
+				<th class="index-table-headings index-row-cell">Answered By</th>
 			</tr>
-		<% end %>
-	</tbody>
-</table>
+		</thead>
+		<tbody>
 
-<button>
-	<%= link_to 'Ask A Question', new_question_path %>
-</button>
+<% @answers.each do |answer| %>
+
+				<tr class="index-row">
+					<td  class="index-row-cell">
+						<%= link_to answer.question.id, answer.question %>
+					</td>
+					<td  class="index-row-cell">
+							<%= link_to answer.content, answer %>
+						<br>
+						<span class="index-tags">
+							<%= link_to answer.tags, answer %>
+						</span>
+					</td>
+					<td  class="index-row-cell">
+						<span class="index-votes">
+							<%= answer.votes %>
+						</span>
+					</td>
+					<td  class="index-row-cell">
+							<%= link_to answer.user  do %>
+									<img class="index-profile-image" src="<%= answer.user.profile_pic %>">
+							<% end %>
+							<%= link_to answer.user.username %>
+					</td>
+				</tr>
+<% end %>
+
+		</tbody>
+	</table>
