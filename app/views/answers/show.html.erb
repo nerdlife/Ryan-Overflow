@@ -1,47 +1,47 @@
 <!-- Answers ––––––––––––––––––––––––––––––––––––––-->
-<table class="answer-table">
-	<th colspan="2">
-		<h3>Answer to: <%= link_to @answer.question.title,  @answer.question %> </h3>
-	</th>
-	
-	<tr>
-		<td>
-			<%= @answer.content %>
-		</td>
-	</tr>
-	<tr>
-		<td>
-			<strong>
-				Votes: <%= @answer.votes.count %>
-			</strong>
-		</td>
-	</tr>
-	<tr>
-		<br>
-		<td class="question-answer-created-on">
-			<strong>Answered on</strong>
-			<span class="eightbit-numerical-text-font">
-				<%= @answer.created_at %>
-			</span>
-		<td>
-	</tr>
-	<tr>
-		<td class="question-answer">
-			<strong>Tags:</strong>
-			<%= @answer.tags %> 
-		</td>
-	 </tr>
-	<tr>
-		<td>
-			<div class="ryan-overflow-form-button">
-				<%= link_to 'Edit', edit_answer_path(@answer), class: "btn btn-default btn-primary"  %>
-			</div>
-			<div class="ryan-overflow-form-button">	
-				<%= link_to 'Delete', @answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
-			</div>	
-		</td>
-	 </tr>
-</table>
-
+<% answer = @answer %>
+	<table class="answer-table">
+		<th colspan="2">
+			<h3>Answer to: <%= link_to answer.question.title, answer.question %> </h3>
+		</th>
+		
+		<tr>
+			<td>
+				<%= answer.content %>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>
+					Votes: <%= answer.votes.count %>
+				</strong>
+			</td>
+		</tr>
+		<tr>
+			<br>
+			<td class="question-answer-created-on">
+				<strong>Answered on</strong>
+				<span class="eightbit-numerical-text-font">
+					<%= answer.created_at %>
+				</span>
+			<td>
+		</tr>
+		<tr>
+			<td class="question-answer">
+				<strong>Tags:</strong>
+				<%= answer.tags %> 
+			</td>
+		 </tr>
+		<tr>
+			<td>
+				<div class="ryan-overflow-form-button">
+					<%-# link_to 'Edit', edit_answer_path(answer), class: "btn btn-default btn-primary"  %>
+				</div>
+				<div class="ryan-overflow-form-button">	
+					<%-# link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+				</div>	
+			</td>
+		 </tr>
+	</table>
 		
 
