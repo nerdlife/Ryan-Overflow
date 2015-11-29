@@ -3,8 +3,6 @@ class AnswersController < ApplicationController
 
 	def index
 		@answers = Answer.all
-		@question_votes = question_votes(2)
-		@answer_votes = answer_votes(2)
 	end
 
 	def new

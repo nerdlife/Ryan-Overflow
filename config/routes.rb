@@ -15,6 +15,7 @@ resources :sessions
 resources :users
 resources :questions
 resources :answers
+resources :votes
 
   # resources :users do
   # 	resource :questions

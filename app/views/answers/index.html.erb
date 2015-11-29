@@ -1,11 +1,5 @@
 <!-- ANSWER INDEX -->
 <h3 class="section-header">Answers </h3>
-	<h4>  Question #2 (77)--- Votes Test: <%= @question_votes %> </h4>
-	<h4>  Answer #2 (25)---  Votes Test:<%= @answer_votes %> </h4>
-
-	<br>
-	<br>
-	<br>
 	<table class="index-table">
 		<thead>
 			<tr>
@@ -32,7 +26,7 @@
 					</td>
 					<td  class="index-row-cell">
 						<span class="index-votes">
-							<%= answer.votes %>
+							<%= answer.votes.count %>
 						</span>
 					</td>
 					<td  class="index-row-cell">

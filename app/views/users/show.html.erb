@@ -41,7 +41,7 @@
 				</td>
 				<td class="index-row-cell">
 					<span class="index-votes">
-						Vote #
+						<%= @user.votes.count  %>
 					</span>	
 				</td>
 				<!-- <td class="index-row-cell">
@@ -92,7 +92,7 @@
 				</td>
 				<td class="index-row-cell">
 					<span class="index-votes">
-						<%= question.votes %>
+						<%= question.votes.count %>
 					</span>
 				</td>
 				<!-- <td class="index-row-cell">
@@ -157,7 +157,7 @@
 					</td>
 					<td class="index-row-cell">
 						<span class="index-votes">
-							<%= answer.votes %>
+							<%= answer.votes.count %>
 						</span>
 					</td>
 					

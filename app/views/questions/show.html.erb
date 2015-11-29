@@ -15,7 +15,7 @@
 	</p>
 	<p>
 		<strong>Votes:</strong>
-		<span class="eightbit-numerical-text-font"> Votes Num </span>
+		<span class="eightbit-numerical-text-font"> <%= @question.votes.count %> </span>
 	</p>
 	<p>
 		<strong>Asked on</strong>
@@ -32,11 +32,8 @@
 <%-# link_to 'Edit', edit_question_path(@question), class: "btn btn-default btn-primary"  %>
 <%-# link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
 </div>	 -->
-<br>
-</div>
-<br>
-<br>
 
+</div>
 <!-- Answers ––––––––––––––––––––––––––––––––––––––-->
 <table class="answer-table">
 	<th colspan="2">
@@ -52,7 +49,7 @@
 	<tr>
 		<td>
 			Votes:
-			<%= answer.votes %>
+			<%= answer.votes.count %>
 		</td> 
 		<td class="question-answer-created-on">
 			<strong>Answered on</strong>
