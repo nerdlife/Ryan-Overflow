@@ -1,127 +1,98 @@
+<h3 class="section-header"> Questions </h3>
 <!-- Questions Index  ––––––––––––––––––––––––––––––––––––––-->
-<h3 class="section-header">Questions</h3>
-	<table class="index-table">
-		<thead>
-			<tr>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
-					Title
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Content
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Votes
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Answers
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Asked By
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-
+	<div class="container">		
+	    <div class="row questions-index-row">
+	        <div class="questions-index-title col-xs-3 col-sm-offset-1">
+	        	Title
+	        </div>
+	        <div class="questions-index-content col-xs-4">
+	        	Content
+	        </div>
+	        <div class="questions-index-votes-answers col-xs-2 col-sm-1">
+	        	Votes / Answers
+	        </div>
+	        <div class="questions-index-user col-xs-3 col-sm-2">
+	        	Asked By
+	        </div>
+	    </div>
 <% @questions.each do |question| %>
-
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">
-						<%= link_to question.title, question %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="question-content">
-						<%= link_to question.content, question %>
-					</span>
-					<br>
-					<span class="index-dates">
-						<%= question.created_at %>
-					</span>
-					<br>
-					<span class="index-tags">
-						<%= question.tags %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-votes">
-						<%= question.votes.count %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-answers">
-						<%= question.answers.count %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<%= link_to question.user do %>
-							<img class="index-profile-image" src="<%= question.user.profile_pic %>">
-						<% end %>
-					<br>
-					<%= link_to question.user.username, question.user %>
-					<br>
-					<%= link_to question.user.email, question.user %>
-					<br>
-				</td>
-			</tr>
-
+	    <div class="row questions-index-row">
+	        <div class="questions-index-title col-xs-3 col-sm-offset-1">
+	        	<%= link_to question.title, question %>
+	        </div>
+	        <div class="questions-index-content col-xs-4">
+	        	<%= link_to question.content, question %>
+	        	<br>
+	        	<%= question.tags %>
+	        </div>
+	        <div class="questions-index-votes-answers col-xs-2 col-sm-1">
+	        	<strong><u>Votes: </u></strong>
+	        	<%= question.votes.count %>
+	        	<br>
+	        	<br>
+	        	<strong><u>Answers: </u></strong>
+			<%= question.answers.count %>
+	        </div>
+	        <div class="questions-index-user col-xs-3 col-sm-2">
+	        	<%= question.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+			<br>
+			<%= link_to question.user do %>
+				<img class="index-profile-image" src="<%= question.user.profile_pic %>">
+			<% end %>
+			<br>
+			<%= link_to question.user.username, question.user %>
+			<br>
+			<%= link_to question.user.email, question.user %>
+	        </div>
+	    </div>
 <% end %>
+	</div>
+	<br>
+	<br>
+	<br>
 
-		</tbody>
-	</table>
+		
 
 <!-- If Any Answers Matches  Search ––––––––––––––––––––––––––––––––––––––-->
+
 <% unless @answer_search_match.blank? %>
-
 	<h3 class="section-header">Answers</h3>
-	<table class="index-table">
-		<thead>
-			<tr>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
-					Content
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Votes
-				</th>
-				<th class="index-table-headings index-row-cell" >
-					Asked By
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-
+	<div class="container">		
+	    <div class="row questions-index-row">
+	        <div class="questions-index-answer-content col-xs-4">
+	        	Content
+	        </div>
+	        <div class="questions-index-answer-votes-answers col-xs-2 col-sm-1">
+	        	Votes
+	        </div>
+	        <div class="questions-index-answer-user col-xs-3 col-sm-2">
+	        	Answered By
+	        </div>
+	    </div>
 <% @answer_search_match.each do |answer| %>
-
-				<tr class="index-row">
-					<td class="index-row-cell">
-						<%= link_to answer.content, answer %>
-						<br>
-						<span class="index-dates">
-							<%= answer.created_at %>
-						</span>
-						<br>
-						<span class="index-tags">
-							<%= answer.tags %>
-						</span>
-					</td>
-					<td class="index-row-cell">
-						<span class="index-votes">
-							<%= answer.votes %>
-						</span>
-					</td>
-					<td class="index-row-cell">
-						<%= link_to answer.user do %>
-						<img class="index-profile-image" src="<%= answer.user.profile_pic %>">
-						<% end %>
-						<br>
-						<%= link_to answer.user.username, answer.user %>
-						<br>
-						<%= link_to answer.user.email, answer.user %>
-						<br>
-					</td>
-				</tr>
-		</tbody>
-	</table>
-
+	    <div class="row questions-index-row">
+	        <div class="questions-index-answer-content col-xs-4">
+	        	<%= link_to answer.content, answer %>
+	        	<br>
+	        	<br>
+	        	<%= answer.tags %>
+	        </div>
+	        <div class="questions-index-answer-votes-answers col-xs-2 col-sm-1">
+	        	<strong><u><%= answer.votes %></u></strong>
+	        </div>
+	        <div class="questions-index-answer-user col-xs-3 col-sm-2">
+	        	<%= answer.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+	        	<br>
+			<%= link_to answer.user do %>
+				<img class="index-profile-image" src="<%= answer.user.profile_pic %>">
+			<% end %>
+	        	<br>
+			<%= link_to answer.user.username, answer.user %>
+	        	<br>
+			<%= link_to answer.user.email, answer.user %>
+	        </div>
+	    </div>
+	<% end %>
+	    <!-- CLOSE CONTAINER -->
 <% end %>
-<% end %>
+	  </div>				

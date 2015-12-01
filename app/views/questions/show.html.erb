@@ -1,125 +1,128 @@
 <!-- SHOW QUESTION VIEW -->
-	<table class="index-table">
-		<thead>
-			<tr>
-				<th class="index-table-headings index-row-cell" style="border-left: none;"># 
-					<%= @question.id %>  &nbsp
-					<strong><%= @question.title %></strong>
-				</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">
-						<%= @question.content %>
-					</span>
-				</td>
-			</tr>
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">	
-						<strong>Tags:</strong>
-						<br>
-						<%= @question.tags %>
-					</span>
-				</td>
-			</tr>
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">	
-						<strong>Votes:</strong>
-						<br>
-						 <%= @question.votes.count %>
-					</span>
-				</td>
-			</tr>
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">		
-						<strong>Asked by</strong>
-						<%= @question.user.username %>
-						<%= @question.created_at %>
-					</span>
-				</td>
-			</tr>
-		</tbody>
-	</table>
+<% question = @question %>
+<% current_user = @current_user %>
+	<div class="container">
+	    <div class="row question-show-header">
+	        <div class="question-title col-sm-offset-1 col-sm-10">
+	        	<h3><%= question.title %></h3>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="question-votes col-xs-1 col-sm-offset-1">
+	        	<strong>&#8679</strong><br>
+			&nbsp <%= question.votes.count %><br>
+			<strong>&#8681</strong>
+	        </div>
+	        <div class="question-content col-xs-11 col-sm-9">
+	        	<%= question.content %>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="question-tags col-sm-offset-2 col-sm-9">
+	        	<%= question.tags %>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="question-edit col-sm-offset-2 col-sm-4">
+	        	<!-- share edit flag -->
+	        </div>
+	        <div class="question-user col-sm-offset-1 col-sm-4">
+	        	<%= question.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+	        	<%= link_to @question.user do %>
+	        	<img class="question-profile-image" src="<%= @question.user.profile_pic %>">
+	        	<%= question.user.username %>
+	        	<% end %>
+	        	<%= question.user.votes.count %>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="question-comments col-sm-offset-2 col-sm-9">
+	        	COMMENTS HERE
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="question-add-comment col-sm-offset-2 col-sm-4">
+	        	ADD COMMENT
+	        </div>
+	    </div>
 
-	<br>
-	<br>
-	<br>
-	<br>
+<% if (@current_user.id == @question.id)  %>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="ryan-overflow-form-button">
+					<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default btn-primary"  %>
+					<%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+				</div>	
+			</div>
+		</div>
+
+<% else %>
+<% end %>
+
+		
 <!-- Answers ––––––––––––––––––––––––––––––––––––––-->
-	<table class="index-table">
-		<thead>
-			<tr>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
-				Answers
-				</th>
-			</tr>
-		</thead>
+	<div class="row question-show-header">
+	        <div class="question-answer-header col-sm-offset-1 col-sm-3">
+	        	<h3><%= @question.answers.count %> Answers</h3>
+	        </div>
+	        <div class="question-answer-sort col-sm-offset-3 col-sm-4">
+	        	Best | Date | Votes
+	        </div>
+	    </div>
 <% if !@question.answers.empty? %>
 <% @question.answers.each do |answer| %>
-		<tbody>
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">
-						<%= answer.content %> 
-					</span>
-				</td>
-			</tr>
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">
-						Votes:
-						<%= answer.votes.count %>
-					</span>
-				</td>
-			</tr>	
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">
-						<strong>Answered by:</strong>
-						<br>
-						Username:<%= answer.user.username %> 
-						<br>
-						<%= answer.created_at %></span>
-					</span>
-				</td>
-			</tr>
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="question-title">
-						<strong>Tags:</strong>
-						<br>
-						<%= answer.tags %> </span>
-					</span>
-				</td>
-			</tr>
-				<!-- <tr>
-					<td>
-						<div class="ryan-overflow-form-button">
-							<%-# link_to 'Edit', edit_answer_path(@question), class: "btn btn-default btn-primary"  %>
-							<%-# link_to 'Delete', @question.answer, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
-						</div>	
-					</td>
-				 </tr> -->
-<% end %>
+	    <div class="row">
+	        <div class="question-answer-votes col-sm-offset-1 col-sm-1">
+	        	<strong>&#8679</strong><br>
+			&nbsp <%= answer.votes.count %><br>
+			<strong>&#8681</strong>
+	        </div>
+	        <div class="question-answer-content col-sm-offset-0 col-sm-9">
+	        	<%= answer.content %>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="answer-edit col-sm-offset-2 col-sm-4">
+	        	<!-- share edit flag -->
+	        </div>
+	        <div class="answer-user col-sm-offset-1 col-sm-4">
+	        	<%= answer.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+	        	<br>
+	        	<%= link_to answer.user do %>
+	        	<img class="answer-profile-image" src="<%= answer.user.profile_pic %>">
+	        	<%= answer.user.username %>
+	        	<% end %>
+	        	<%= answer.user.votes.count %>
+	        </div>
+	    </div>
+	    <div class="row">
+	        <div class="answer-comment col-sm-offset-1 col-sm-10">
+	        	<%= answer.id %> <br>
+	        	COMMENT HERE
+	        </div>
+	    </div>
+	    <% if (@current_user.id == answer.user.id)  %>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="ryan-overflow-form-button">
+					<%= link_to 'Edit', edit_answer_path(answer),  class: "btn btn-default btn-primary"  %>
+					<%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+				</div>	
+			</div>
+		</div>
+		<br>
+		<br>
+		----------------------------------------------------------------------------------------
 <% else %>
-			<tr>
-				<td>
-					<strong>No Answers Yet</strong>
-				</td>
-			</tr>
 <% end %>
-		</tbody>
+	    <!-- CLOSE CONTAINER -->
+	</div>
 
+<% end %>
+				 
+<% else %>
+		<strong>No Answers Yet</strong>
+<% end %>
 				
-	</table>
 
-
-
-		<%= render partial: 'answers/form', :locals => { :question => @question } %>
-
-
+<%= render partial: 'answers/form', :locals => { :question => @question } %>

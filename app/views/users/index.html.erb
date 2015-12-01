@@ -1,60 +1,53 @@
-<h3 class="section-header"> Users </h3>
-	<table class="index-table">
-		<thead>
-			<tr>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">
-					Profile Picture
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Username
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Email
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Questions
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Answers
-				</th>
-				<th class="index-table-headings index-row-cell">
-					Votes
-				</th>
-			</tr>
-		</thead>
-		<tbody>
+	<h3 class="section-header"> Users </h3>
+	<div class="container">
+	    <div class="row user-index-row">
+	        <div class="user-index-profile-pic col-xs-2 col-sm-offset-1">
+	        	Profile
+	        </div>
+	        <div class="user-index-profile col-xs-6 col-sm-4">
+	        	Bio
+	        </div>
+	        <div class="user-index-questions col-xs-1 col-sm-offset-1">
+	        	Questions
+	        </div>
+	        <div class="user-index-answers col-xs-1">
+	        	Answers
+	        </div>
+	        <div class="user-index-votes col-xs-2 col-sm-1">
+	        	Votes
+	        </div>
+	    </div>
+			
+<% @users.each do |user| %>					
+	    <div class="row user-index-row">
+	        <div class="user-index-profile col-xs-2 col-sm-offset-1">
+	        	<%= link_to user do %>
+				<img class="user-index-profile-image" src="<%= user.profile_pic %>">
+			<% end %>
+	        	<%= link_to user.username, user %><br>
+			<%= link_to user.email, user %><br>
+			User I.D. # <%= user.id %><br>
+	        </div>
+	        <div class="user-index-profile col-xs-6 col-sm-4">
+			<%= link_to user.bio, user %><br>
+			Location: <%= user.location %><br>
+	        </div>
+	        <div class="user-index-questions col-xs-1 col-sm-offset-1">
+	        	<%= link_to user.questions.count, user %>
+	        </div>
+	        <div class="user-index-answers col-xs-1">
+	        	<%= link_to user.answers.count, user %>
+	        </div>
+	        <div class="user-index-votes col-xs-2 col-sm-1">
+	        	<%= link_to user.votes.count, user %>
+	        </div>
+	    </div>
+	    <br>
 
-<% @users.each do |user| %>
+<% end %>
 
-				<tr class="index-row">
-					<td  class="index-row-cell">
-						<%= link_to user do %>
-							<img class="index-profile-image" src="<%= user.profile_pic %>">
-						<% end %>
-					</td>
-					<td  class="index-row-cell">
-						<%= link_to user.username, user %>
-					</td>
-					<td  class="index-row-cell">
-						<span class="index-email">
-							<%= link_to user.email, user %>
-						</span>
-					</td>
-					<td  class="index-row-cell" >
-						<span class="index-answers">
-							<%= link_to user.questions.count, user %>
-						</span>
-					</td>
-					<td  class="index-row-cell" >
-						<span class="index-answers">
-							<%= link_to user.answers.count, user %>
-						</span>
-					</td>
-					<td  class="index-row-cell" >
-						<span class="index-votes">
-							<%= link_to user.votes.count, user %>
-						</span>
-					</td>
+	</div>						
+						
 					<!-- <td  class="index-row-cell">
 						<button>
 							<%-# link_to 'Edit', edit_user_path(user) %>
@@ -65,10 +58,6 @@
 							<%-# link_to 'Delete', user, method: :delete, data: { confirm: 'Are you sure?' } %>
 						</button>
 					</td> -->
-				</tr>
+				
 
-<% end %>
 			
-		</tbody>
-	</table>
-

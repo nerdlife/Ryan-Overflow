@@ -31,13 +31,18 @@ class AnswersController < ApplicationController
 	end
 
 	def update
-		@answer = Answer.find(params[:id])
+
+	if @answer = Answer.find(params[:id])
 		if @answer.update(answer_params)
 			redirect_to @answer
 		else
 			flash[:error] = @answer.errors.empty? ? "Error" : @answer.errors.full_messages.to_sentence
 			render 'edit'
 		end
+	else 
+		new
+	end
+	
 	end
 
 	def destroy
@@ -50,7 +55,7 @@ class AnswersController < ApplicationController
 	private
 
 	def answer_params
-		params.require(:answer).permit(:content, :question_id, :tags => [])
+		params.require(:answer).permit(:content, :question_id)
 	end
 
 end

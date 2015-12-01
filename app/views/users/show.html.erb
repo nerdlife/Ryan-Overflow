@@ -1,193 +1,178 @@
 <!-- -----------------------------USERS SHOW ------------------------------------ -->
-<h3> <%= @user.username %>'s Profile </h3>
+<h3 class="user-headers"> 
+	<%= @user.username %>'s Profile 
+</h3>
+	<div class="container">
+	    <div class="row user-show-row">
+	        <div class="user-show-profile-pic col-xs-2 col-sm-offset-1">
+	        	Profile
+	        </div>
+	        <div class="user-show-profile col-xs-6 col-sm-4">
+	        	Bio
+	        </div>
+	        <div class="user-show-questions col-xs-1 col-sm-offset-1">
+	        	Questions
+	        </div>
+	        <div class="user-show-answers col-xs-1">
+	        	Answers
+	        </div>
+	        <div class="user-show-votes col-xs-2 col-sm-1">
+	        	Votes
+	        </div>
+	    </div>
+	    <div class="row user-show-row">
+	        <div class="user-show-profile-pic col-xs-2 col-sm-offset-1">
+	        	<%= link_to @user do %>
+				<img class="user-show-profile-image" src="<%= @user.profile_pic %>">
+			<% end %>
+	        	<%= link_to @user.username, @user %><br>
+			<%= link_to @user.email, @user %><br>
+			User I.D. # <%= @user.id %><br>
+	        </div>
+	        <div class="user-show-profile col-xs-6 col-sm-4">
+	        	<%= link_to @user.bio, @user %><br>
+			Location: <%= @user.location %><br>
+	        </div>
+	        <div class="user-show-questions col-xs-1 col-sm-offset-1">
+	        	<%= link_to @user.questions.count, @user %>
+	        </div>
+	        <div class="user-show-answers col-xs-1">
+	        	<%= link_to @user.answers.count, @user %>
+	        </div>
+	        <div class="user-show-votes col-xs-2 col-sm-1">
+	        	<%= link_to @user.votes.count, @user %>
+	        </div>
+	    </div>
+	<!-- CLOSE CONTAINER -->
+	  </div>
 
-	<table class="index-table">
-		<thead>
-			<tr>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">Image</th>
-				<th class="index-table-headings index-row-cell">Username</th>
-				<th class="index-table-headings index-row-cell">Email</th>
-				<th class="index-table-headings index-row-cell">Bio</th>
-				<th class="index-table-headings index-row-cell">Name</th>
-				<th class="index-table-headings index-row-cell">Votes</th>
-				<!-- <th class="index-table-headings index-row-cell"> Edit </th> -->
-				<!-- <th class="index-table-headings index-row-cell"> Delete </th> -->
-			</tr>
-		</thead>
-		<tbody>
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<img class="index-profile-image" src="<%= @user.profile_pic %>" alt="<%= @user.username %>">
-				</td>
-				<td class="index-row-cell">
-					<span class="index-email">
-						<%= @user.username %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-email">
-						<%= @user.email %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-email">
-						<%= @user.bio %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-email">
-						<%= @user.name %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-votes">
-						<%= @user.votes.count  %>
-					</span>	
-				</td>
-				<!-- <td class="index-row-cell">
-					<span class="index-email">
-						<div class="ryan-overflow-form-button">
-							<%-# link_to 'Edit', edit_user_path(@user), class: "btn btn-default btn-primary"  %>
-						</div>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-email">
-						<div class="ryan-overflow-form-button">	
-							<%-# link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
-						</div>
-					</span>
-				</td> -->
-			</tr>
-		</tbody>
-	</table>
+<!--
+	<div class="ryan-overflow-form-button">
+		<%-# link_to 'Edit', edit_user_path(@user), class: "btn btn-default btn-primary"  %>
+	</div>
+
+	<div class="ryan-overflow-form-button">	
+		<%-# link_to 'Delete', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+	 </div>
+ -->
+					
 
 <!-- -----------------------------USERS Questions ------------------------------------ -->
-	<h3> Questions: </h3>
-	<table class="index-table">
-		<thead>
-			<tr>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">Question</th>
-				<th class="index-table-headings index-row-cell">Content</th>
-				<th class="index-table-headings index-row-cell">Votes</th>
-				<!-- <th class="index-table-headings index-row-cell">Edit </th> -->
-				<!-- <th class="index-table-headings index-row-cell">Delete </th> -->
-			</tr>
-		</thead>
-		<tbody>
-
+<h3 class="user-headers"> 
+<%= @user.username %>'s  Questions: 
+</h3>
+	<div class="container">		
+	    <div class="row questions-index-row">
+	        <div class="questions-index-title col-xs-3 col-sm-offset-1">
+	        	Title
+	        </div>
+	        <div class="questions-index-content col-xs-4">
+	        	Content
+	        </div>
+	        <div class="questions-index-votes-answers col-xs-2 col-sm-1">
+	        	Votes
+	        </div>
+	        <div class="questions-index-user col-xs-3 col-sm-2">
+	        	Answers
+	        </div>
+	        <!-- <div class="questions-index-user col-xs-3 col-sm-2">
+	        	Edit / Delete
+	        </div> -->
+	    </div>
+	
 <% if !@user.questions.empty? %>
 <% @user.questions.each do |question| %>
-		
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="index-email">
-						<%= link_to question.title, question %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-email">
-						<%= link_to question.content, question %>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-votes">
-						<%= question.votes.count %>
-					</span>
-				</td>
-				<!-- <td class="index-row-cell">
-					<span class="index-email">
-						<div class="ryan-overflow-form-button">
-						<%-# link_to 'Edit', edit_question_path(question), class: "btn btn-default btn-primary"  %>
-						</div>
-					</span>
-				</td>
-				<td class="index-row-cell">
-					<span class="index-email">
-						<div class="ryan-overflow-form-button">	
-						<%-# link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
-						</div>
-					</span>
-				</td> -->
-			</tr>
-
+	    <div class="row questions-index-row">
+	        <div class="questions-index-title col-xs-3 col-sm-offset-1">
+	        	<%= link_to question.title, question %>
+	        </div>
+	        <div class="questions-index-content col-xs-4">
+	        	<%= link_to question.content, question %><br><br>
+	        	<%= link_to question.tags, question %>
+	        </div>
+	        <div class="questions-index-votes-answers col-xs-2 col-sm-1">
+	        	<%= question.votes.count %>
+	        </div>
+	        <div class="questions-index-user col-xs-3 col-sm-2">
+	        	<%= question.answers.count %>
+	        </div>
+	    </div>
+<!-- 
+	<div class="ryan-overflow-form-button">
+		<%-# link_to 'Edit', edit_question_path(question), class: "btn btn-default btn-primary"  %>
+	</div>
+	
+	<div class="ryan-overflow-form-button">	
+		<%-# link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-default btn-primary"  %>
+	</div>
+ -->
 <% end %>
 <% else %>
-
-			<tr class="index-row">
-				<td class="index-row-cell">
-					<span class="index-email">
-						<strong><%= @user.username %> hasn't asked any questions yet</strong>
-					</span>
-				</td>
-			</tr>
-
+	<div class="row">
+		<div class="questions-index-user col-xs-12">
+			<strong><%= @user.username %> hasn't asked any questions yet</strong>
+		</div>
+	</div>
 <% end %>
-
-		</tbody>
-	</table>
+	    <!-- Close Container -->
+	  </div>
 
 <!-- -----------------------------USERS Answers ------------------------------------ -->
-	<h3> Answers: </h3>
-	<table class="index-table">
-		<thead>
-			<tr>
-				<th class="index-table-headings index-row-cell" style="border-left: none;">Question #</th>
-				<th class="index-table-headings index-row-cell">Answer</th>
-				<th class="index-table-headings index-row-cell">Votes</th>
-				<!-- <th class="index-table-headings index-row-cell">Edit </th> -->
-				<!-- <th class="index-table-headings index-row-cell"> Delete</th> -->
-			</tr>
-		</thead>
-		<tbody>
-
+<h3 class="user-headers"> 
+	<%= @user.username %>'s Answers: 
+</h3>
+	<div class="container">		
+	    <div class="row questions-index-row">
+	        <div class="questions-index-title col-xs-3 col-sm-offset-1">
+	        	Question
+	        </div>
+	        <div class="questions-index-content col-xs-4">
+	        	Content
+	        </div>
+	        <div class="questions-index-votes-answers col-xs-2 col-sm-1">
+	        	Votes
+	        </div>
+	        <div class="questions-index-user col-xs-3 col-sm-2">
+	        	Question #
+	        </div>
+	        <!-- <div class="questions-index-user col-xs-3 col-sm-2">
+	        	Edit / Delete
+	        </div> -->
+	    </div>
 <% if !@user.answers.empty? %>
 <% @user.answers.each do |answer| %>
-		
-				<tr class="index-row">
-					<td class="index-row-cell">
-						<span class="index-votes">
-							<%= link_to answer.question.id, answer.question %>
-						</span>
-					</td>
-					<td class="index-row-cell">
-						<span class="answer-content">
-							<%= link_to answer.content, answer %>
-						</span>
-					</td>
-					<td class="index-row-cell">
-						<span class="index-votes">
-							<%= answer.votes.count %>
-						</span>
-					</td>
-					
-					<!-- <td class="index-row-cell">
-							<div class="ryan-overflow-form-button">
-							<%-# link_to 'Edit', edit_answer_path(answer) , class: "btn btn-default btn-primary"  %>
-							</div>
-					</td>
-					<td class="index-row-cell">
-							<div class="ryan-overflow-form-button">
-								<%-# link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-default btn-primary"  %>
-							</div>
-					</td> -->
-				</tr>
+	    <div class="row questions-index-row">
+	        <div class="questions-index-title col-xs-3 col-sm-offset-1">
+	        	<%= link_to answer.question.title, answer.question %>
+	        </div>
+	        <div class="questions-index-content col-xs-4">
+	        	<%= link_to answer.content, answer %>
+	        </div>
+	        <div class="questions-index-votes-answers col-xs-2 col-sm-1">
+	        	<%= answer.votes.count %>
+	        </div>
+	        <div class="questions-index-user col-xs-3 col-sm-2">
+	        	<%= link_to answer.question.id, answer.question %>
+	        </div>
+	      </div>
 
 <% end %>
 
-			<tr class="index-row">
+			
 
 <% else %>
 
-					<td class="index-row-cell">
-						<span class="index-email">
-							<strong>No answers for this  question yet</strong>
-						</span>
-					</td>
-				</tr>
+		<div class="row index-row-cell">
+			<div class="questions-index-user col-xs-12">
+				<strong>No answers for this  question yet</strong>
+			</div>
+		</div>
 
 <% end %>
-
-		</tbody>
-	</table>
-
+	      <!-- Close Container -->
+	  </div>
+<br>
+<br>
+<br>
+<br>
+		
