@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 4) do
     t.integer  "question_id",             null: false
     t.integer  "user_id",                 null: false
     t.integer  "votes",       default: 0
-    t.text     "tags"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end

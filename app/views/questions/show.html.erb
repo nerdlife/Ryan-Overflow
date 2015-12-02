@@ -1,25 +1,23 @@
-<!-- SHOW QUESTION VIEW -->
-<% question = @question %>
-<% current_user = @current_user %>
+<!-- QUESTION SHOW -->
 	<div class="container">
 	    <div class="row question-show-header">
 	        <div class="question-title col-sm-offset-1 col-sm-10">
-	        	<h3><%= question.title %></h3>
+	        	<h3><%= @question.title %></h3>
 	        </div>
 	    </div>
 	    <div class="row">
 	        <div class="question-votes col-xs-1 col-sm-offset-1">
 	        	<strong>&#8679</strong><br>
-			&nbsp <%= question.votes.count %><br>
+			&nbsp <%= @question.votes.count %><br>
 			<strong>&#8681</strong>
 	        </div>
 	        <div class="question-content col-xs-11 col-sm-9">
-	        	<%= question.content %>
+	        	<%= @question.content %>
 	        </div>
 	    </div>
 	    <div class="row">
 	        <div class="question-tags col-sm-offset-2 col-sm-9">
-	        	<%= question.tags %>
+	        	<%= @question.tags %>
 	        </div>
 	    </div>
 	    <div class="row">
@@ -27,12 +25,12 @@
 	        	<!-- share edit flag -->
 	        </div>
 	        <div class="question-user col-sm-offset-1 col-sm-4">
-	        	<%= question.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+	        	<%= @question.created_at.strftime("%B %e, %Y at %I:%M %p") %>
 	        	<%= link_to @question.user do %>
 	        	<img class="question-profile-image" src="<%= @question.user.profile_pic %>">
-	        	<%= question.user.username %>
+	        	<%= @question.user.username %>
 	        	<% end %>
-	        	<%= question.user.votes.count %>
+	        	<%= @question.user.votes.count %>
 	        </div>
 	    </div>
 	    <div class="row">
@@ -69,7 +67,7 @@
 	        	Best | Date | Votes
 	        </div>
 	    </div>
-<% if !@question.answers.empty? %>
+<% unless @question.answers.empty? %>
 <% @question.answers.each do |answer| %>
 	    <div class="row">
 	        <div class="question-answer-votes col-sm-offset-1 col-sm-1">
@@ -78,7 +76,7 @@
 			<strong>&#8681</strong>
 	        </div>
 	        <div class="question-answer-content col-sm-offset-0 col-sm-9">
-	        	<%= answer.content %>
+	        	 <%= link_to answer.content, answer %>
 	        </div>
 	    </div>
 	    <div class="row">
@@ -123,6 +121,33 @@
 <% else %>
 		<strong>No Answers Yet</strong>
 <% end %>
-				
+		
+<%= form_for @answer do |f| %>
+	<div class="container" style="border-top: 2px solid #4C4646">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-top: 25px;">
+				<h3>Answer this question:</h3>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+				<%= f.label :content, "Your Answer", class: "form-input-label"  %>
+			</div>
+			<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+				<%= f.text_area :content, :placeholder => 'Your Answer',  rows: "12",class: "form-control" %>
+			</div>
+			<%= f.hidden_field :question_id, value: @question.id  %>
+			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
+				<%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+		        </div>
+		</div>
+	</div>
+	<br>
+	<br>
+	<br>
+<% end %>
 
-<%= render partial: 'answers/form', :locals => { :question => @question } %>
+
+
+
+

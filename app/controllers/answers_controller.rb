@@ -31,7 +31,6 @@ class AnswersController < ApplicationController
 	end
 
 	def update
-
 	if @answer = Answer.find(params[:id])
 		if @answer.update(answer_params)
 			redirect_to @answer

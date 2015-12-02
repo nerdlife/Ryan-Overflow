@@ -1,45 +1,43 @@
-<div class="container-fluid">
-  <%= form_for(:question, url: {controller: 'questions', action: 'create'}) do |f|  %>
-  		<div class="form-group">
-			<div class="ryan-overflow-form-label">
-				Question Title
+<!-- QUESTION FORM -->
+<%= form_for @question do |f| %>
+	<div class="container">
+		<div class="form-group">
+			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+				<%= f.label :title, "Question Title", class: "form-input-label"  %>
 			</div>
-			<div class="col-md-8 col-md-offset-2">
+			<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
 				<%= f.text_field :title, :placeholder => 'Question Title', class: "form-control" %>
 			</div>
 		</div>
-		<br>
-		<br>
-
 		<div class="form-group">
-			<div class="ryan-overflow-form-label">
-				Question Content
+			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+				<%= f.label :content, "Question Content", class: "form-input-label" %>
 			</div>
-			<div class="col-md-8 col-md-offset-2">
-				<%= f.text_field :content, :placeholder => 'Question Content', class: "form-control" %>
+			<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+				<%= f.text_area :content, :placeholder => 'Question Title', rows: "12", class: "form-control" %>
 			</div>
 		</div>
-		<br>
-		<br>
-
 		<div class="form-group">
-			<div class="ryan-overflow-form-label">
-				Question Tags
-				<br>
-				( select all that apply with Apple/Control + Click )
+			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+				<%= f.label :content, "Question Content", class: "form-input-label" %>
 			</div>
-			<div class="col-md-8 col-md-offset-2">
-				<%= f.select :tags, [ ["HTML", "html"], ["CSS", "css"], ["Javascript", "javascript"], ["Rails", "rails"], ["Meteor", "meteor"], ["Git", "git"], ["Php", "php"], ["Pyhthon", "pyhthon"], ["SQL", "sql"], ["Model View Controller", "mvc"], ["Object Orientated Programming", "oop"], ["Wordpress", "wp"] ], {prompt: "Choose Question Tags"}, {:multiple => true, class: "form-control"}  %>
+			<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+				<%= f.select :tags, [ ["HTML", "html"], ["CSS", "css"], ["Javascript", "javascript"], ["Rails", "rails"], ["Meteor", "meteor"], ["Git", "git"], ["Php", "php"], ["Pyhthon", "pyhthon"], ["SQL", "sql"], ["Model View Controller", "mvc"], ["Object Orientated Programming", "oop"], ["Wordpress", "wp"] ], {prompt: false}, {:multiple => true, class: "form-control"}  %>
 			</div>
+		        <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
+				<%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+		        </div>
+			<%= f.hidden_field :question_id, value: @question.id  %>
 		</div>
-		<br>
-		<br>
+		<!-- Close Question Form -->
+	</div>
+<% end %>
+	<br>
+	<br>
+	<br>
+     
 
-				<div class="ryan-overflow-form-button">
-					<%= f.submit "Submit", class: "btn btn-default btn-primary" %>
-				</div>
-			
 
-	<% end %>
-<!-- Close Container -->
-</div>
+
+
+

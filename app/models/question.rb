@@ -1,7 +1,10 @@
 class Question < ActiveRecord::Base
 	belongs_to :user
 	has_many :answers, dependent: :destroy
-	has_many :votes
+	has_many :votes, dependent: :destroy
+	
+	accepts_nested_attributes_for :answers, reject_if: proc { |attributes| attributes[:content].blank?}
+	
 
 	validates :title, presence: true, uniqueness: true,
                       length: { :in => 8..125,

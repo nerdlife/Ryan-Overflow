@@ -5,7 +5,7 @@ class CreateAnswers < ActiveRecord::Migration
     	t.integer :question_id, null: false
     	t.integer :user_id, null: false
     	t.integer :votes, default: 0
-    	t.text :tags
+  
     	
       t.timestamps null: false
     end

@@ -1,7 +1,7 @@
 class Answer < ActiveRecord::Base
 	belongs_to :question
 	belongs_to :user
-	has_many :votes
+	has_many :votes, dependent: :destroy
 
 	validates :content, presence: true, 
                       length: { :in => 5..1250,

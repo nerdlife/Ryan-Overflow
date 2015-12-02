@@ -13,9 +13,7 @@ a {
 a:hover {
 	color: #bad999;
 }
-main {
-	margin-top: 0px;
-}
+
 .section-header {
 	text-align: center;
 	font-size: 3em;
@@ -40,22 +38,15 @@ main {
 .left-nav-button {
 	margin-right: 15px;
 }
-.ryan-overflow-form-label {
-	text-align: center;
-	// margin: 0 auto;
-	text-decoration: underline;
-	font-weight: bold;
-}
+
 .flash-message-alert {
-	text-align: middle;
 	color: red;
 	font-weight: bold;
 	text-decoration: underline overline;
-	font-size: 28px;
-}
-.ryan-overflow-form-button {
+	font-size: 26px;
 	text-align: center;
 }
+
 #nav-brand-roverflow {
 	position: absolute;
    	left: 10px;
@@ -65,9 +56,6 @@ main {
 }
 footer {
 	width: 100%;
-	height: 15px;
-	position: relative;
-	bottom: 0;
 	text-align: center;
 	background: #f8f8f8;
 	border-top: 1px solid #000;
@@ -186,6 +174,56 @@ footer {
 .user-show-questions { }
 .user-show-answers { }
 .user-show-votes { }
+
+// ---------------------------------------- ANSWER SHOW ----------------------------------------
+.answer-show-row {
+	border-bottom: 2px solid #4C4646;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.answer-headers {
+	text-align: center; 
+	text-decoration: underline;
+	margin-top: 25px;
+	// padding-bottom: -15px;
+}
+.answer-show-question-number {
+	margin-bottom: 10px;
+}
+.answer-show-question-title { }
+.answer-show-content { }
+.answer-show-votes {
+	text-align: center;
+}
+.answer-show-user {
+
+}
+.answer-show-profile-image {
+	width: 54px;
+	 height: 54px;
+	 border: 1px solid #4C4646;
+	 padding: 3px;
+	 margin-top: 5px;
+}
+
+
+// ------------------------------------------ FORM ------------------------------------------
+.form-group {
+	text-align: center;
+}
+
+.form-input-label {
+	text-decoration: underline;
+	font-weight: bold;
+	margin-top:25px;
+	margin-bottom:10px;
+}
+
+
+
+
+
 
 
 // ------------------------------------------ Mobile Media Query ------------------------------------------

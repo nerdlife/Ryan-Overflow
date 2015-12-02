@@ -20,16 +20,19 @@ resources :votes
   # resources :users do
   # 	resource :questions
   # 	resource :answers
+  # 	resource :votes
   # end
 
   # resources :questions do
   # 	resource :answers
   # 	resource :users
+  # 	resource :votes
   # end
 
   # resources :answers do
   # 	resource :questions
   # 	resource :users
+  # 	resource :votes
   # end
  
 end

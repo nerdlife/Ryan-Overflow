@@ -1,6 +1,10 @@
-<h3 class="section-header"> Questions </h3>
-<!-- Questions Index  ––––––––––––––––––––––––––––––––––––––-->
+<!-- QUESTION EDIT -->
 	<div class="container">		
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
+				<h3 class="section-header"> Questions </h3>
+			</div>
+		</div>	
 	    <div class="row questions-index-row">
 	        <div class="questions-index-title col-xs-3 col-sm-offset-1">
 	        	Title
@@ -56,8 +60,12 @@
 <!-- If Any Answers Matches  Search ––––––––––––––––––––––––––––––––––––––-->
 
 <% unless @answer_search_match.blank? %>
-	<h3 class="section-header">Answers</h3>
 	<div class="container">		
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
+				<h3 class="section-header">Answers</h3>
+			</div>
+		</div>
 	    <div class="row questions-index-row">
 	        <div class="questions-index-answer-content col-xs-4">
 	        	Content
@@ -96,3 +104,6 @@
 	    <!-- CLOSE CONTAINER -->
 <% end %>
 	  </div>				
+
+
+

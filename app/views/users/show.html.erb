@@ -1,7 +1,9 @@
-<!-- -----------------------------USERS SHOW ------------------------------------ -->
-<h3 class="user-headers"> 
-	<%= @user.username %>'s Profile 
-</h3>
+<!-- USER SHOW -->
+	<div class="row">
+		<div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
+			<h3><%= @user.username %>'s Profile</h3>
+		</div>
+	</div>
 	<div class="container">
 	    <div class="row user-show-row">
 	        <div class="user-show-profile-pic col-xs-2 col-sm-offset-1">
@@ -34,13 +36,13 @@
 			Location: <%= @user.location %><br>
 	        </div>
 	        <div class="user-show-questions col-xs-1 col-sm-offset-1">
-	        	<%= link_to @user.questions.count, @user %>
+	        	<%= link_to @questions.count, @user %>
 	        </div>
 	        <div class="user-show-answers col-xs-1">
-	        	<%= link_to @user.answers.count, @user %>
+	        	<%= link_to @answers.count, @user %>
 	        </div>
 	        <div class="user-show-votes col-xs-2 col-sm-1">
-	        	<%= link_to @user.votes.count, @user %>
+	        	<%= link_to @votes.count, @user %>
 	        </div>
 	    </div>
 	<!-- CLOSE CONTAINER -->

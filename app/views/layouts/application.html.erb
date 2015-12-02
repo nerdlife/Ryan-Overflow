@@ -36,17 +36,21 @@
 <!-- Navigation Bar ––––––––––––––––––––––––––––––––––––––-->
 <%= render partial: "navigation/navbar" %>
 <!-- Main Content ––––––––––––––––––––––––––––––––––––––-->
-	<div class="flash-message-alert">
-		<% flash.each do |k, message| %>
-		  	<%=  message %>
-		<% end %>
-		<%-# flash.errors.each do |k, message_array| %>
-			<%-# message_array.each do |message| %>
-			  	<%-#  message %>
-			  	<!-- <br> -->
+<div class="row">
+	<div class="col-xs-10 col-xs-offset-1">
+		<div class="flash-message-alert">
+			<% flash.each do |k, message| %>
+			  	<%=  message %>
+			<% end %>
+			<%-# flash.errors.each do |k, message_array| %>
+				<%-# message_array.each do |message| %>
+				  	<%-#  message %>
+				  	<!-- <br> -->
+				<%-# end %>
 			<%-# end %>
-		<%-# end %>
+		</div>
 	</div>
+</div>
 
 
 <%= yield %>

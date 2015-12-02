@@ -1,7 +1,6 @@
 class QuestionsController < ApplicationController
 	before_action :current_user
 			
-
 	def index
 		@questions = Question.all
 		@answers = Answer.all
@@ -34,7 +33,6 @@ class QuestionsController < ApplicationController
 	def show
 		@question = Question.find(params[:id])
 		@answer = Answer.new
-		@answer.question_id = @question.id
 	end
 
 	def edit 
@@ -61,7 +59,7 @@ class QuestionsController < ApplicationController
 	private
 
 	def question_params
-		params.require(:question).permit(:title, :content, :tags => [])
+		params.require(:question).permit(:title, :content, :tags => [], answers_attributes: [:content, :user_id, :question_id, :votes])
 	end
 
 
