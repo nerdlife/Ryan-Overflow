@@ -1,0 +1,232 @@
+  [1m[36m (34.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (2.3ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (1)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (6.6ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying NOT NULL, "name" character varying, "username" character varying, "password_digest" character varying, "location" text DEFAULT 'Portland, Oregon', "bio" text DEFAULT 'This is my empty bio that I will fill out soon', "profile_pic" text DEFAULT 'http://static1.businessinsider.com/image/525bfb4a69bedda83f84c289-480/bill-belichick.jpg', "votes" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "1"]]
+  [1m[36m (15.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateQuestions (2)
+  [1m[35m (16.0ms)[0m  BEGIN
+  [1m[36m (5.3ms)[0m  [1mCREATE TABLE "questions" ("id" serial primary key, "title" text NOT NULL, "content" text NOT NULL, "user_id" integer NOT NULL, "votes" integer DEFAULT 0, "tags" text, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "2"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateAnswers (3)
+  [1m[35m (0.9ms)[0m  BEGIN
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "answers" ("id" serial primary key, "content" text NOT NULL, "question_id" integer NOT NULL, "user_id" integer NOT NULL, "votes" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "3"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateVotes (4)
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "votes" ("id" serial primary key, "user_id" integer, "question_id" integer, "answer_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "4"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.1ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'answers'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.5ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'questions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'votes'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'RyansUsername' LIMIT 1[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'ryan@ryan.com' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("email", "username", "name", "password_digest", "profile_pic", "bio", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "ryan@ryan.com"], ["username", "RyansUsername"], ["name", "Ryan Urie"], ["password_digest", "$2a$10$gqBH0UZAg3Ah2MzBrWDbveGi11xKl2bi.lqqGMN8pomRYT2udKQXW"], ["profile_pic", "http://clloh.com/wp-content/uploads/2015/08/meteor-js-logo-128x128.png"], ["bio", "Here is my bio so read it"], ["created_at", "2015-12-02 12:38:25.074698"], ["updated_at", "2015-12-02 12:38:25.074698"]]
+  [1m[35m (17.2ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mQuestion Exists (0.4ms)[0m  SELECT  1 AS one FROM "questions" WHERE "questions"."title" = 'Seed Q Uno: Why is processing a sorted array faster than an unsorted array?' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "questions" ("title", "content", "user_id", "tags", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Seed Q Uno: Why is processing a sorted array faster than an unsorted array?"], ["content", "Now for the sake of argument, suppose this is back in the 1800s - before long distance or radio communication. You are the operator of a junction and you hear a train coming. You have no idea which way it is supposed to go. You stop the train to ask the captain which direction he wants. And then you set the switch appropriately."], ["user_id", 1], ["tags", "[\"Html\", \"Css\", \"Javascript\", \"Ruby\", \"Rails\", \"Meteor\"]"], ["created_at", "2015-12-02 12:38:25.110613"], ["updated_at", "2015-12-02 12:38:25.110613"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "Ryan User 1... First Answer Content Is  Here For Question ID 3"], ["question_id", 3], ["user_id", 1], ["created_at", "2015-12-02 12:38:25.122576"], ["updated_at", "2015-12-02 12:38:25.122576"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "Ryan User 1.....2nd Answer Content Is  Here For Question ID 3"], ["question_id", 3], ["user_id", 1], ["created_at", "2015-12-02 12:38:25.125233"], ["updated_at", "2015-12-02 12:38:25.125233"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["question_id", 1], ["created_at", "2015-12-02 12:38:25.135948"], ["updated_at", "2015-12-02 12:38:25.135948"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["question_id", 2], ["created_at", "2015-12-02 12:38:25.138462"], ["updated_at", "2015-12-02 12:38:25.138462"]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["question_id", 3], ["created_at", "2015-12-02 12:38:25.140750"], ["updated_at", "2015-12-02 12:38:25.140750"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["answer_id", 1], ["created_at", "2015-12-02 12:38:25.142452"], ["updated_at", "2015-12-02 12:38:25.142452"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["answer_id", 2], ["created_at", "2015-12-02 12:38:25.144225"], ["updated_at", "2015-12-02 12:38:25.144225"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["answer_id", 3], ["created_at", "2015-12-02 12:38:25.145828"], ["updated_at", "2015-12-02 12:38:25.145828"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."username" = 'MosesUsername' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'moses@moses.com' LIMIT 1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("email", "username", "name", "password_digest", "profile_pic", "bio", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["email", "moses@moses.com"], ["username", "MosesUsername"], ["name", "Moses Magoo"], ["password_digest", "$2a$10$u1wZ1nq1n5z6jig2aMlhDu6Yz9JLnr5zTLPGWP7WBf2Vu678GgNZW"], ["profile_pic", "http://helpacoder.com/wp-content/uploads/2015/07/angular.jpeg"], ["bio", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et leo hendrerit, efficitur ligula sed, viverra mauris. Nulla semper luctus dui, id interdum diam sodales at. Nulla tincidunt dolor vitae facilisis ultrices. Nam eu erat at erat vulputate posuere nec id ipsum. Nam gravida nibh magna, vitae faucibus odio ultrices vitae. Cum sociis ."], ["created_at", "2015-12-02 12:38:25.204704"], ["updated_at", "2015-12-02 12:38:25.204704"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mQuestion Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "questions" WHERE "questions"."title" = 'Seed for test' LIMIT 1[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "questions" ("title", "content", "user_id", "tags", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Seed for test"], ["content", "Moses User 2..Second Question Content Is  Here"], ["user_id", 2], ["tags", "[\"Mean\", \"Angular\", \"React\"]"], ["created_at", "2015-12-02 12:38:25.207834"], ["updated_at", "2015-12-02 12:38:25.207834"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "This is branch prediction. I admit it's not the best analogy since the train could just signal the direction with a flag. But in computers, the processor doesn't know which direction a branch will go until the last moment. So how would you strategically guess to minimize the number of times that the train must back up and go down the other path? You look at the past history! If the train goes left 99% of the time, then you guess left. If it alternates, then you alternate your guesses. If it goes one way every 3 times, you guess the same... In other words, you try to identify a pattern and follow it. This is more or less how branch predictors work. Most applications have well-behaved branches. So modern branch predictors will typically achieve 90% hit rates. But when faced with unpredictable branches with no recognizable patterns, branch predictors are virtually useless."], ["question_id", 1], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.210052"], ["updated_at", "2015-12-02 12:38:25.210052"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "Moses User 2....2nd Answer Content Is Here For Question ID 1"], ["question_id", 1], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.211969"], ["updated_at", "2015-12-02 12:38:25.211969"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "Moses User 2....2nd Answer Content Is Here For Question ID 1"], ["question_id", 1], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.213661"], ["updated_at", "2015-12-02 12:38:25.213661"]]
+  [1m[35m (1.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "Moses User 2....2nd Answer Content Is Here For Question ID 1"], ["question_id", 1], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.216138"], ["updated_at", "2015-12-02 12:38:25.216138"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "Moses User 2....2nd Answer Content Is Here For Question ID 1"], ["question_id", 1], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.217942"], ["updated_at", "2015-12-02 12:38:25.217942"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "Moses User 2....2nd Answer Content Is Here For Question ID 1"], ["question_id", 3], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.219723"], ["updated_at", "2015-12-02 12:38:25.219723"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "9999sdfasfasdfsadffasd"], ["question_id", 3], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.221732"], ["updated_at", "2015-12-02 12:38:25.221732"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "44444dgsdgdfsgdgdsf45t45ggg5 g34g5"], ["question_id", 3], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.223400"], ["updated_at", "2015-12-02 12:38:25.223400"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "1111111dgsdgdfsgttdgdsf45t45ggg5 g34g5"], ["question_id", 3], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.225160"], ["updated_at", "2015-12-02 12:38:25.225160"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "2222dgsdgdfsgdgdsf45t45ggg5 g34g5"], ["question_id", 3], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.226956"], ["updated_at", "2015-12-02 12:38:25.226956"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "77777777dgsdgdfsgdgdsf45t45ggg5 g34g5"], ["question_id", 3], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.228659"], ["updated_at", "2015-12-02 12:38:25.228659"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "8888888dgsdgdfsgdgdsf45t45ggg5 g34g5"], ["question_id", 3], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.230397"], ["updated_at", "2015-12-02 12:38:25.230397"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "999999dgsdgdfsgdgdsf45t45ggg5 g34g5"], ["question_id", 3], ["user_id", 2], ["created_at", "2015-12-02 12:38:25.232164"], ["updated_at", "2015-12-02 12:38:25.232164"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 2], ["question_id", 1], ["created_at", "2015-12-02 12:38:25.234374"], ["updated_at", "2015-12-02 12:38:25.234374"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["question_id", 1], ["created_at", "2015-12-02 12:38:25.236233"], ["updated_at", "2015-12-02 12:38:25.236233"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 2], ["question_id", 2], ["created_at", "2015-12-02 12:38:25.237890"], ["updated_at", "2015-12-02 12:38:25.237890"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["question_id", 3], ["created_at", "2015-12-02 12:38:25.239482"], ["updated_at", "2015-12-02 12:38:25.239482"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 2], ["answer_id", 1], ["created_at", "2015-12-02 12:38:25.241174"], ["updated_at", "2015-12-02 12:38:25.241174"]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["answer_id", 1], ["created_at", "2015-12-02 12:38:25.243570"], ["updated_at", "2015-12-02 12:38:25.243570"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 2], ["answer_id", 2], ["created_at", "2015-12-02 12:38:25.245164"], ["updated_at", "2015-12-02 12:38:25.245164"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 2], ["answer_id", 3], ["created_at", "2015-12-02 12:38:25.246858"], ["updated_at", "2015-12-02 12:38:25.246858"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 2], ["answer_id", 3], ["created_at", "2015-12-02 12:38:25.248532"], ["updated_at", "2015-12-02 12:38:25.248532"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."username" = 'KatysUsername' LIMIT 1[0m
+  [1m[35mUser Exists (0.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'katy@katy.com' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "username", "name", "password_digest", "profile_pic", "bio", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["email", "katy@katy.com"], ["username", "KatysUsername"], ["name", "Katy Elliott"], ["password_digest", "$2a$10$PSiM0Rn3gCH.hFW2B48Sz.sFCnil2jgcCUbQgjp3bDYS92OQ5Id0y"], ["profile_pic", "http://adrianmejia.com/images/MEAN_jarroba.png"], ["bio", "natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam at dolor augue. Morbi varius dolor diam. Suspendisse tristique felis ut mauris molestie, at elementum mauris finibus. Pellentesque quis libero dui. Praesent quis accumsan risus. Integer placerat diam sit amet erat aliquet ultricies. Donec viverra scelerisque placerat. Nulla placerat scelerisque nunc, ac ultricies libero ullamcorper vel"], ["created_at", "2015-12-02 12:38:25.307883"], ["updated_at", "2015-12-02 12:38:25.307883"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mQuestion Exists (0.2ms)[0m  SELECT  1 AS one FROM "questions" WHERE "questions"."title" = 'Katy User 3.....THIRD Question Title' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "questions" ("title", "content", "user_id", "tags", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Katy User 3.....THIRD Question Title"], ["content", "Katy User 3...THIRD Question Content Is  Here"], ["user_id", 3], ["tags", "[\"Football\", \"Keyboard\", \"Sandwich\"]"], ["created_at", "2015-12-02 12:38:25.310975"], ["updated_at", "2015-12-02 12:38:25.310975"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "Katy User 3....First Answer Content Is Here For Question ID 2"], ["question_id", 2], ["user_id", 3], ["created_at", "2015-12-02 12:38:25.313158"], ["updated_at", "2015-12-02 12:38:25.313158"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "answers" ("content", "question_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "Katy User 3....2nd Answer Content Is Here For Question ID 2"], ["question_id", 2], ["user_id", 3], ["created_at", "2015-12-02 12:38:25.315041"], ["updated_at", "2015-12-02 12:38:25.315041"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 3], ["question_id", 1], ["created_at", "2015-12-02 12:38:25.316781"], ["updated_at", "2015-12-02 12:38:25.316781"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["question_id", 1], ["created_at", "2015-12-02 12:38:25.319296"], ["updated_at", "2015-12-02 12:38:25.319296"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 3], ["question_id", 2], ["created_at", "2015-12-02 12:38:25.321031"], ["updated_at", "2015-12-02 12:38:25.321031"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["question_id", 2], ["created_at", "2015-12-02 12:38:25.322720"], ["updated_at", "2015-12-02 12:38:25.322720"]]
+  [1m[35m (1.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 3], ["question_id", 2], ["created_at", "2015-12-02 12:38:25.325385"], ["updated_at", "2015-12-02 12:38:25.325385"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "question_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["question_id", 3], ["created_at", "2015-12-02 12:38:25.327060"], ["updated_at", "2015-12-02 12:38:25.327060"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 3], ["answer_id", 1], ["created_at", "2015-12-02 12:38:25.328726"], ["updated_at", "2015-12-02 12:38:25.328726"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["answer_id", 1], ["created_at", "2015-12-02 12:38:25.330317"], ["updated_at", "2015-12-02 12:38:25.330317"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 3], ["answer_id", 2], ["created_at", "2015-12-02 12:38:25.331928"], ["updated_at", "2015-12-02 12:38:25.331928"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["answer_id", 2], ["created_at", "2015-12-02 12:38:25.333672"], ["updated_at", "2015-12-02 12:38:25.333672"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 3], ["answer_id", 3], ["created_at", "2015-12-02 12:38:25.335286"], ["updated_at", "2015-12-02 12:38:25.335286"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "votes" ("user_id", "answer_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 3], ["answer_id", 3], ["created_at", "2015-12-02 12:38:25.336750"], ["updated_at", "2015-12-02 12:38:25.336750"]]
+  [1m[35m (0.7ms)[0m  COMMIT
