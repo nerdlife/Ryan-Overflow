@@ -6,8 +6,7 @@ class AnswersController < ApplicationController
 	end
 
 	def create
-		@answer = Answer.new(answer_params)
-		@answer.user_id = @current_user.id
+		@answer = @current_user.answers.create(answer_params)
 		if @answer.save
 			flash[:success] = "Answer added"
 			redirect_to @answer.question
