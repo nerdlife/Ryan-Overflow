@@ -45,14 +45,12 @@
 	    </div>
 
 <% if (@current_user.id == @question.id)  %>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="ryan-overflow-form-button">
-					<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default btn-primary"  %>
-					<%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure you want to delete this Question?' }, class: "btn btn-default btn-primary"  %>
-				</div>	
-			</div>
-		</div>
+		<div class="form-group">
+	    		<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
+		    		<%= link_to 'Edit', edit_question_path(@question), class: "btn btn-default btn-primary"  %>
+		    		<%= link_to 'Delete', @question, method: :delete, data: { confirm: 'Are you sure you want to delete this Question?' }, class: "btn btn-default btn-primary"  %>
+	    		</div>
+	    </div>
 
 <% else %>
 <% end %>
@@ -100,21 +98,19 @@
 	        </div>
 	    </div>
 	    <% if (@current_user.id == answer.user.id)  %>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="ryan-overflow-form-button">
-					<%= link_to 'Edit', edit_answer_path(answer),  class: "btn btn-default btn-primary"  %>
-					<%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure you want to delete this Answer?' }, class: "btn btn-default btn-primary"  %>
-				</div>	
-			</div>
-		</div>
-		<br>
-		<br>
-		----------------------------------------------------------------------------------------
+	    <div class="form-group">
+	    	  <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
+	    		<%= link_to 'Edit', edit_answer_path(answer),  class: "btn btn-default btn-primary"  %>
+	    		<%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure you want to delete this Answer?' }, class: "btn btn-default btn-primary"  %>
+	    	  </div>
+	    </div>
 <% else %>
 <% end %>
 	    <!-- CLOSE CONTAINER -->
 	</div>
+	<br>
+	<br>
+	<br>
 
 <% end %>
 				 

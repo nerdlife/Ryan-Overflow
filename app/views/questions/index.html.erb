@@ -48,17 +48,15 @@
 				<br>
 				<%= link_to question.user.email, question.user %>
 		        </div>
-	<% if (@current_user.id == question.user_id)  %>
-			<div class="row">
-				<div class="col-md-4">
-					<div class="ryan-overflow-form-button">
-						<%= link_to 'Edit', edit_question_path(question.id),  class: "btn btn-default btn-primary"  %>
-						<%= button_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure you want to delete this Question?' }, class: "btn btn-default btn-primary"  %>
-					</div>	
-				</div>
-			</div>
-	<% else %>
-	<% end %>
+<% if (@current_user.id == question.user.id)  %>
+		        <div class="form-group">
+		        	<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
+		        		<%= link_to 'Edit', edit_question_path(question.id),  class: "btn btn-default btn-primary"  %>
+					<%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure you want to delete this Question?' }, class: "btn btn-default btn-primary"  %>
+		        	</div>
+		        </div>
+<% else %>
+<% end %>
 		    </div>
 		</div>
 <% end %>
@@ -117,7 +115,7 @@
 				<div class="col-md-4">
 					<div class="ryan-overflow-form-button">
 						<%= link_to 'Edit', edit_answer_path(answer.id),  class: "btn btn-default btn-primary"  %>
-						<%= button_to 'Delete', answer, controller: :answers, method: :delete, data: { confirm: 'Are you sure you want to delete this Question?' }, class: "btn btn-default btn-primary"  %>
+						<%= button_to 'Delete', answer, controller: :answers, method: :delete, data: { confirm: 'Are you sure you want to delete this Answer?' }, class: "btn btn-default btn-primary"  %>
 					</div>	
 				</div>
 			</div>
