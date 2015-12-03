@@ -19,10 +19,9 @@
 		</div>
 		<div class="form-group">
 			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-				<%= f.label :content, "Question Content", class: "form-input-label" %>
+				<%= f.label :tags, "Question Tags", class: "form-input-label" %>
 			</div>
-			<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-				<%= f.select :tags, [ ["HTML", "html"], ["CSS", "css"], ["Javascript", "javascript"], ["Rails", "rails"], ["Meteor", "meteor"], ["Git", "git"], ["Php", "php"], ["Pyhthon", "pyhthon"], ["SQL", "sql"], ["Model View Controller", "mvc"], ["Object Orientated Programming", "oop"], ["Wordpress", "wp"] ], {prompt: false}, {:multiple => true, class: "form-control"}  %>
+				<%= f.text_area :tags, :placeholder => 'Enter tags with spaces', rows: "12", class: "form-control" %>
 			</div>
 		        <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
 				<%= f.submit "Submit", class: "btn btn-default btn-primary" %>
