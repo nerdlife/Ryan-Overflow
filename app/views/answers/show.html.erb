@@ -1,63 +1,59 @@
 <!-- ANSWER SHOW -->
-	<div class="container">
-	    <div class="row answer-show-row">
-	        <div class="answer-headers col-xs-2 col-sm-offset-1 col-sm-1">
-	        	Question#
-	        </div>
-	        <div class="answer-headers col-xs-3">
-	        	Question
-	        </div>
-	        <div class="answer-headers col-xs-4">
-	        	Answer Content
-	        </div>
-	        <div class="answer-headers col-xs-1">
-	        	Answer Votes
-	        </div>
-	        <div class="answer-headers col-xs-2 col-sm-1">
-	        	Answered By
-	        </div>
-	    </div>
-	    <div class="row answer-show-row">
-	        <div class="answer-show-question-number col-xs-2 col-sm-offset-1 col-sm-1">
-	        	<%= link_to @answer.question.id, @answer.question %>
-	        </div>
-	        <div class="answer-show-question-title col-xs-3">
-	        	<%= link_to @answer.question.title, @answer.question %>
-	        </div>
-	        <div class="answer-show-content col-xs-4">
-	        	<%= @answer.content %><br>
-	        	<%= @answer.created_at.strftime("%B %e, %Y at %I:%M %p") %>
-	        </div>
-	        <div class="answer-show-votes col-xs-1">
-	        	<%= @answer.votes.count %>
-	        </div>
-	        <div class="answer-show-user col-xs-2 col-sm-1">
-	        	<%= link_to @answer.user do %>
-	        		<img class="answer-profile-image" src="<%= @answer.user.profile_pic %>">
-	        	<% end %><br>
-	        	<%= @answer.user.username %><br>
-	        	<%= @answer.user.votes.count %><br>
-	        </div>
+<div class="container">
+   <div class="row answer-show-row">
+      <div class="answer-headers col-xs-2 col-sm-offset-1 col-sm-1">
+         Question#
+      </div>
+      <div class="answer-headers col-xs-3">
+         Question
+      </div>
+      <div class="answer-headers col-xs-4">
+         Answer Content
+      </div>
+      <div class="answer-headers col-xs-1">
+         Answer Votes
+      </div>
+      <div class="answer-headers col-xs-2 col-sm-1">
+         Answered By
+      </div>
+   </div>
+   <div class="row answer-show-row">
+      <div class="answer-show-question-number col-xs-2 col-sm-offset-1 col-sm-1">
+         <%= link_to @answer.question.id, @answer.question %>
+      </div>
+      <div class="answer-show-question-title col-xs-3">
+         <%= link_to @answer.question.title, @answer.question %>
+      </div>
+      <div class="answer-show-content col-xs-4">
+         <%= @answer.content %><br>
+         <%= @answer.created_at.strftime("%B %e, %Y at %I:%M %p") %>
+      </div>
+      <div class="answer-show-votes col-xs-1">
+         <%= @answer.votes.count %>
+      </div>
+      <div class="answer-show-user col-xs-2 col-sm-1">
+         <%= link_to @answer.user do %>
+            <img class="answer-profile-image" src="<%= @answer.user.profile_pic %>">
+         <% end %><br>
+         <%= @answer.user.username %><br>
+         <%= @answer.user.votes.count %><br>
+      </div>
 
 
-<% if (@current_user.id == @answer.user_id)  %>
-		<div class="row">
-			<div class="col-xs-10">
-				<div class="ryan-overflow-form-button">
-					<%= link_to 'Edit', edit_answer_path(@answer), class: "btn btn-default btn-primary"  %>
-					<%= link_to 'Delete', @answer, method: :delete, data: { confirm: 'Are you sure you want to delete this Answer?' }, class: "btn btn-default btn-primary"  %>
-				</div>	
-			</div>
-		</div>
+      <% if (@current_user.id == @answer.user_id)  %>
+         <div class="row">
+            <div class="col-xs-10">
+               <div class="ryan-overflow-form-button">
+                  <%= link_to 'Edit', edit_answer_path(@answer), class: "btn btn-default btn-primary"  %>
+                  <%= link_to 'Delete', @answer, method: :delete, data: { confirm: 'Are you sure you want to delete this Answer?' }, class: "btn btn-default btn-primary"  %>
+               </div>	
+            </div>
+         </div>
+      <% else %>
+      <% end %>
+   </div>
 
-<% else %>
-<% end %>
-	    </div>
 
-
-	    <!-- CLOSE CONTAINER -->
-	</div>
-<br>
-<br>
-<br>
-<br>
+   <!-- CLOSE CONTAINER -->
+</div>
+<br><br><br><br>

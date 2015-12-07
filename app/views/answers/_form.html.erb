@@ -1,20 +1,18 @@
 <!-- ANSWER FORM -->
 <%= form_for @answer do |f| %>
-	<div class="container" style="border-top: 2px solid #4C4646">
-		<div class="form-group">
-			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-				<%= f.label :content, "Your Answer", class: "form-input-label"  %>
-			</div>
-			<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-				<%= f.text_area :content, :placeholder => 'Your Answer',  rows: "12",class: "form-control" %>
-			</div>
-			<%= f.hidden_field :question_id, value: @answer.question_id  %>
-			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
-				<%= f.submit "Submit", class: "btn btn-default btn-primary" %>
-		        </div>
-		</div>
-	</div>
-	<br>
-	<br>
-	<br>
+   <div class="container" style="border-top: 2px solid #4C4646">
+      <div class="form-group">
+         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+            <%= f.label :content, "Your Answer", class: "form-input-label"  %>
+         </div>
+         <div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+            <%= f.text_area :content, placeholder: 'Your Answer',  rows: "12",class: "form-control" %>
+         </div>
+         <%= f.hidden_field :question_id, value: @answer.question_id  %>
+         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
+            <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+         </div>
+      </div>
+   </div>
+   <br><br><br>
 <% end %>

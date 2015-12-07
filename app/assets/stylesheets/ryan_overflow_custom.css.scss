@@ -3,10 +3,15 @@
 www.RyanUrie.com 
 =====================================================================
 */
-html {
-	color: #4C4646 ;
-	font-family: 'PT Sans', sans-serif;
+
+html, body {
+  height: 100%;
+  margin: 0;
 }
+
+
+
+
 a {
 	color: #4C4646 ;
 }
@@ -14,13 +19,6 @@ a:hover {
 	color: #bad999;
 }
 
-.section-header {
-	text-align: center;
-	font-size: 3em;
-	text-decoration: underline;
-	color: #4C4646 ;
-	margin-bottom: 1em;
-}
 .pholder-text::-webkit-input-placeholder { color: #709dc4; }
 .pholder-text:-moz-placeholder { color: #709dc4; }
 .pholder-text::-moz-placeholder { color: #709dc4; }
@@ -50,34 +48,28 @@ a:hover {
 #nav-brand-roverflow {
 	position: absolute;
    	left: 10px;
-}
-#page-main-content {
-	margin-bottom: 150px;
-}
-footer {
-	width: 100%;
-	text-align: center;
-	background: #f8f8f8;
-	border-top: 1px solid #000;
-	font-size: 26px;
-}
+} 
+
+// footer {
+// 	text-align: center;
+// 	background: #e7e7e7;
+// }
 // -------------------------------------  Index  (Questions Index) -----------------------------------
 .questions-index-row { 
 	border-bottom: 2px solid #4C4646;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-.questions-index-title { }
-.questions-index-content { }
+// .questions-index-title { }
+// .questions-index-content { }
 .questions-index-votes-answers {
 	text-align: center;
  }
-.questions-index-user { }
-.questions-index-answer-content { }
-.questions-index-answer-votes-answers { }
-.questions-index-answer-user { }
-.questions-index-title { }
-
+// .questions-index-user { }
+// .questions-index-answer-content { }
+// .questions-index-answer-votes-answers { }
+// .questions-index-answer-user { }
+// .questions-index-title { }
 
 .index-profile-image {
 	width: 54px;
@@ -91,15 +83,13 @@ footer {
 .question-title {
 	margin-bottom: 10px;
 }
-.question-votes { }
-.question-content { }
+// .question-votes { }
+// .question-content { }
 .question-tags {
 	text-align: center;
 }
-.question-edit { }
-.question-user {
-
-}
+// .question-edit { }
+// .question-user { }
 .question-profile-image {
 	width: 54px;
 	 height: 54px;
@@ -107,19 +97,19 @@ footer {
 	 padding: 3px;
 	 margin-top: 5px;
 }
-.question-comments { }
-.question-add-comment { }
+// .question-comments { }
+// .question-add-comment { }
 
 // ----------------------- QUESTION SHOW ANSWER-------------------
 .question-show-header { 
 	border-bottom: 2px solid #efefef;
 	margin-bottom: 10px;
 	}
-.question-answer-sort { }
-.question-answer-votes { }
-.question-answer-content { }
-.answer-edit { }
-.answer-user { }
+// .question-answer-sort { }
+// .question-answer-votes { }
+// .question-answer-content { }
+// .answer-edit { }
+// .answer-user { }
 .answer-profile-image {
 	width: 54px;
 	 height: 54px;
@@ -127,7 +117,7 @@ footer {
 	 padding: 3px;
 	 margin-top: 5px;
 }
-.answer-comment { }
+// .answer-comment { }
 
 // ------------------------------------------ USERS INDEX ------------------------------------------
 .user-index-row {
@@ -146,9 +136,9 @@ footer {
 	 height: 108px;
 	 border: 1px solid #4C4646;
 }
-.user-index-questions { }
-.user-index-answers { }
-.user-index-votes { }
+// .user-index-questions { }
+// .user-index-answers { }
+// .user-index-votes { }
 // ------------------------------------------ USERS SHOW ------------------------------------------
 .user-show-row {
 	border-bottom: 2px solid #4C4646;
@@ -171,9 +161,9 @@ footer {
 	 height: 108px;
 	 border: 1px solid #4C4646;
 }
-.user-show-questions { }
-.user-show-answers { }
-.user-show-votes { }
+// .user-show-questions { }
+// .user-show-answers { }
+// .user-show-votes { }
 
 // ---------------------------------------- ANSWER SHOW ----------------------------------------
 .answer-show-row {
@@ -191,14 +181,12 @@ footer {
 .answer-show-question-number {
 	margin-bottom: 10px;
 }
-.answer-show-question-title { }
-.answer-show-content { }
+// .answer-show-question-title { }
+// .answer-show-content { }
 .answer-show-votes {
 	text-align: center;
 }
-.answer-show-user {
-
-}
+// .answer-show-user { }
 .answer-show-profile-image {
 	width: 54px;
 	 height: 54px;

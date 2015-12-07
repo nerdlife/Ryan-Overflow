@@ -1,68 +1,54 @@
 <!DOCTYPE html>
 <html>
-<!-- 
-==============================================
-#-#-#-#-#-#-#-#-#-#-www.RyanUrie.com-#-#-#-#-#-#-#-#-#-#-
-==============================================
--->
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable="no">
-		<!-- Title & Description ––––––––––––––––––––––––––––––––––––––––––-->
-		<title><%= content_for?(:title) ? yield(:title) : "Ryan's Overflow" %></title>
-		<meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ryan's Stack Overflow Clone Bootstrap'd" %>">
-		<!-- CSS Sheet –––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-		<%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
-		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-		<!-- JS Sheet ––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-		<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-		<%= csrf_meta_tags %>
-		<!-- Google Font ––––––––––––––––––––––––––––––––––––––––––––––––––-->
-		<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
-		<!--[if lt IE 9]>
-		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
-		</script>
-		<![endif]-->
-		<!-- Favicons –––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-		<%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144' %>
-		<%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114' %>
-		<%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72' %>
-		<%= favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png' %>
-		<%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
-	</head>
+   <!-- 
+   ==============================================
+   #-#-#-#-#-#-#-#-#-#-www.RyanUrie.com-#-#-#-#-#-#-#-#-#-#-
+   ==============================================
+   -->
+   <head>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0", user-scalable="no">
+      <!-- Title & Description ––––––––––––––––––––––––––––––––––––––––––-->
+      <title><%= content_for?(:title) ? yield(:title) : "Ryan's Overflow" %></title>
+      <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Ryan's Stack Overflow Clone Bootstrap'd" %>">
+      <!-- CSS Sheet –––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+      <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+      <!-- JS Sheet ––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+      <%= csrf_meta_tags %>
+      <!-- Google Font ––––––––––––––––––––––––––––––––––––––––––––––––––-->
+      <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet' type='text/css'>
+      <link href='https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700' rel='stylesheet' type='text/css'>
+      <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+      </script>
+      <![endif]-->
+      <!-- Favicons –––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+      <%= favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '144x144' %>
+      <%= favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '114x114' %>
+      <%= favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png', sizes: '72x72' %>
+      <%= favicon_link_tag 'apple-touch-icon-precomposed.png', rel: 'apple-touch-icon-precomposed', type: 'image/png' %>
+      <%= favicon_link_tag 'favicon.ico', rel: 'favicon.ico' %>
+   </head>
 
-<body>
-<!-- Navigation Bar ––––––––––––––––––––––––––––––––––––––-->
-<%= render partial: "navigation/navbar" %>
-<!-- Main Content ––––––––––––––––––––––––––––––––––––––-->
-<div class="row">
-	<div class="col-xs-10 col-xs-offset-1">
-		<div class="flash-message-alert">
-			<% flash.each do |k, message| %>
-			  	<%=  message %>
-			<% end %>
-			<%-# flash.errors.each do |k, message_array| %>
-				<%-# message_array.each do |message| %>
-				  	<%-#  message %>
-				  	<!-- <br> -->
-				<%-# end %>
-			<%-# end %>
-		</div>
-	</div>
-</div>
+   <body>
+      <!-- Navigation Bar ––––––––––––––––––––––––––––––––––––––-->
+      <%= render partial: "navigation/navbar" %>
+      <!-- Error / Success Messages ––––––––––––––––––––––––––––––––––––––-->
+      <div class="row">
+         <div class="col-xs-10 col-xs-offset-1">
+            <div class="flash-message-alert">
+               <% flash.each do |k, message| %>
+                  <%=  message %>
+               <% end %>
+            </div>
+         </div>
+      </div>
+      <!-- Main Content ––––––––––––––––––––––––––––––––––––––-->
+      <%= yield %>
+      <!-- Footer ––––––––––––––––––––––––––––––––––––––-->
 
 
-<%= yield %>
-
-<!-- Footer ––––––––––––––––––––––––––––––––––––––-->
-	<footer>
-		<!-- <a href="http://stackoverflow.com/users/1/ryan" target="_blank">
-		<img src="http://stackoverflow.com/users/flair/1.png?theme=dark" width="208" height="58" alt="profile for  at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for  at Stack Overflow, Q&amp;A for professional and enthusiast programmers">
-		</a> -->
-		<%= link_to "Ryan Overflow", root_path %>
-	</footer>
-
-
-</body>
+   </body>
 </html>

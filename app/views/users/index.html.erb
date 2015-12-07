@@ -1,57 +1,57 @@
 <!-- USER INDEX -->
-	<div class="row">
-		<div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
-			<h3> Users </h3>
-		</div>
-	</div>
-	<div class="container">
-	    <div class="row user-index-row">
-	        <div class="user-index-profile-pic col-xs-2 col-sm-offset-1">
-	        	Profile
-	        </div>
-	        <div class="user-index-profile col-xs-6 col-sm-4">
-	        	Bio
-	        </div>
-	        <div class="user-index-questions col-xs-1 col-sm-offset-1">
-	        	Questions
-	        </div>
-	        <div class="user-index-answers col-xs-1">
-	        	Answers
-	        </div>
-	        <div class="user-index-votes col-xs-2 col-sm-1">
-	        	Votes
-	        </div>
-	    </div>
-			
-<% @users.each do |user| %>					
-	    <div class="row user-index-row">
-	        <div class="user-index-profile col-xs-2 col-sm-offset-1">
-	        	<%= link_to user do %>
-				<img class="user-index-profile-image" src="<%= user.profile_pic %>">
-			<% end %>
-	        	<%= link_to user.username, user %><br>
-			<%= link_to user.email, user %><br>
-			User I.D. # <%= user.id %><br>
-	        </div>
-	        <div class="user-index-profile col-xs-6 col-sm-4">
-			<%= link_to user.bio, user %><br>
-			Location: <%= user.location %><br>
-	        </div>
-	        <div class="user-index-questions col-xs-1 col-sm-offset-1">
-	        	<%= link_to user.questions.count, user %>
-	        </div>
-	        <div class="user-index-answers col-xs-1">
-	        	<%= link_to user.answers.count, user %>
-	        </div>
-	        <div class="user-index-votes col-xs-2 col-sm-1">
-	        	<%= link_to user.votes.count, user %>
-	        </div>
-	    </div>
-	    <br>
+<!-- Ryan Overflow Comments –––––––––––––––––––––––––––––––––-->
+<div class="row">
+   <div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
+      <h3> Users </h3>
+   </div>
+</div>
+<div class="container">
+   <div class="row user-index-row">
+      <div class="user-index-profile-pic col-xs-2 col-sm-offset-1">
+           Profile
+      </div>
+      <div class="user-index-profile col-xs-6 col-sm-4">
+           Bio
+      </div>
+      <div class="user-index-questions col-xs-1 col-sm-offset-1">
+           Questions
+      </div>
+      <div class="user-index-answers col-xs-1">
+           Answers
+      </div>
+      <div class="user-index-votes col-xs-2 col-sm-1">
+           Votes
+      </div>
+   </div>
 
-<% end %>
+   <% @users.each do |user| %>					
+      <div class="row user-index-row">
+         <div class="user-index-profile col-xs-2 col-sm-offset-1">
+            <%= link_to user do %>
+            <img class="user-index-profile-image" src="<%= user.profile_pic %>">
+            <% end %>
+            <%= link_to user.username, user %><br>
+            <%= link_to user.email, user %><br>
+            User I.D. # <%= user.id %><br>
+         </div>
+         <div class="user-index-profile col-xs-6 col-sm-4">
+            <%= link_to user.bio, user %><br>
+            Location: <%= user.location %><br>
+         </div>
+         <div class="user-index-questions col-xs-1 col-sm-offset-1">
+            <%= link_to user.questions.count, user %>
+         </div>
+         <div class="user-index-answers col-xs-1">
+            <%= link_to user.answers.count, user %>
+         </div>
+         <div class="user-index-votes col-xs-2 col-sm-1">
+            <%= link_to user.votes.count, user %>
+         </div>
+      </div>
+      <br>
+   <% end %>
 
-	</div>						
-						
-					
-			
+</div>						
+
+
+
