@@ -2,4 +2,7 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap";@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700);img{@extend .img-responsive;margin: 0 auto;}
+ @import "bootstrap-sprockets";
+@import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=PT+Sans:400,400italic,700);
+img{@extend .img-responsive;margin: 0 auto;}

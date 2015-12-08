@@ -69,16 +69,26 @@
             <%= f.text_field :profile_pic, placeholder: 'Url of Pic', class: "form-control input-xlg" %>
          </div>
       </div>
+    <% if @current_user && @current_user.id == @user.id %>
       <div class="form-group">
          <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
-            <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
-         </div>			
-         <% if @current_user && @current_user.id == @user.id %>
-            <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
-               <%= link_to 'Cancel', user_path,  class: "btn btn-default btn-primary"  %>
+            <div class="edit-delete-buttons">
+               <div class="edit-button">
+                  <%= button_to @user, class: "btn btn-outline btn-success btn-lg", method: :update do %>
+                     <span class="glyphicon glyphicon-trash"></span>
+                     Submit
+                  <% end %>
+               </div>     
+               <div class="edit-button">    
+                  <%= button_to user_path, class: "btn btn-outline btn-info btn-lg", method: :update do %>
+                     <span class="glyphicon glyphicon-trash"></span>
+                     Cancel
+                   <% end %>
+               </div>
+   <% else %>
+   <% end %>
             </div>
-         <% else %>
-         <% end %>
+         </div>
       </div>
       <br><br>
       <!-- CLOSE CONTAINER -->

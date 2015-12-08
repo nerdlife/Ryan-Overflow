@@ -10,7 +10,8 @@
          </div>
          <%= f.hidden_field :question_id, value: @answer.question_id  %>
          <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
-            <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+            <%= button_to @answer, class: "btn btn-outline btn-success btn-lg", method: :update do %>
+            <span class="glyphicon glyphicon-trash"></span>Submit<% end %>
          </div>
       </div>
    </div>

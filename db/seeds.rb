@@ -1,8 +1,8 @@
 User.create( email: 'ryan@ryan.com',username: 'RyansUsername',name: 'Ryan Urie', password: 'ryan', password_confirmation: 'ryan', profile_pic:"http://clloh.com/wp-content/uploads/2015/08/meteor-js-logo-128x128.png" , bio: 'Here is my bio so read it' )
 # , votes: 55
-Question.create(title: 'Seed Q Uno: Why is processing a sorted array faster than an unsorted array?', content: 'Now for the sake of argument, suppose this is back in the 1800s - before long distance or radio communication. You are the operator of a junction and you hear a train coming. You have no idea which way it is supposed to go. You stop the train to ask the captain which direction he wants. And then you set the switch appropriately.',  user_id: 1,  tags: "Html Css Javascript Ruby Rails Meteor" )
+Question.create(title: 'Seed Q Uno: Why is processing a sorted array faster than an unsorted array?', content: 'Now for the sake of argument, suppose  this is back in the 1800s - before long distance or radio communication. You are the operator of a junction and you hear a train coming. You have no idea which way it is supposed to go. You stop the train to ask the captain which direction he wants. And then you set the switch appropriately.',  user_id: 1,  tags: "Html Css Javascript Ruby Rails Meteor" )
 Answer.create(content: 'Ryan User 1... First Answer Content Is  Here For Question ID 3', question_id: 3, user_id: 1)
-Answer.create(content: ' dui. Praesent blandit dolor. Sed non q', question_id: 3, user_id: 1)
+Answer.create(content: ' dui. Praesent blandit  dolor. Sed non q', question_id: 3, user_id: 1)
 Vote.create(user_id: 1, question_id: 1)
 Vote.create(user_id: 1, question_id: 2)
 Vote.create(user_id: 1, question_id: 3)

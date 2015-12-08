@@ -7,7 +7,7 @@
             <%= f.label :title, "Question Title", class: "form-input-label"  %>
          </div>
          <div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_field :title, :placeholder => 'Question Title', class: "form-control" %>
+            <%= f.text_field :title, placeholder: 'Question Title', class: "form-control" %>
          </div>
       </div>
       <div class="form-group">
@@ -15,22 +15,23 @@
             <%= f.label :content, "Question Content", class: "form-input-label" %>
          </div>
          <div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_area :content, :placeholder => 'Question Title', rows: "12", class: "form-control" %>
+            <%= f.text_area :content, placeholder: 'Question Title', rows: "12", class: "form-control" %>
          </div>
       </div>
       <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" >
             <%= f.label :tags, "Question Tags", class: "form-input-label" %>
          </div>
-         <%= f.text_area :tags, :placeholder => 'Enter tags with spaces', rows: "12", class: "form-control" %>
+         <%= f.text_area :tags, placeholder: 'Enter tags with spaces', rows: "12", class: "form-control" %>
       </div>
-      <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
-         <%= f.submit "Submit", class: "btn btn-default btn-primary" %>
+      <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;" >
+         <%= button_to @question, class: "btn btn-outline btn-success btn-lg", method: :update do %>
+            <span class="glyphicon glyphicon-trash"></span>Submit<% end %>
       </div>
    </div>
    <!-- Close Question Form -->
-   </div>
 <% end %>
+   </div>
 <br>
 <br>
 <br>
@@ -38,5 +39,4 @@
 
 
 
-
-
+      

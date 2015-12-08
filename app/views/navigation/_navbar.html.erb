@@ -34,11 +34,10 @@
                   <%= form_tag(questions_path, method: 'get', class: "navbar-form", id: "search-form") do %>
                      <div class="form-group" style="display:inline;">
                         <div class="input-group">
-                           <%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow" %>
+                           <%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow..." %>
                            <span class="input-group-addon">
                               <button type="submit">
-                                 <span>	
-                                    S
+                                 <span class="glyphicon glyphicon-search">	
                                  </span>
                               </button>
                            </span>
@@ -49,6 +48,7 @@
                <!-- Buttons - Log Out ––––––––––––––––––––––––-->
                <li>
                   <button type="button" class="btn btn-default">
+                     <span class="glyphicon glyphicon-off"></span>
                      <%= link_to 'Logout', "/logout" %>
                   </button>
                </li>
@@ -95,11 +95,10 @@
                   <%= form_tag(questions_path, method: 'get', class: "navbar-form", id: "search-form") do %>
                      <div class="form-group" style="display:inline;">
                         <div class="input-group">
-                           <%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow" %>
+                           <%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow..." %>
                            <span class="input-group-addon">
                               <button type="submit">
-                                 <span>	
-                                    S
+                                 <span class="glyphicon glyphicon-search">
                                  </span>
                               </button>
                            </span>
@@ -110,11 +109,13 @@
                <!-- Buttons - Log In & Sign Up ––––––––––––––––––––––––-->
                <li>
                   <button type="button" class="btn btn-default left-nav-button">
-                     <%= link_to 'Log In', "login" %>
+                     <span class="glyphicon glyphicon-log-in"></span>
+                        <%= link_to 'Log In', "login" %>
                   </button>
                </li>
                <li>
                   <button type="button" class="btn btn-default">
+                     <span class="glyphicon glyphicon-pencil"></span>
                      <%= link_to 'Sign up', "/signup" %>
                   </button>
                </li>
@@ -124,3 +125,7 @@
    </nav>
 
 <% end %>
+
+
+                                 
+

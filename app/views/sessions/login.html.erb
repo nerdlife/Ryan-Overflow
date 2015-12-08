@@ -10,7 +10,7 @@
          <div class="form-input-label">
             Login Email
          </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10 ">
             <%= text_field_tag :email %>
          </div>
       </div>
@@ -25,9 +25,17 @@
          <br>
          <br>
          <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= submit_tag "Login", class: "btn btn-default btn-primary" %>
+            <button type="submit" class="btn btn-default btn-primary">
+               <span class="glyphicon glyphicon-pencil"></span>&nbsp
+                  Login
+            </button>
          </div>
       </div>
    </div>
 <br><br><br>				
 <% end %>
+
+
+ 
+
+   

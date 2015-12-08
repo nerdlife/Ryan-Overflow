@@ -5,38 +5,94 @@ www.RyanUrie.com
 */
 
 html, body {
-  height: 100%;
-  margin: 0;
+ height: 100%;
+ margin: 0;
 }
-
-
-
-
 a {
-	color: #4C4646 ;
+   color: #4C4646 ;
 }
 a:hover {
-	color: #bad999;
+   color: #bad999;
 }
-
-.pholder-text::-webkit-input-placeholder { color: #709dc4; }
-.pholder-text:-moz-placeholder { color: #709dc4; }
-.pholder-text::-moz-placeholder { color: #709dc4; }
-.pholder-text:-ms-input-placeholder { color: #709dc4; }
+@mixin ryan-overflow-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.pholder-text::-webkit-input-placeholder {
+   color: #709dc4; 
+}
+.pholder-text:-moz-placeholder {
+   color: #709dc4; 
+}
+.pholder-text::-moz-placeholder {
+   color: #709dc4; 
+}
+.pholder-text:-ms-input-placeholder {
+   color: #709dc4; 
+}
 .nav > li{
-  margin-right: -5px;
+ margin-right: -5px;
 } 
 .btn {
 	margin-top: 8px;
 }
-.btn a:hover {
-	background: transparent;
-	color: #709dc4;
+.btn-primary.btn-outline {
+  color: #2B669A;
+  background-color: transparent;
+}
+.btn-success.btn-outline {
+  color: #5cb85c;
+  background-color: transparent;
+}
+.btn-info.btn-outline {
+  color: #5bc0de;
+  background-color: transparent;
+}
+.btn-warning.btn-outline {
+  color: #f0ad4e;
+  background-color: transparent;
+}
+.btn-danger.btn-outline {
+  color: #d9534f;
+  background-color: transparent;
+}
+.btn-primary.btn-outline:hover{
+  color: #fff;
+  background: #428bca;  
+}
+.btn-success.btn-outline:hover{
+  color: #fff;
+  background: #5cb85c;    
+}
+.btn-info.btn-outline:hover{
+  color: #fff;
+  background: #5bc0de;   
+}
+.btn-warning.btn-outline:hover{
+  color: #fff;
+  background: #f0ad4e;     
+}
+.btn-danger.btn-outline:hover {
+  color: #fff;
+  background: #d9534f;      
+}
+.edit-delete-buttons {
+   display: inline;
+   margin: 0 auto;
+}
+.edit-button {
+   float: left
+}
+.delete-button {
+   // margin-left: 15px;
+   float: left
 }
 .left-nav-button {
-	margin-right: 15px;
+	// margin-right: 15px;
 }
-
 .flash-message-alert {
 	color: red;
 	font-weight: bold;
@@ -47,7 +103,7 @@ a:hover {
 
 #nav-brand-roverflow {
 	position: absolute;
-   	left: 10px;
+  left: 10px;
 } 
 
 // footer {
@@ -55,70 +111,74 @@ a:hover {
 // 	background: #e7e7e7;
 // }
 // -------------------------------------  Index  (Questions Index) -----------------------------------
+.index-header {
+   text-align: center;
+}
+.content-row {
+   height: 300px;
+   overflow: hidden;
+}
+.index-question-content {
+   text-align: center;
+   margin: auto;
+}
 .questions-index-row { 
 	border-bottom: 2px solid #4C4646;
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
-// .questions-index-title { }
-// .questions-index-content { }
-.questions-index-votes-answers {
-	text-align: center;
- }
-// .questions-index-user { }
-// .questions-index-answer-content { }
-// .questions-index-answer-votes-answers { }
-// .questions-index-answer-user { }
-// .questions-index-title { }
-
-.index-profile-image {
-	width: 54px;
-	 height: 54px;
-	 border: 1px solid #4C4646;
-	 padding: 3px;
-	 margin-top: 5px;
+.index-question-content {
+  @include ryan-overflow-align();
+}
+.index-votes {
+   text-align: center;
+}
+.questions-index-votes {
+   margin: auto;
+   margin-top: 2px;
+   height: 105px;
+   width: 75px;
+   border: 1px dashed #000;
+   border-radius: 12px;
+   background-color: #e9e9e9;
+}
+.user-profile-badge {
+   width: 100%;
+   text-align: center;
+}
+.user-profile-badge img {
+  width: 150px;
+  height: 150px;
+  border: 1px solid #4C4646;
+  padding: 3px;
+  margin-top: 5px;
 }
 // ---------------------------------------- QUESTION SHOW ----------------------------------------
-
 .question-title {
 	margin-bottom: 10px;
 }
-// .question-votes { }
-// .question-content { }
 .question-tags {
 	text-align: center;
 }
-// .question-edit { }
-// .question-user { }
 .question-profile-image {
 	width: 54px;
-	 height: 54px;
-	 border: 1px solid #4C4646;
-	 padding: 3px;
-	 margin-top: 5px;
+ height: 54px;
+ border: 1px solid #4C4646;
+ padding: 3px;
+ margin-top: 5px;
 }
-// .question-comments { }
-// .question-add-comment { }
-
 // ----------------------- QUESTION SHOW ANSWER-------------------
 .question-show-header { 
 	border-bottom: 2px solid #efefef;
 	margin-bottom: 10px;
-	}
-// .question-answer-sort { }
-// .question-answer-votes { }
-// .question-answer-content { }
-// .answer-edit { }
-// .answer-user { }
+}
 .answer-profile-image {
 	width: 54px;
-	 height: 54px;
-	 border: 1px solid #4C4646;
-	 padding: 3px;
-	 margin-top: 5px;
+ height: 54px;
+ border: 1px solid #4C4646;
+ padding: 3px;
+ margin-top: 5px;
 }
-// .answer-comment { }
-
 // ------------------------------------------ USERS INDEX ------------------------------------------
 .user-index-row {
 	border-bottom: 2px solid #4C4646;
@@ -128,17 +188,14 @@ a:hover {
 }
 .user-index-profile {
 	position: absolute;
-    	bottom: 0;
-    	left: 0;
- }
+ bottom: 0;
+ left: 0;
+}
 .user-index-profile-image { 
 	width: 108px;
-	 height: 108px;
-	 border: 1px solid #4C4646;
+ height: 108px;
+ border: 1px solid #4C4646;
 }
-// .user-index-questions { }
-// .user-index-answers { }
-// .user-index-votes { }
 // ------------------------------------------ USERS SHOW ------------------------------------------
 .user-show-row {
 	border-bottom: 2px solid #4C4646;
@@ -153,18 +210,14 @@ a:hover {
 }
 .user-show-profile {
 	position: absolute;
-    	bottom: 0;
-    	left: 0;
- }
+ bottom: 0;
+ left: 0;
+}
 .user-show-profile-image { 
 	width: 108px;
-	 height: 108px;
-	 border: 1px solid #4C4646;
+ height: 108px;
+ border: 1px solid #4C4646;
 }
-// .user-show-questions { }
-// .user-show-answers { }
-// .user-show-votes { }
-
 // ---------------------------------------- ANSWER SHOW ----------------------------------------
 .answer-show-row {
 	border-bottom: 2px solid #4C4646;
@@ -181,39 +234,26 @@ a:hover {
 .answer-show-question-number {
 	margin-bottom: 10px;
 }
-// .answer-show-question-title { }
-// .answer-show-content { }
 .answer-show-votes {
 	text-align: center;
 }
-// .answer-show-user { }
 .answer-show-profile-image {
 	width: 54px;
-	 height: 54px;
-	 border: 1px solid #4C4646;
-	 padding: 3px;
-	 margin-top: 5px;
+ height: 54px;
+ border: 1px solid #4C4646;
+ padding: 3px;
+ margin-top: 5px;
 }
-
-
 // ------------------------------------------ FORM ------------------------------------------
 .form-group {
 	text-align: center;
 }
-
 .form-input-label {
 	text-decoration: underline;
 	font-weight: bold;
 	margin-top:25px;
 	margin-bottom:10px;
 }
-
-
-
-
-
-
-
 // ------------------------------------------ Mobile Media Query ------------------------------------------
 @media (max-width: 767px) and (min-width: 2px){
 	// .btn {
@@ -232,7 +272,5 @@ a:hover {
 	// nav li a{
 	// text-align: center;
 	// }
-
-	
 }
 // -------------------------------------- End Mobile Media Query ---------------------------------------
