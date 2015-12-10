@@ -20,7 +20,7 @@
       <div class="user-show-answers col-xs-1">
          Answers
       </div>
-      <div class="user-show-votes col-xs-2 col-sm-1">
+      <div class=" col-xs-2 col-sm-1">
          Votes
       </div>
    </div>
@@ -41,13 +41,13 @@
                <div class="edit-delete-buttons">
                   <div class="edit-button">
                         <%= button_to edit_user_path(@user.id), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
+                              <div class="glyphicon glyphicon-trash"></div> 
                               Edit 
                            <% end %>
                   </div>
                   <div class="edit-button">
                         <%= button_to @user, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your User?' } do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
+                              <div class="glyphicon glyphicon-trash"></div> 
                               Delete 
                            <% end %>
                   </div>
@@ -63,7 +63,11 @@
          <%= link_to @answers.count, @user %>
       </div>
       <div class="user-show-votes col-xs-2 col-sm-1">
-         <%= link_to @votes.count, @user %>
+         <div class="votes-container">
+            <h4>
+               <%= @user.votes.count %>
+            </h4>
+         </div>
       </div>
    </div>
    <!-- CLOSE CONTAINER -->
@@ -80,7 +84,7 @@
       <div class="questions-index-content col-xs-4">
          Content
       </div>
-      <div class="questions-index-votes-answers col-xs-2 col-sm-1">
+      <div class="col-xs-2 col-sm-1">
          Votes
       </div>
       <div class="questions-index-user col-xs-3 col-sm-2">
@@ -97,8 +101,18 @@
                <%= link_to question.content, question %><br><br>
                <%= link_to question.tags, question %>
             </div>
-            <div class="questions-index-votes-answers col-xs-2 col-sm-1">
-               <%= question.votes.count %>
+            <div class="col-xs-2 col-sm-1">
+               <div class="votes-container">
+                  <h4>
+                     <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
+                     </div>
+                     <strong><u>Votes:</u></strong>
+                     <br>
+                     <%= question.votes.count %>
+                     <br>
+                     <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
+                  </h4>
+               </div>
             </div>
             <div class="questions-index-user col-xs-3 col-sm-2">
                <%= question.answers.count %>
@@ -107,13 +121,13 @@
                <div class="edit-delete-buttons">
                   <div class="edit-button">
                         <%= button_to edit_question_path(question), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
+                              <div class="glyphicon glyphicon-trash"></div> 
                               Edit 
                            <% end %>
                   </div>
                   <div class="edit-button">
                         <%= button_to question, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
+                              <div class="glyphicon glyphicon-trash"></div> 
                               Delete 
                            <% end %>
                   </div>
@@ -143,7 +157,7 @@
       <div class="questions-index-content col-xs-4">
          Content
       </div>
-      <div class="questions-index-votes-answers col-xs-2 col-sm-1">
+      <div class="answers col-xs-2 col-sm-1">
          Votes
       </div>
       <div class="questions-index-user col-xs-3 col-sm-2">
@@ -160,7 +174,17 @@
                <%= link_to answer.content, answer %>
             </div>
             <div class="questions-index-votes-answers col-xs-2 col-sm-1">
-               <%= answer.votes.count %>
+               <div class="votes-container">
+                  <h4>
+                     <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
+                     </div>
+                     <strong><u>Votes:</u></strong>
+                     <br>
+                     <%= answer.votes.count %>
+                     <br>
+                     <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
+                  </h4>
+               </div>
             </div>
             <div class="questions-index-user col-xs-3 col-sm-2">
                <%= link_to answer.question.id, answer.question %>
@@ -169,13 +193,13 @@
                <div class="edit-delete-buttons">
                   <div class="edit-button">
                         <%= button_to edit_answer_path(answer), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
+                              <div class="glyphicon glyphicon-trash"></div> 
                               Edit 
                            <% end %>
                   </div>
                   <div class="edit-button">
                         <%= button_to answer, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
+                              <div class="glyphicon glyphicon-trash"></div> 
                               Delete 
                            <% end %>
                   </div>

@@ -10,21 +10,21 @@
 <!-- Ryan Questions Container –––––––––––––––––––––––––––––––––-->
 <div class="container">    
    <!-- Question Column Headers –––––––––––––––––––––––––––––––––-->
-   <div class="row questions-index-row">
-      <div class="index-profile col-xs-3 index-header">
-         <h3> Asked By </h3>
+   <div class="row container-column-header-row">
+      <div class="container-column-header col-xs-3">
+         Asked By
       </div>
-      <div class="space col-xs-1 index-header">
-         <h3> ::::: </h3>
+      <div class="space container-column-header col-xs-1">
+         :::::
       </div>
-      <div class="index-content col-xs-5 index-header">
-         <h3> Question </h3>
+      <div class="container-column-header col-xs-5">
+         Question
       </div>
-      <div class="space col-xs-1 index-header">
-         <h3> ::::: </h3>
+      <div class="space container-column-header col-xs-1">
+         :::::
       </div>
-      <div class="index-votes col-xs-2 index-header">
-         <h3> Activity </h3>
+      <div class="container-column-header col-xs-2">
+         Activity
       </div>
    </div> 
    <% @questions.each do |question| %>
@@ -46,13 +46,13 @@
             <div class="edit-delete-buttons">
                <div class="edit-button">
                   <%= button_to edit_question_path(question.id), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                     <span class="glyphicon glyphicon-trash"></span> 
+                     <div class="glyphicon glyphicon-trash"></div> 
                      Edit 
                   <% end %>
                </div>
                <div class="delete-button">
                   <%= button_to question, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
-                     <span class="glyphicon glyphicon-trash"></span> 
+                     <div class="glyphicon glyphicon-trash"></div> 
                      Delete 
                   <% end %>
                </div>
@@ -71,27 +71,24 @@
       <!-- Question Column –––––––––––––––––––––––––––––––––-->
       <div class="index-content col-xs-5 index-question-content">
          <div class="question-content">
-            <h4>
-               <u><%= link_to truncate(question.title, length:150), question %> </u>
-            </h4>
-            <h5>
+            <div class="title-cell">
+               <u><%= link_to truncate(question.title, length:50), question %> </u>
+           </div>
+            <div class="content-cell">
                <%= link_to truncate(question.content, length:147), question %>
-            </h5>
-            <br>
-            <!-- <h5>
-               <u>Tags: </u>
-            </h5> -->
-            <% question.tags.split.to_a.each do |tag| %>
-            <div class="index-tag">
-               <%= tag %>
             </div>
-            <% end %>
+            <div class="tags">
+               <% question.tags.split.to_a.each do |tag| %>
+               <div class="index-tag">
+                  <%= tag %>
+               </div>
+               <% end %>
+            </div>
             <br>
             <br>
-            <%= question.created_at.strftime("Question asked at %I:%M %p") %>
-            <br>
-            <%= question.created_at.strftime("on %B %e, %Y") %>
-            <br>
+            <div class="created-at">
+               <%= question.created_at.strftime("Question asked at %I:%M %p on %B %e, %Y") %>
+            </div>
          </div>
       <!-- Close Question Column –––––––––––––––––––––––––––––––––-->
       </div>
@@ -101,28 +98,20 @@
       </div>
 
       <!-- Activity Column –––––––––––––––––––––––––––––––––-->
-      <div class="index-votes col-xs-2">
-         <div class="questions-index-votes">
+      <div class="activity-column col-xs-2">
+         <div class="votes-container">
             <h4>
-               <span class="glyphicon glyphicon-chevron-up questions-index-votes-buttons up-vote" >
-               </span>
-               <strong><u>Votes:</u></strong>
-               <br>
-               <%= question.votes.count %>
-               <br>
-               <span class="glyphicon glyphicon-chevron-down questions-index-votes-buttons down-vote"></span>
+               <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
+               </div>
+                  <div class="votes-container-text">
+                     Votes<br>
+                     <%= question.votes.count %>
+                  </div>               
+               <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
             </h4>
          </div>
-         <div>
-            <h3>
-               <u>Votes</u>
-            </h3>
-         </div>   
-         <div class="index-vote-answer-tally">
-            <h3>
-               <%= question.votes.count %>
-            </h3>
-         </div>
+         
+      
          <div>
             <h3>
                <u>Answers</u>
@@ -154,23 +143,23 @@
    <div class="container">
       <!-- Answer Column Headers –––––––––––––––––––––––––––––––––-->
       <div class="row questions-index-row">
-         <div class="index-profile col-xs-3 index-header">
+         <div class="index-profile col-xs-3 container-column-header">
             <h3>
                Answered By
             </h3>
          </div>
-         <div class="space col-xs-1 index-header">
+         <div class="space col-xs-1 container-column-header">
             <h3> ::::: </h3>
          </div>
-         <div class="index-content col-xs-5 index-header">
+         <div class="index-content col-xs-5 container-column-header">
             <h3> 
                Answer 
             </h3>
          </div>
-         <div class="space col-xs-1 index-header">
+         <div class="space col-xs-1 container-column-header">
             <h3> ::::: </h3>
          </div>
-         <div class="index-votes col-xs-2 index-header">
+         <div class="activity-column col-xs-2 container-column-header">
             <h3> Activity </h3>
          </div>
          <!-- Close Answer Column Headers –––––––––––––––––––––––––––––––––-->
@@ -194,13 +183,13 @@
                   <div class="edit-delete-buttons">
                      <div class="edit-button">
                         <%= button_to edit_answer_path(answer.id), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                        <span class="glyphicon glyphicon-trash"></span> 
+                        <div class="glyphicon glyphicon-trash"></div> 
                         Edit 
                         <% end %>
                      </div>
                      <div class="edit-button">
                         <%= button_to answer, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
-                        <span class="glyphicon glyphicon-trash"></span> 
+                        <div class="glyphicon glyphicon-trash"></div> 
                         Delete 
                         <% end %>
                      </div>
@@ -239,74 +228,30 @@
 
 
 <!-- Activity Column –––––––––––––––––––––––––––––––––-->
-      <div class="index-votes col-xs-2">
-         <div class="questions-index-votes">
+      <div class="activity-column col-xs-2">
+         <div class="votes-container">
             <div class="gsdfgdsgdfgs">
                <h4>
-                  <span class="glyphicon glyphicon-chevron-up questions-index-votes-buttons" style="color:green;">
-                  </span>
-                  <strong><u>Vote</u></strong>
-                  <span class="glyphicon glyphicon-chevron-down questions-index-votes-buttons" style="color:red;"></span>
+                  <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" style="color:green;">
+                  </div>
+                  <div class="votes-container-text">
+                     Votes
+                     <br>
+                      <%= answer.votes.count %>
+                      </div>
+                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote" style="color:red;"></div>
                </h4>
             </div>
          </div>
-         <div>
-            <h3>
-               <u>Votes</u>
-            </h3>
-         </div>   
-         <div class="index-vote-answer-tally">
-            <h3>
-               <%= answer.votes.count %>
-            </h3>
-         </div>
-         <!-- <div>
-            <h3>
-               <u>Parent Votes</u>
-            </h3>
-         </div>
-         <div class="index-vote-answer-tally"> 
-            <h3>
-               <%= answer.question.votes.count %>
-            </h3>
-         </div> -->
       <!-- Close Activity Column -->
       </div>
+      <!-- Close Answer Row -->
+      </div>
+   <!-- Close @answer_search_match.each do |answer| -->
+   <% end %>
 
-
-
-
-
-
-
-
-
-
-
-            <!-- Activity Column –––––––––––––––––––––––––––––––––-->
-           <!--  <div class="index-votes col-xs-2">
-               <h4>
-                  <u><strong>Votes</strong></u>
-               </h4>
-               <div class="questions-index-votes">
-                  <h4>
-                     <span class="glyphicon glyphicon-chevron-up questions-index-votes-buttons"></span>
-                     <br><br>
-                     <%= answer.votes.count %><br><br>
-                     <span class="glyphicon glyphicon-chevron-down questions-index-votes-buttons"></span>
-                     <br> 
-                  </h4>
-               </div> -->
-            <!-- Close Activity Column –––––––––––––––––––––––––––––––––-->
-            <!-- </div> -->
-
-         <!-- Close Answer Row -->
-         </div>
-      <!-- Close @answer_search_match.each do |answer| -->
-      <% end %>
-
-   <!-- Close Answer Container -->
-   </div>
+<!-- Close Answer Container -->
+</div>
 <!-- Close unless @answer_search_match.blank? –––––––––––––––––––––––––––––––––-->
 <% end %>
 <br><br><br>

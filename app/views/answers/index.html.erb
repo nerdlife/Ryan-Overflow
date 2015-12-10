@@ -1,45 +1,73 @@
 <!-- ANSWER INDEX -->
-
 <!-- Ryan Answer Page Title –––––––––––––––––––––––––––––––––-->
 <div class="row">
    <div class="col-xs-12 page-title">    
-       <h1>Answers </h1>
+      <h1>Answers </h1>
    </div>
 </div>
 
-<!-- Ryan Users Container –––––––––––––––––––––––––––––––––-->
-<table class="index-table">
-   <thead>
-      <tr>
-         <th class="index-table-headings index-row-cell" style="border-left: none;">Question #</th>
-         <th class="index-table-headings index-row-cell">Content</th>
-         <th class="index-table-headings index-row-cell">Votes</th>
-         <th class="index-table-headings index-row-cell">Answered By</th>
-      </tr>
-   </thead>
+<!-- Ryan Answer Container –––––––––––––––––––––––––––––––––-->
+<div class="container">
 
-   <tbody>
-      <% @answers.each do |answer| %>
-         <tr class="index-row">
-            <td  class="index-row-cell">
-               <%= link_to answer.question.id, answer.question %>
-            </td>
-            <td  class="index-row-cell">
-               <%= link_to answer.content, answer %>
-               <br>
-            </td>
-            <td  class="index-row-cell">
-               <span class="index-votes">
+   <!-- Answer Column Headers –––––––––––––––––––––––––––––––––-->
+   <div class="row container-column-header-row">
+      <div class="container-column-header col-xs-3">
+         Question #
+      </div>
+      <div class="space container-column-header col-xs-1">
+         :::::
+      </div>
+      <div class="container-column-header col-xs-5">
+         Content
+      </div>
+      <div class="space container-column-header col-xs-1">
+         :::::
+      </div>
+      <div class="container-column-header col-xs-2">
+         Votes
+      </div>
+      <!-- Close Column Headers –––––––––––––––––––––––––––––––––-->
+   </div> 
+
+
+
+   <% @answers.each do |answer| %>
+   <div class="row questions-index-row content-row">
+      <!-- Q ID Column –––––––––––––––––––––––––––––––––-->
+      <div class="col-xs-3">
+         <%= link_to answer.question.id, answer.question %>
+      </div>
+
+      <!-- Empty Column –––––––––––––––––––––––––––––––––-->
+      <div class="space col-xs-1">
+      </div>
+
+      <!-- Content Column –––––––––––––––––––––––––––––––––-->
+      <div class="col-xs-5">
+         <%= link_to truncate(answer.content, length:150),  answer %>
+      </div>
+
+      <!-- Empty Column  –––––––––––––––––––––––––––––––––-->
+      <div class="space col-xs-1">
+      </div>
+
+      <!-- Votes Column –––––––––––––––––––––––––––––––––-->
+      <div class="col-xs-2">
+         <div class="votes-container">
+            <h4>
+               <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
+               </div>
+               <div class="votes-container-text">
+                  Votes
+                  <br>
                   <%= answer.votes.count %>
-               </span>
-            </td>
-            <td  class="index-row-cell">
-               <%= link_to answer.user  do %>
-                  <img class="index-profile-image" src="<%= answer.user.profile_pic %>">
-               <% end %>
-               <%= link_to answer.user.username %>
-            </td>
-         </tr>
-      <% end %>
-   </tbody>
-</table>
+               </div>
+               <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
+            </h4>
+         </div>
+      </div>
+      <!-- Close Row -->
+   </div>
+   <% end %>
+   <!-- Close Container -->
+</div>

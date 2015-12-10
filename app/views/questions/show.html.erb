@@ -6,15 +6,15 @@
            </div>
        </div>
        <div class="row">
-           <div class="questions-index-votes">
+           <div class="votes-container">
             <h4>
-               <span class="glyphicon glyphicon-chevron-up questions-index-votes-buttons" style="color:green; margin-bottom:8px">
-               </span>
+               <div class="glyphicon glyphicon-chevron-up votes-container-buttons" style="color:green; margin-bottom:8px">
+               </div>
                <strong><u>Votes:</u></strong>
                <br>
                <%= @question.votes.count %>
                <br>
-               <span class="glyphicon glyphicon-chevron-down questions-index-votes-buttons" style="color:red; margin-top:6px"></span>
+               <div class="glyphicon glyphicon-chevron-down votes-container-buttons" style="color:red; margin-top:6px"></div>
             </h4>
          </div>
 
@@ -65,13 +65,13 @@
    <div class="edit-delete-buttons">
       <div class="edit-button">
             <%= button_to edit_question_path(@question), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                  <span class="glyphicon glyphicon-trash"></span> 
+                  <div class="glyphicon glyphicon-trash"></div> 
                   Edit 
                <% end %>
       </div>
       <div class="edit-button">
             <%= button_to @question, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
-                  <span class="glyphicon glyphicon-trash"></span> 
+                  <div class="glyphicon glyphicon-trash"></div> 
                   Delete 
                <% end %>
       </div>
@@ -126,13 +126,13 @@
                 <div class="edit-delete-buttons">
                   <div class="edit-button">
                         <%= button_to edit_answer_path(answer), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
+                              <div class="glyphicon glyphicon-trash"></div> 
                               Edit 
                            <% end %>
                   </div>
                   <div class="edit-button">
                         <%= button_to answer, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
+                              <div class="glyphicon glyphicon-trash"></div> 
                               Delete 
                            <% end %>
                   </div>

@@ -9,27 +9,27 @@
 
 <!-- Ryan Users Container –––––––––––––––––––––––––––––––––-->
 <div class="container">
-   <div class="row user-index-row">
-      <div class="user-index-profile-pic col-xs-2 col-sm-offset-1">
+   <div class="row container-column-header-row">
+      <div class="container-column-header col-xs-2">
            Profile
       </div>
-      <div class="user-index-profile col-xs-6 col-sm-4">
+      <div class="container-column-header col-xs-5">
            Bio
       </div>
-      <div class="user-index-questions col-xs-1 col-sm-offset-1">
+      <div class="container-column-header col-xs-2">
            Questions
       </div>
-      <div class="user-index-answers col-xs-1">
+      <div class="container-column-header col-xs-2">
            Answers
       </div>
-      <div class="user-index-votes col-xs-2 col-sm-1">
+      <div class="container-column-header col-xs-1">
            Votes
       </div>
    </div>
 
    <% @users.each do |user| %>					
       <div class="row user-index-row">
-         <div class="user-index-profile col-xs-2 col-sm-offset-1">
+         <div class="user-index-profile col-xs-2">
             <%= link_to user do %>
             <img class="user-index-profile-image" src="<%= user.profile_pic %>">
             <% end %>
@@ -37,19 +37,31 @@
             <%= link_to user.email, user %><br>
             User I.D. # <%= user.id %><br>
          </div>
-         <div class="user-index-profile col-xs-6 col-sm-4">
+         <div class="user-index-profile col-xs-5">
             <%= link_to user.bio, user %><br>
             Location: <%= user.location %><br>
          </div>
-         <div class="user-index-questions col-xs-1 col-sm-offset-1">
+         <div class="user-index-questions col-xs-2">
             <%= link_to user.questions.count, user %>
          </div>
-         <div class="user-index-answers col-xs-1">
+         <div class="user-index-answers col-xs-2">
             <%= link_to user.answers.count, user %>
          </div>
-         <div class="user-index-votes col-xs-2 col-sm-1">
-            <%= link_to user.votes.count, user %>
+         <div class="col-xs-1">
+            <div class="votes-container">
+               <h4>
+                  <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
+                  </div>
+                 <div class="votes-container-text">
+                     Votes
+                     <br>
+                     <%= user.votes.count %>
+                  </div>
+                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
+               </h4>
+            </div>
          </div>
+         <!-- Close User Row –––––––––––––––––––––––––––––––––-->
       </div>
       <br>
    <% end %>
