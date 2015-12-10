@@ -53,6 +53,9 @@ class QuestionsController < ApplicationController
       redirect_to root_path
    end
 
+   def hiuerghiuegr(x)
+      @tags = (Array.new << x.tags.split.to_a)
+   end
 
    private
 

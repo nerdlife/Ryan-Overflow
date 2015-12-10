@@ -6,18 +6,35 @@
            </div>
        </div>
        <div class="row">
-           <div class="question-votes col-xs-1 col-sm-offset-1">
-            <strong>&#8679</strong><br>
-         &nbsp <%= @question.votes.count %><br>
-         <strong>&#8681</strong>
-           </div>
-           <div class="question-content col-xs-11 col-sm-9">
-            <%= @question.content %>
+           <div class="questions-index-votes">
+            <h4>
+               <span class="glyphicon glyphicon-chevron-up questions-index-votes-buttons" style="color:green; margin-bottom:8px">
+               </span>
+               <strong><u>Votes:</u></strong>
+               <br>
+               <%= @question.votes.count %>
+               <br>
+               <span class="glyphicon glyphicon-chevron-down questions-index-votes-buttons" style="color:red; margin-top:6px"></span>
+            </h4>
+         </div>
+
+
+           <div class="col-xs-11 col-sm-9">
+               <h4>
+               <%= @question.content %>
+               </h4>
            </div>
        </div>
        <div class="row">
            <div class="question-tags col-sm-offset-2 col-sm-9">
-            <%= @question.tags %>
+            <h5>
+               <u>Tags: </u>
+            </h5>
+            <% @question.tags.split.to_a.each do |tag| %>
+            <div class="index-tag">
+               <%= tag %>
+            </div>
+            <% end %>
            </div>
        </div>
        <div class="row">

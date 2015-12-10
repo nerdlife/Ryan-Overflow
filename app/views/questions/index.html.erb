@@ -1,188 +1,316 @@
 <!-- QUESTION INDEX -->
-<div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
-         <h1> Ryan Overflow Questions </h1>
-</div>
-<div class="container">    
-   <div class="row questions-index-row">
-        <div class="index-profile col-xs-3 index-header">
-           <h3> Asked By </h3>
-        </div>
-        <div class="space col-xs-1 index-header">
-           <h3> ::::: </h3>
-        </div>
-        <div class="index-content col-xs-5 index-header">
-            <h3> Question </h3>
-        </div>
-        <div class="space col-xs-1 index-header">
-            <h3> ::::: </h3>
-        </div>
-        <div class="index-votes col-xs-2 index-header">
-            <h3> Activity </h3>
-        </div>
-    </div>
-   <% @questions.each do |question| %>
-   <!-- Questions Index –––––––––––––––––––––––––––––––––-->
-      <div class="row questions-index-row content-row">
-        <div class="index-profile col-xs-3">
-           <div class="user-profile-badge">
-               <%= link_to question.user do %>
-                  <img class="index-profile-image" src="<%= question.user.profile_pic %>">
-               <% end %>
-               <br>
-               <%= link_to question.user.username, question.user %>
-               <br>
-                Reputation: <%= link_to question.user.votes.count, question.user %>
-                <br>
-           <% if (@current_user.id == question.user.id)  %>
-            <!-- Edit / Delete Your Question <br> -->
-           <div class="edit-delete-buttons">
-               <div class="edit-button">
-                     <%= button_to edit_question_path(question.id), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                           <span class="glyphicon glyphicon-trash"></span> 
-                           Edit 
-                        <% end %>
-               </div>
-               <div class="edit-button">
-                     <%= button_to question, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
-                           <span class="glyphicon glyphicon-trash"></span> 
-                           Delete 
-                        <% end %>
-               </div>
-            </div>
-         <% else %>
-         <% end %>
-            <!-- Close user-profile-badge -->
-            </div>
-        </div>
-        <div class="space col-xs-1">
-           <!-- Empty Column -->
-        </div>
-        <div class="index-content col-xs-5 index-question-content">
-          <div class="question-content">
-              <h4>
-                  <u><%= link_to truncate(question.title, length:150), question %> </u>
-               </h4>
-               <%= link_to truncate(question.content, length:150), question %>
-               <br>
-               <%= question.tags %>
-               <br>
-               <%= question.created_at.strftime("Question asked at %I:%M %p") %>
-               <br>
-               <%= question.created_at.strftime("on %B %e, %Y") %>
-               <br>
-           </div>
-        </div>
-        <div class="space col-xs-1">
-            <!-- Empty Column -->
-        </div>
-        <div class="index-votes col-xs-2">
-                  <div class="questions-index-votes">
-                     <h4><span class="glyphicon glyphicon-chevron-up" style="color:green;"></span><br>
-                     <strong><u><h4 style="margin-bottom:15px; text-decoration:overline;"> Vote </h4></u></strong>
-                     <span class="glyphicon glyphicon-chevron-down"style="color:red;"></span></h4>
-                  </div>
-                  <u><h3>Votes</h3></u>
-                  <h3><%= question.votes.count %></h3>
-            <u><h3>Answers</h3></u>
-            <h3><%= question.answers.count %></h3>
-        </div>
-    </div>
-   <% end %>
- </div>
-<br><br><br>
-<!-- If Any Answers Matches  Search ––––––––––––––––––––––––––––––––––––––-->
 
+<!-- Ryan Question Page Title –––––––––––––––––––––––––––––––––-->
+<div class="row">
+   <div class="col-xs-12 page-title">
+      <h1> Ryan Overflow Questions </h1>
+   </div>
+</div>
+
+<!-- Ryan Questions Container –––––––––––––––––––––––––––––––––-->
+<div class="container">    
+   <!-- Question Column Headers –––––––––––––––––––––––––––––––––-->
+   <div class="row questions-index-row">
+      <div class="index-profile col-xs-3 index-header">
+         <h3> Asked By </h3>
+      </div>
+      <div class="space col-xs-1 index-header">
+         <h3> ::::: </h3>
+      </div>
+      <div class="index-content col-xs-5 index-header">
+         <h3> Question </h3>
+      </div>
+      <div class="space col-xs-1 index-header">
+         <h3> ::::: </h3>
+      </div>
+      <div class="index-votes col-xs-2 index-header">
+         <h3> Activity </h3>
+      </div>
+   </div> 
+   <% @questions.each do |question| %>
+   <div class="row questions-index-row content-row">
+   <!-- User Column –––––––––––––––––––––––––––––––––-->
+      <div class="index-profile col-xs-3">
+         <div class="user-profile-badge">
+            <%= link_to question.user do %>
+               <img class="index-profile-image" src="<%= question.user.profile_pic %>">
+            <% end %>
+            <h4> 
+               <u> <%= link_to question.user.username, question.user %> </u> 
+            </h4>
+            <div class="index-reputation">
+               <h5>  Reputation: <%= question.user.votes.count %> </h5> 
+            </div>
+            <% if (@current_user.id == question.user.id)  %>
+            <!-- Edit / Delete Your Question <br> -->
+            <div class="edit-delete-buttons">
+               <div class="edit-button">
+                  <%= button_to edit_question_path(question.id), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
+                     <span class="glyphicon glyphicon-trash"></span> 
+                     Edit 
+                  <% end %>
+               </div>
+               <div class="delete-button">
+                  <%= button_to question, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
+                     <span class="glyphicon glyphicon-trash"></span> 
+                     Delete 
+                  <% end %>
+               </div>
+            </div>
+            <!-- Close If Current Edit/Delete Buttons –––––––––––––––––––––––––––––––––-->
+            <% end %>
+            <!-- Close user-profile-badge -->
+         </div>
+      <!-- Close User Column -->
+      </div>
+
+      <!-- Empty Column -->
+      <div class="space col-xs-1">
+      </div>
+
+      <!-- Question Column –––––––––––––––––––––––––––––––––-->
+      <div class="index-content col-xs-5 index-question-content">
+         <div class="question-content">
+            <h4>
+               <u><%= link_to truncate(question.title, length:150), question %> </u>
+            </h4>
+            <h5>
+               <%= link_to truncate(question.content, length:147), question %>
+            </h5>
+            <br>
+            <!-- <h5>
+               <u>Tags: </u>
+            </h5> -->
+            <% question.tags.split.to_a.each do |tag| %>
+            <div class="index-tag">
+               <%= tag %>
+            </div>
+            <% end %>
+            <br>
+            <br>
+            <%= question.created_at.strftime("Question asked at %I:%M %p") %>
+            <br>
+            <%= question.created_at.strftime("on %B %e, %Y") %>
+            <br>
+         </div>
+      <!-- Close Question Column –––––––––––––––––––––––––––––––––-->
+      </div>
+
+      <!-- Empty Column -->
+      <div class="space col-xs-1">
+      </div>
+
+      <!-- Activity Column –––––––––––––––––––––––––––––––––-->
+      <div class="index-votes col-xs-2">
+         <div class="questions-index-votes">
+            <h4>
+               <span class="glyphicon glyphicon-chevron-up questions-index-votes-buttons up-vote" >
+               </span>
+               <strong><u>Votes:</u></strong>
+               <br>
+               <%= question.votes.count %>
+               <br>
+               <span class="glyphicon glyphicon-chevron-down questions-index-votes-buttons down-vote"></span>
+            </h4>
+         </div>
+         <div>
+            <h3>
+               <u>Votes</u>
+            </h3>
+         </div>   
+         <div class="index-vote-answer-tally">
+            <h3>
+               <%= question.votes.count %>
+            </h3>
+         </div>
+         <div>
+            <h3>
+               <u>Answers</u>
+            </h3>
+         </div>
+         <div class="index-vote-answer-tally"> 
+            <h3>
+               <%= question.answers.count %>
+            </h3>
+         </div>
+      <!-- Close Activity Column -->
+      </div>
+
+   <!-- Close Row –––––––––––––––––––––––––––––––––-->
+   </div>
+   <!-- Close @question.each do |question| –––––––––––––––––––––––––––––––––-->
+   <% end %>
+<!-- Close Questions Container –––––––––––––––––––––––––––––––––-->
+</div>
+
+<br><br><br>
+
+<!-- AnswersSearch Results ––––––––––––––––––––––––––––––––––––––-->
 <% unless @answer_search_match.blank? %>
    <div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
-            <h2>Your search returned <%= "#{@answer_search_match.count}" %> Answers</h2>
+      <h2>Your search returned <%= "#{@answer_search_match.count}" %> Answers</h2>
    </div>
-   <div class="container">    
+
+   <div class="container">
+      <!-- Answer Column Headers –––––––––––––––––––––––––––––––––-->
       <div class="row questions-index-row">
-           <div class="index-profile col-xs-3 index-header">
-              <h3> Answered By </h3>
-           </div>
-           <div class="space col-xs-1 index-header">
-              <h3> ::::: </h3>
-           </div>
-           <div class="index-content col-xs-5 index-header">
-               <h3> Answer </h3>
-           </div>
-           <div class="space col-xs-1 index-header">
-               <h3> ::::: </h3>
-           </div>
-           <div class="index-votes col-xs-2 index-header">
-               <h3> Activity </h3>
-           </div>
-       </div>
+         <div class="index-profile col-xs-3 index-header">
+            <h3>
+               Answered By
+            </h3>
+         </div>
+         <div class="space col-xs-1 index-header">
+            <h3> ::::: </h3>
+         </div>
+         <div class="index-content col-xs-5 index-header">
+            <h3> 
+               Answer 
+            </h3>
+         </div>
+         <div class="space col-xs-1 index-header">
+            <h3> ::::: </h3>
+         </div>
+         <div class="index-votes col-xs-2 index-header">
+            <h3> Activity </h3>
+         </div>
+         <!-- Close Answer Column Headers –––––––––––––––––––––––––––––––––-->
+      </div>
+
+      <!-- User Column –––––––––––––––––––––––––––––––––-->
       <% @answer_search_match.each do |answer| %>
-      <!-- Questions Index –––––––––––––––––––––––––––––––––-->
          <div class="row questions-index-row content-row">
-           <div class="index-profile col-xs-3">
-              <div class="user-profile-badge">
+            <div class="index-profile col-xs-3">
+               <div class="user-profile-badge">
                   <%= link_to answer.user do %>
                      <img class="index-profile-image" src="<%= answer.user.profile_pic %>">
                   <% end %>
                   <br>
                   <%= link_to answer.user.username, answer.user %>
                   <br>
-                   Reputation: <%= link_to answer.user.votes.count, answer.user %>
-                   <br>
-              <% if (@current_user.id == answer.user.id)  %>
-               <!-- Edit / Delete Your Question <br> -->
-              <div class="edit-delete-buttons">
-                  <div class="edit-button">
+                  Reputation: <%= link_to answer.user.votes.count, answer.user %>
+                  <br>
+                  <% if (@current_user.id == answer.user.id)  %>
+                  <!-- Edit / Delete Your Question <br> -->
+                  <div class="edit-delete-buttons">
+                     <div class="edit-button">
                         <%= button_to edit_answer_path(answer.id), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
-                              Edit 
-                           <% end %>
-                  </div>
-                  <div class="edit-button">
+                        <span class="glyphicon glyphicon-trash"></span> 
+                        Edit 
+                        <% end %>
+                     </div>
+                     <div class="edit-button">
                         <%= button_to answer, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
-                              <span class="glyphicon glyphicon-trash"></span> 
-                              Delete 
-                           <% end %>
+                        <span class="glyphicon glyphicon-trash"></span> 
+                        Delete 
+                        <% end %>
+                     </div>
                   </div>
+                  <% end %>
+                  <!-- Close user-profile-badge -->
                </div>
-            <% else %>
-            <% end %>
-               <!-- Close user-profile-badge -->
-               </div>
-           </div>
-           <div class="space col-xs-1">
-              <!-- Empty Column -->
-           </div>
-           <div class="index-content col-xs-5 index-question-content">
-             <div class="question-content">
-                 <h4>
-                        <u> <%= link_to truncate(answer.content, length:150), answer %> </u>
+            <!-- Close User Column –––––––––––––––––––––––––––––––––-->
+            </div>
+
+            <!-- Empty Column -->
+            <div class="space col-xs-1">
+            </div>
+
+            <!-- Answer Column –––––––––––––––––––––––––––––––––-->
+            <div class="index-content col-xs-5 index-question-content">
+               <div class="question-content">
+                  <h4>
+                     <u> <%= link_to truncate(answer.content, length:150), answer %> </u>
                   </h4>
-                        Original Question: <br>
-                     <%= link_to truncate(answer.question.title, length:150), answer.question %>
+                  Original Question: <br>
+                  <%= link_to truncate(answer.question.title, length:147), answer.question %>
                   <br>
                   <%= answer.created_at.strftime("Answered at %I:%M %p") %>
                   <br>
                   <%= answer.created_at.strftime("on %B %e, %Y") %>
                   <br>
-              </div>
-           </div>
-           <div class="space col-xs-1">
-               <!-- Empty Column -->
-           </div>
-           <div class="index-votes col-xs-2">
-               <strong><u><h4>Votes</h4></u></strong>
-                  <div class="questions-index-votes">
-                     <h4><span class="glyphicon glyphicon-plus-sign"></span><br><br>
+               </div>
+               <!-- Close Answer Column –––––––––––––––––––––––––––––––––-->
+            </div>
+
+            <!-- Empty Column -->
+            <div class="space col-xs-1">
+            </div>
+
+
+
+<!-- Activity Column –––––––––––––––––––––––––––––––––-->
+      <div class="index-votes col-xs-2">
+         <div class="questions-index-votes">
+            <div class="gsdfgdsgdfgs">
+               <h4>
+                  <span class="glyphicon glyphicon-chevron-up questions-index-votes-buttons" style="color:green;">
+                  </span>
+                  <strong><u>Vote</u></strong>
+                  <span class="glyphicon glyphicon-chevron-down questions-index-votes-buttons" style="color:red;"></span>
+               </h4>
+            </div>
+         </div>
+         <div>
+            <h3>
+               <u>Votes</u>
+            </h3>
+         </div>   
+         <div class="index-vote-answer-tally">
+            <h3>
+               <%= answer.votes.count %>
+            </h3>
+         </div>
+         <!-- <div>
+            <h3>
+               <u>Parent Votes</u>
+            </h3>
+         </div>
+         <div class="index-vote-answer-tally"> 
+            <h3>
+               <%= answer.question.votes.count %>
+            </h3>
+         </div> -->
+      <!-- Close Activity Column -->
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Activity Column –––––––––––––––––––––––––––––––––-->
+           <!--  <div class="index-votes col-xs-2">
+               <h4>
+                  <u><strong>Votes</strong></u>
+               </h4>
+               <div class="questions-index-votes">
+                  <h4>
+                     <span class="glyphicon glyphicon-chevron-up questions-index-votes-buttons"></span>
+                     <br><br>
                      <%= answer.votes.count %><br><br>
-                     <span class="glyphicon glyphicon-minus"></span><br> </h4>
-                  </div>
-           </div>
-       </div>
+                     <span class="glyphicon glyphicon-chevron-down questions-index-votes-buttons"></span>
+                     <br> 
+                  </h4>
+               </div> -->
+            <!-- Close Activity Column –––––––––––––––––––––––––––––––––-->
+            <!-- </div> -->
+
+         <!-- Close Answer Row -->
+         </div>
+      <!-- Close @answer_search_match.each do |answer| -->
       <% end %>
-      <!-- CLOSE CONTAINER -->
-    </div>
-   <br><br><br>
-<!-- CLOSE UNLESS -->
+
+   <!-- Close Answer Container -->
+   </div>
+<!-- Close unless @answer_search_match.blank? –––––––––––––––––––––––––––––––––-->
 <% end %>
+<br><br><br>
+
 
 
 
