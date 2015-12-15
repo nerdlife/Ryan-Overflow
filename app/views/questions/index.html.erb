@@ -69,7 +69,7 @@
       </div>
 
       <!-- Question Column –––––––––––––––––––––––––––––––––-->
-      <div class="index-content col-xs-5 index-question-content">
+      <div class="index-content col-xs-5 question-content-column">
          <div class="question-content">
             <div class="title-cell">
                <u><%= link_to truncate(question.title, length:50), question %> </u>
@@ -84,7 +84,6 @@
                </div>
                <% end %>
             </div>
-            <br>
             <br>
             <div class="created-at">
                <%= question.created_at.strftime("Question asked at %I:%M %p on %B %e, %Y") %>

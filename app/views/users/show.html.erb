@@ -99,7 +99,11 @@
             </div>
             <div class="questions-index-content col-xs-4">
                <%= link_to question.content, question %><br><br>
-               <%= link_to question.tags, question %>
+                  <% question.tags.split.to_a.each do |tag| %>
+               <div class="index-tag">
+                  <%= link_to tag, question %>
+               </div>   
+                  <% end %>
             </div>
             <div class="col-xs-2 col-sm-1">
                <div class="votes-container">

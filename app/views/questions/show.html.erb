@@ -6,19 +6,19 @@
            </div>
        </div>
        <div class="row">
-           <div class="votes-container">
-            <h4>
-               <div class="glyphicon glyphicon-chevron-up votes-container-buttons" style="color:green; margin-bottom:8px">
-               </div>
-               <strong><u>Votes:</u></strong>
-               <br>
-               <%= @question.votes.count %>
-               <br>
-               <div class="glyphicon glyphicon-chevron-down votes-container-buttons" style="color:red; margin-top:6px"></div>
-            </h4>
+         <div class="activity-column col-xs-2">
+            <div class="votes-container">
+               <h4>
+                  <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
+                  </div>
+                  <div class="votes-container-text">
+                     Votes<br>
+                     <%= @question.votes.count %>
+                  </div>               
+                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
+               </h4>
+            </div>
          </div>
-
-
            <div class="col-xs-11 col-sm-9">
                <h4>
                <%= @question.content %>

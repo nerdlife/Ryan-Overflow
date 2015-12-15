@@ -5,8 +5,6 @@ www.RyanUrie.com
 */
 
 html, body {
- height: 100%;
- margin: 0;
 }
 a {
    color: #4C4646 ;
@@ -128,7 +126,6 @@ a:hover {
 // -------------------------------------  Index  (Questions Index) -----------------------------------
 .container-column-header {
    text-align: center;
-   display: block;
     font-size: 1.5em;
     margin-left: 0;
     margin-right: 0;
@@ -168,9 +165,15 @@ a:hover {
    margin: 0 auto;
    color: #fff
 }
-.index-question-content {
-  @include ryan-overflow-align();
+.question-content-column {
+  // @include ryan-overflow-align();
    text-align: center;
+   // 
+   width:100%;
+   // 
+}
+.question-content {
+   width:100%;
 }
 .title-cell {
     display: block;
@@ -203,6 +206,14 @@ a:hover {
    margin-top: 0px;
    margin-left: 5px;
    margin-bottom: 5px; 
+   text-align: center;
+}
+.index-tag a {
+   color: #fff;
+}
+.index-tag a:hover {
+   color: #FF5C2B;
+   text-decoration: none;
 }
 .created-at {
    white-space: nowrap;
@@ -240,106 +251,106 @@ a:hover {
 
 
 // ---------------------------------------- QUESTION SHOW ----------------------------------------
-.question-title {
-	margin-bottom: 10px;
-}
-.question-tags {
-	text-align: center;
-}
-.question-profile-image {
-	width: 54px;
- height: 54px;
- border: 1px solid #4C4646;
- padding: 3px;
- margin-top: 5px;
-}
+// .question-title {
+// 	margin-bottom: 10px;
+// }
+// .question-tags {
+// 	text-align: center;
+// }
+// .question-profile-image {
+//    width: 54px;
+//     height: 54px;
+//     border: 1px solid #4C4646;
+//     padding: 3px;
+//     margin-top: 5px;
+// }
 // ----------------------- QUESTION SHOW ANSWER-------------------
-.question-show-header { 
-	border-bottom: 2px solid #efefef;
-	margin-bottom: 10px;
-}
-.answer-profile-image {
-	width: 54px;
- height: 54px;
- border: 1px solid #4C4646;
- padding: 3px;
- margin-top: 5px;
-}
+// .question-show-header { 
+// 	border-bottom: 2px solid #efefef;
+// 	margin-bottom: 10px;
+// }
+// .answer-profile-image {
+//    width: 54px;
+//     height: 54px;
+//     border: 1px solid #4C4646;
+//     padding: 3px;
+//    margin-top: 5px;
+// }
 // ------------------------------------------ USERS INDEX ------------------------------------------
-.user-index-row {
-	border-bottom: 2px solid #4C4646;
-	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-.user-index-profile {
-	position: absolute;
- bottom: 0;
- left: 0;
-}
-.user-index-profile-image { 
-	width: 108px;
- height: 108px;
- border: 1px solid #4C4646;
-}
+// .user-index-row {
+// 	border-bottom: 2px solid #4C4646;
+// 	text-align: center;
+// 	padding-top: 5px;
+// 	padding-bottom: 5px;
+// }
+// .user-index-profile {
+// 	position: absolute;
+//  bottom: 0;
+//  left: 0;
+// }
+// .user-index-profile-image { 
+// 	width: 108px;
+//  height: 108px;
+//  border: 1px solid #4C4646;
+// }
 // ------------------------------------------ USERS SHOW ------------------------------------------
-.user-show-row {
-	border-bottom: 2px solid #4C4646;
-	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-.user-headers {
-	text-align: center; 
-	text-decoration: underline;
-	margin-top: 45px;
-}
-.user-show-profile {
-	position: absolute;
- bottom: 0;
- left: 0;
-}
-.user-show-profile-image { 
-	width: 108px;
- height: 108px;
- border: 1px solid #4C4646;
-}
+// .user-show-row {
+// 	border-bottom: 2px solid #4C4646;
+// 	text-align: center;
+// 	padding-top: 5px;
+// 	padding-bottom: 5px;
+// }
+// .user-headers {
+// 	text-align: center; 
+// 	text-decoration: underline;
+// 	margin-top: 45px;
+// }
+// .user-show-profile {
+// 	position: absolute;
+//  bottom: 0;
+//  left: 0;
+// }
+// .user-show-profile-image { 
+// 	width: 108px;
+//  height: 108px;
+//  border: 1px solid #4C4646;
+// }
 // ---------------------------------------- ANSWER SHOW ----------------------------------------
-.answer-show-row {
-	border-bottom: 2px solid #4C4646;
-	text-align: center;
-	padding-top: 5px;
-	padding-bottom: 5px;
-}
-.answer-headers {
-	text-align: center; 
-	text-decoration: underline;
-	margin-top: 25px;
-	// padding-bottom: -15px;
-}
-.answer-show-question-number {
-	margin-bottom: 10px;
-}
-.answer-show-votes {
-	text-align: center;
-}
-.answer-show-profile-image {
-	width: 54px;
- height: 54px;
- border: 1px solid #4C4646;
- padding: 3px;
- margin-top: 5px;
-}
+// .answer-show-row {
+// 	border-bottom: 2px solid #4C4646;
+// 	text-align: center;
+// 	padding-top: 5px;
+// 	padding-bottom: 5px;
+// }
+// .answer-headers {
+// 	text-align: center; 
+// 	text-decoration: underline;
+// 	margin-top: 25px;
+// 	// padding-bottom: -15px;
+// }
+// .answer-show-question-number {
+// 	margin-bottom: 10px;
+// }
+// .answer-show-votes {
+// 	text-align: center;
+// }
+// .answer-show-profile-image {
+// 	width: 54px;
+//  height: 54px;
+//  border: 1px solid #4C4646;
+//  padding: 3px;
+//  margin-top: 5px;
+// }
 // ------------------------------------------ FORM ------------------------------------------
-.form-group {
-	text-align: center;
-}
-.form-input-label {
-	text-decoration: underline;
-	font-weight: bold;
-	margin-top:25px;
-	margin-bottom:10px;
-}
+// .form-group {
+// 	text-align: center;
+// }
+// .form-input-label {
+// 	text-decoration: underline;
+// 	font-weight: bold;
+// 	margin-top:25px;
+// 	margin-bottom:10px;
+// }
 // ------------------------------------------ Mobile Media Query ------------------------------------------
 @media (max-width: 767px) and (min-width: 2px){
 	// .btn {
