@@ -277,17 +277,32 @@ a:hover {
 //    margin-top: 5px;
 // }
 // ------------------------------------------ USERS INDEX ------------------------------------------
-// .user-index-row {
-// 	border-bottom: 2px solid #4C4646;
-// 	text-align: center;
-// 	padding-top: 5px;
-// 	padding-bottom: 5px;
-// }
-// .user-index-profile {
-// 	position: absolute;
-//  bottom: 0;
-//  left: 0;
-// }
+.user-index-row {
+	border-bottom: 2px solid #4C4646;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+.user-details {
+   margin-top: 15px; 
+   border: 2px solid #FF5C2B;
+   background: #2E66B2;
+   border-radius: 8px;
+   color: #fff;
+}
+.user-details a{
+   color: #fff;
+   text-decoration: none;
+}
+.user-details a:hover{
+   color: #FF5C2B;
+   text-decoration-color: #fff;
+}
+
+.user-index-profile {
+ height: 100%;
+ margin: 0 auto;
+}
 // .user-index-profile-image { 
 // 	width: 108px;
 //  height: 108px;

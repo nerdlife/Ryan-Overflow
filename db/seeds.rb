@@ -1,58 +1,71 @@
-User.create( email: 'ryan@ryan.com',username: 'RyansUsername',name: 'Ryan Urie', password: 'ryan', password_confirmation: 'ryan', profile_pic:"http://clloh.com/wp-content/uploads/2015/08/meteor-js-logo-128x128.png" , bio: 'Here is my bio so read it' )
-# , votes: 55
-Question.create(title: 'Seed Q Uno: Why is processing a sorted array faster than an unsorted array?', content: 'Now for the sake of argument, suppose  this is back in the 1800s - before long distance or radio communication. You are the operator of a junction and you hear a train coming. You have no idea which way it is supposed to go. You stop the train to ask the captain which direction he wants. And then you set the switch appropriately.',  user_id: 1,  tags: "Html Css Javascript Ruby Rails Meteor" )
-Answer.create(content: 'spiciatis unde omnis iste natus err', question_id: 3, user_id: 1)
-Answer.create(content: ' dui. Praesent blandit  dolor. Sed non q', question_id: 3, user_id: 1)
-Vote.create(user_id: 1, question_id: 1)
-Vote.create(user_id: 1, question_id: 2)
-Vote.create(user_id: 1, question_id: 3)
-Vote.create(user_id: 1,  answer_id: 1)
-Vote.create(user_id: 1,  answer_id: 2)
-Vote.create(user_id: 1,  answer_id: 3)
+avatar_array = [
+                        'http://icons.iconarchive.com/icons/hopstarter/face-avatars/256/Male-Face-N1-icon.png',
+                        'http://icons.iconarchive.com/icons/hopstarter/face-avatars/256/Male-Face-N2-icon.png',
+                        'http://icons.iconarchive.com/icons/hopstarter/face-avatars/256/Male-Face-N3-icon.png',
+                        'http://icons.iconarchive.com/icons/hopstarter/face-avatars/256/Male-Face-N4-icon.png',
+                        'http://icons.iconarchive.com/icons/hopstarter/face-avatars/256/Male-Face-N5-icon.png',
+                        'http://icons.iconarchive.com/icons/hopstarter/face-avatars/256/Male-Face-J1-icon.png',
+                        'http://static.comicvine.com/uploads/scale_super/14/147603/2835465-3_male_neutral_large_large.jpg',
+                        'http://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/35/3575e0cf707df5dd1356a8c0cd64c2bc56fe2d70_full.jpg'
+                     ]
+8.times do
+   User.create(
+                        email: Faker::Internet.email, 
+                        username: Faker::Internet.user_name,
+                        name: Faker::Name.name, 
+                        password: 'ryan', 
+                        password_confirmation: 'ryan', 
+                        profile_pic: avatar_array.pop, 
+                        bio: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
+                        location: Faker::Address.city
+                     )
+end
+
+24.times do
+   Question.create(
+                              title: Faker::Hacker.say_something_smart, 
+                              content: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart, 
+                              user_id: rand(1..8),  
+                              tags: Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun
+                              )
+end
 
 
-User.create(email: 'moses@moses.com',username: 'MosesUsername',name: 'Moses Magoo', password: 'ryan', password_confirmation: 'ryan', profile_pic: "http://helpacoder.com/wp-content/uploads/2015/07/angular.jpeg", bio: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce et leo hendrerit, efficitur ligula sed, viverra mauris. Nulla semper luctus dui, id interdum diam sodales at. Nulla tincidunt dolor vitae facilisis ultrices. Nam eu erat at erat vulputate posuere nec id ipsum. Nam gravida nibh magna, vitae faucibus odio ultrices vitae. Cum sociis .' )
-Question.create(title: 'idunt ut labore et dolore magn', content: 'i dctetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat vtatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commod', user_id: 2,  tags: "Mean Angular React")
-
-Answer.create(content: "ue porro qui xplh. In a free hour, when our power of choic", question_id: 1, user_id: 2)
-Answer.create(content: ' amet, consectetur adipiscing elitrg rth erthe rt', question_id: 1, user_id: 2)
-Answer.create(content: 'tus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcor', question_id: 1, user_id: 2)
-Answer.create(content: 'or neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luc', question_id: 1, user_id: 2)
-Answer.create(content: 'sem massa mattis sem, at interdum magna augue eget diam. Vestibulum ante ip', question_id: 1, user_id: 2)
-Answer.create(content: 'ui ratione voluptatem sequi nesciunt. N', question_id: 3, user_id: 2)
-Answer.create(content: '9999sdfasfasdfsadffasd', question_id: 3, user_id: 2)
-Answer.create(content: '44444dgsdgdfsgdgdsf45t45ggg5 g34g5', question_id: 3, user_id: 2)
-Answer.create(content: '1111111dgsdgdfsgttdgdsf45t45ggg5 g34g5', question_id: 3, user_id: 2)
-Answer.create(content: '2222dgsdgdfsgdgdsf45t45ggg5 g34g5', question_id: 3, user_id: 2)
-Answer.create(content: '77777777dgsdgdfsgdgdsf45t45ggg5 g34g5', question_id: 3, user_id: 2)
-Answer.create(content: '8888888dgsdgdfsgdgdsf45t45ggg5 g34g5', question_id: 3, user_id: 2)
-Answer.create(content: ' Curae; Morbi lacinia molestie dui. Praesent blandit dolor. Sed non quam. In vel mi sit amet augue congue elementum. Morbi illus. Ut ultrices ultrices enim. Cu', question_id: 3, user_id: 2)
-Vote.create(user_id: 2, question_id: 1)
-Vote.create(user_id: 2, question_id: 1)
-Vote.create(user_id: 2, question_id: 2)
-Vote.create(user_id: 2, question_id: 3)
-Vote.create(user_id: 2,  answer_id: 1)
-Vote.create(user_id: 2,  answer_id: 1)
-Vote.create(user_id: 2,  answer_id: 2)
-Vote.create(user_id: 2,  answer_id: 3)
-Vote.create(user_id: 2,  answer_id: 3)
+100.times do 
+   Answer.create(
+                              content: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
+                              question_id: rand(1..36), 
+                              user_id: rand(1..8)
+                           )
+end
 
 
 
-User.create(email: 'katy@katy.com',username: 'KatysUsername',name: 'Katy Elliott', password: 'ryan', password_confirmation: 'ryan', profile_pic: "http://adrianmejia.com/images/MEAN_jarroba.png", bio: 'natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam at dolor augue. Morbi varius dolor diam. Suspendisse tristique felis ut mauris molestie, at elementum mauris finibus. Pellentesque quis libero dui. Praesent quis accumsan risus. Integer placerat diam sit amet erat aliquet ultricies. Donec viverra scelerisque placerat. Nulla placerat scelerisque nunc, ac ultricies libero ullamcorper vel')
- # , votes: 123
-Question.create(title: 'est et expedita distinctio. Nam libero tempore, cre possimu', content: 'sandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias con', user_id: 3, tags: "Football Keyboard Sandwich")
-Answer.create(content: 'ed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed conva', question_id: 2, user_id: 3)
-Answer.create(content: 'h. In a free hour, when our power of choic', question_id: 2, user_id: 3)
-Vote.create(user_id: 3, question_id: 1)
-Vote.create(user_id: 3, question_id: 1)
-Vote.create(user_id: 3, question_id: 2)
-Vote.create(user_id: 3, question_id: 2)
-Vote.create(user_id: 3, question_id: 2)
-Vote.create(user_id: 3, question_id: 3)
-Vote.create(user_id: 3,  answer_id: 1)
-Vote.create(user_id: 3,  answer_id: 1)
-Vote.create(user_id: 3,  answer_id: 2)
-Vote.create(user_id: 3,  answer_id: 2)
-Vote.create(user_id: 3,  answer_id: 3)
-Vote.create(user_id: 3,  answer_id: 3)
+# ------Ryan Seed------
+User.create( 
+                     email: 'ryan@ryan.com',
+                     username: 'RyansUsername',
+                     name: 'Ryan Urie', 
+                     password: 'ryan', 
+                     password_confirmation: 'ryan', 
+                     profile_pic:"http://avatars0.githubusercontent.com/u/11891327?v=3&s=460" , 
+                     bio: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
+                     location: 'Portland, OR'
+                  )
+
+12.times do
+   Question.create(
+                              title: Faker::Hacker.say_something_smart, 
+                              content: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart, 
+                              user_id: 9,  
+                              tags: Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun
+                              )
+end
+
+100.times do 
+   Answer.create(
+                              content: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
+                              question_id: rand(1..24), 
+                              user_id: 9
+                           )
+end

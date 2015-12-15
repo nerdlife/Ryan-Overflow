@@ -57,15 +57,15 @@
          </div>
       </div>	
       <div class="user-show-questions col-xs-1 col-sm-offset-1">
-         <%= link_to @questions.count, @user %>
+         <%= link_to @user.questions.count, @user %>
       </div>
       <div class="user-show-answers col-xs-1">
-         <%= link_to @answers.count, @user %>
+         <%= link_to @user.answers.count, @user %>
       </div>
       <div class="user-show-votes col-xs-2 col-sm-1">
          <div class="votes-container">
             <h4>
-               <%= @user.votes.count %>
+               @user.votes.count %>
             </h4>
          </div>
       </div>
@@ -112,7 +112,7 @@
                      </div>
                      <strong><u>Votes:</u></strong>
                      <br>
-                     <%= question.votes.count %>
+                     question.votes.count %>
                      <br>
                      <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
                   </h4>
@@ -184,7 +184,7 @@
                      </div>
                      <strong><u>Votes:</u></strong>
                      <br>
-                     <%= answer.votes.count %>
+                     answer.votes.count %>
                      <br>
                      <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
                   </h4>

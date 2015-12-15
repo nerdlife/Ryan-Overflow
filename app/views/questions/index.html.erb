@@ -39,7 +39,7 @@
                <u> <%= link_to question.user.username, question.user %> </u> 
             </h4>
             <div class="index-reputation">
-               <h5>  Reputation: <%= question.user.votes.count %> </h5> 
+               <h5>  Reputation:  question.user.votes.count %> </h5> 
             </div>
             <% if (@current_user.id == question.user.id)  %>
             <!-- Edit / Delete Your Question <br> -->
@@ -86,7 +86,7 @@
             </div>
             <br>
             <div class="created-at">
-               <%= question.created_at.strftime("Question asked at %I:%M %p on %B %e, %Y") %>
+               <%= question.created_at.strftime("Question asked at %I:%M%P on %B %e, %Y") %>
             </div>
          </div>
       <!-- Close Question Column –––––––––––––––––––––––––––––––––-->
@@ -104,11 +104,13 @@
                </div>
                   <div class="votes-container-text">
                      Votes<br>
-                     <%= question.votes.count %>
+                     question.votes.count %>
                   </div>               
-               <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
+               <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote">
+               </div>
             </h4>
          </div>
+         
          
       
          <div>
@@ -175,7 +177,7 @@
                   <br>
                   <%= link_to answer.user.username, answer.user %>
                   <br>
-                  Reputation: <%= link_to answer.user.votes.count, answer.user %>
+                  Reputation:  link_to answer.user.votes.count, answer.user %>
                   <br>
                   <% if (@current_user.id == answer.user.id)  %>
                   <!-- Edit / Delete Your Question <br> -->
@@ -236,7 +238,7 @@
                   <div class="votes-container-text">
                      Votes
                      <br>
-                      <%= answer.votes.count %>
+                       answer.votes.count %>
                       </div>
                   <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote" style="color:red;"></div>
                </h4>

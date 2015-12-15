@@ -13,12 +13,17 @@
                   </div>
                   <div class="votes-container-text">
                      Votes<br>
-                     <%= @question.votes.count %>
+                      @question.votes.count %>
                   </div>               
-                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
+                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote">
+                  </div>
                </h4>
             </div>
          </div>
+
+
+
+
            <div class="col-xs-11 col-sm-9">
                <h4>
                <%= @question.content %>
@@ -47,7 +52,7 @@
             <img class="question-profile-image" src="<%= @question.user.profile_pic %>">
             <%= @question.user.username %>
             <% end %>
-            <%= @question.user.votes.count %>
+            @question.user.votes.count %>
            </div>
        </div>
        <div class="row">
@@ -93,11 +98,21 @@
 <% unless @question.answers.empty? %>
 <% @question.answers.each do |answer| %>
 	    <div class="row">
-	        <div class="question-answer-votes col-sm-offset-1 col-sm-1">
-	        	<strong>&#8679</strong><br>
-			&nbsp <%= answer.votes.count %><br>
-			<strong>&#8681</strong>
-	        </div>
+
+       <div class="activity-column col-xs-2">
+            <div class="votes-container">
+               <h4>
+                  <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
+                  </div>
+                  <div class="votes-container-text">
+                     Votes<br>
+                     answer.votes.count %>
+                  </div>               
+                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote">
+                  </div>
+               </h4>
+            </div>
+         </div>
 	        <div class="question-answer-content col-sm-offset-0 col-sm-9">
 	        	 <%= link_to answer.content, answer %>
 	        </div>
@@ -113,7 +128,7 @@
 	        	<img class="answer-profile-image" src="<%= answer.user.profile_pic %>">
 	        	<%= answer.user.username %>
 	        	<% end %>
-	        	<%= answer.user.votes.count %>
+	        	 answer.user.votes.count %>
 	        </div>
 	    </div>
 	    <div class="row">
