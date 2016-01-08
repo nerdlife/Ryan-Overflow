@@ -1,19 +1,48 @@
 <!-- ANSWER FORM -->
 <%= form_for @answer do |f| %>
-   <div class="container" style="border-top: 2px solid #4C4646">
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.label :content, "Your Answer", class: "form-input-label"  %>
-         </div>
-         <div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_area :content, placeholder: 'Your Answer',  rows: "12",class: "form-control" %>
-         </div>
-         <%= f.hidden_field :question_id, value: @answer.question_id  %>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
-            <%= button_to @answer, class: "btn btn-outline btn-success btn-lg", method: :update do %>
-            <div class="glyphicon glyphicon-trash"></div>Submit<% end %>
-         </div>
-      </div>
-   </div>
-   <br><br><br>
+<div class="container">
+	<div class="form-group">
+		<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align:center; margin-top: 18px;" >
+			<h3>
+				Edit your answer <%= answer.user.username.capitalize %><br>
+			</h3>
+			<h4> 
+				<%= f.label :content, "Answer Content", class: "form-input-label", style: "text-decoration: underline" %> 
+			</h4>
+		</div>
+		<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+			<%= f.text_area :content, placeholder: 'Answer Title', rows: "12", class: "form-control" %>
+		</div>
+
+	</div>
+	<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center; margin-top: 18px;" >
+		<div class="content-column-tags">
+			<% answer.question.tags.split.to_a.each do |tag| %>
+			<div class="content-column-tags-individual">
+				<%= tag %>
+			</div>
+			<% end %>
+		</div>
+		<div class="col-xs-6">
+			<%= button_to answer.question, class: "btn btn-outline btn-success", method: :update do %>
+			<div class="glyphicon glyphicon-ok"></div> Submit
+			<% end %>
+		</div>
+		<div class="col-xs-6">
+			<%= button_to questions_path, class: "btn btn-outline btn-info", method: :get do %>
+			<div class="glyphicon glyphicon-remove"></div> Cancel
+			<% end %>
+		</div>
+	</div>
+</div>
 <% end %>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+

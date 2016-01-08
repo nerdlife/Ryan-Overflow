@@ -1,19 +1,20 @@
 == Ryans StackOverflow Clone
   
-* ..........
-
-* ..........
-
-* ..........
-
-* ..........
-
-* ..........
-
-* ..........
-
-* ..........
-
-* ..........
-
-* ..........
+* Still To Do when have time:
+- Vote buttons - add logic & Ajax
+- Move logic out of the Views
+- create Helper methods
+- Email password recovery/reset
+- Tags - makeclickable searches
+- Create separate Search page instead of using Index. Add Answers back into search range
+- Add Google & FB Signup/Login
+- Add photos
+- Add comments
+- Fix indentation(Beautify & auto has gone off the reservation w comments present suddenly?!?!)
+- Css - go back & make more uniform (forms, etc)
+-
+-
+-
+-
+-
+-

@@ -1,73 +1,67 @@
 <!-- ANSWER INDEX -->
 <!-- Ryan Answer Page Title –––––––––––––––––––––––––––––––––-->
-<div class="row">
-   <div class="col-xs-12 page-title">    
-      <h1>Answers </h1>
-   </div>
+	<div class="row">
+    <div class="col-xs-12 page-title">
+               <span class="section-title">
+                    <span class="section-title-bookends">:::::</span> 
+                      Answers
+                    <span class="section-title-bookends">:::::</span>
+              </span>
+    </div>
 </div>
 
 <!-- Ryan Answer Container –––––––––––––––––––––––––––––––––-->
-<div class="container">
+	<div class="container">
+		<!-- Answer Column Headers –––––––––––––––––––––––––––––––––-->
+		<div class="row index-container-header-row">
+			<div class="index-container-header-cell col-xs-3">
+				Question #
+			</div>
+			<div class="space index-container-header-cell col-xs-1">
+				:::::
+			</div>
+			<div class="index-container-header-cell col-xs-5">
+				Content
+			</div>
+			<div class="space index-container-header-cell col-xs-1">
+				:::::
+			</div>
+			<div class="index-container-header-cell col-xs-2">
+				Votes
+			</div>
+		</div> 
 
-   <!-- Answer Column Headers –––––––––––––––––––––––––––––––––-->
-   <div class="row container-column-header-row">
-      <div class="container-column-header col-xs-3">
-         Question #
-      </div>
-      <div class="space container-column-header col-xs-1">
-         :::::
-      </div>
-      <div class="container-column-header col-xs-5">
-         Content
-      </div>
-      <div class="space container-column-header col-xs-1">
-         :::::
-      </div>
-      <div class="container-column-header col-xs-2">
-         Votes
-      </div>
-      <!-- Close Column Headers –––––––––––––––––––––––––––––––––-->
-   </div> 
-
-
-
-   <% @answers.each do |answer| %>
-   <div class="row questions-index-row content-row">
-      <!-- Q ID Column –––––––––––––––––––––––––––––––––-->
-      <div class="col-xs-3">
-         <%= link_to answer.question.id, answer.question %>
-      </div>
-
-      <!-- Empty Column –––––––––––––––––––––––––––––––––-->
-      <div class="space col-xs-1">
-      </div>
-
-      <!-- Content Column –––––––––––––––––––––––––––––––––-->
-      <div class="col-xs-5">
-         <%= link_to truncate(answer.content, length:150),  answer %>
-      </div>
-
-      <!-- Empty Column  –––––––––––––––––––––––––––––––––-->
-      <div class="space col-xs-1">
-      </div>
-
-      <!-- Votes Column –––––––––––––––––––––––––––––––––-->
-      <div class="col-xs-2">
-         <div class="votes-container">
-            <h4>
-               <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
-               </div>
-               <div class="votes-container-text">
-                  Votes
-                  <br>
-                  <%= answer.votes.count %>
-               </div>
-               <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
-            </h4>
-         </div>
-      </div>
-      <!-- Close Row -->
-   </div>
-   <% end %>
-   <!-- Close Container -->
-</div>
+		<% @answers.each do |answer| %>
+		<div class="row questions-index-row content-row">
+			<!-- Q ID Column –––––––––––––––––––––––––––––––––-->
+			<div class="col-xs-3">
+				<%= link_to answer.question.id, answer.question %>
+			</div>
+			<!-- Empty Column –––––––––––––––––––––––––––––––––-->
+			<div class="space col-xs-1">
+			</div>
+			<!-- Content Column –––––––––––––––––––––––––––––––––-->
+			<div class="col-xs-5">
+				<%= link_to truncate(answer.content, length:150),  answer %>
+			</div>
+			<!-- Empty Column  –––––––––––––––––––––––––––––––––-->
+			<div class="space col-xs-1">
+			</div>
+			<!-- Votes Column –––––––––––––––––––––––––––––––––-->
+			<div class="col-xs-2">
+				<div class="votes-container">
+					<h4>
+						<div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
+						</div>
+						<div class="votes-container-text">
+							Votes
+							<br>
+							<%= answer.votes.map(&:vote_value).inject(0, &:+) %>
+						</div>
+						<div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
+					</h4>
+				</div>
+			</div>  <!-- /.votes-container -->
+		</div>  <!-- /.row questions-index-row content-row -->
+		<% end %>  <!-- /.@answers.each do |answer| -->
+	</div>

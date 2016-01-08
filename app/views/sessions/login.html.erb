@@ -1,41 +1,66 @@
 <!-- SESSIONS LOGIN FORM -->
 <div class="row">
-   <div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
-      <h3>Ryan Overflow Login</h3>
-   </div>
+    <div class="col-xs-12 page-title">
+               <span class="section-title">
+                    <span class="section-title-bookends">:::::</span> 
+                      Welcome To Ryan Overflow
+                    <span class="section-title-bookends">:::::</span>
+              </span>
+    </div>
 </div>
+
+<div class="row">
+    <div class="col-xs-4 col-xs-offset-4 page-title">
+        <div class=" guest-account">
+            Guest Credentials: <br>
+            Email: guest@guest.com <br>
+            Password: guest
+        </div>
+    </div>
+</div>
+
+
 <%= form_tag(:action => 'create') do %>
-   <div class="container">
-      <div class="form-group">
-         <div class="form-input-label">
-            Login Email
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10 ">
-            <%= text_field_tag :email %>
-         </div>
-      </div>
+<div class="container sign-in-up">
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
       <br>
-      <div class="form-group">
-         <div class="form-input-label">
-            Ryan Overflow Password
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= password_field_tag :password %>
-         </div>
-         <br>
-         <br>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <button type="submit" class="btn btn-default btn-primary">
-               <div class="glyphicon glyphicon-pencil"></div>&nbsp
-                  Login
-            </button>
-         </div>
+      <!-- Nav tabs -->
+      <div class="text-center">
+        <div class="btn-group">
+          <a href="/signup" role="tab" class="big btn btn-success"><i class="fa fa-plus"></i> Sign Up</a>
+          <a href="#user" role="tab" data-toggle="tab" class="big btn btn-primary"><i class="fa fa-user"></i> Sign In</a>
+        </div>
       </div>
-   </div>
-<br><br><br>				
+      <div class="tab-content">
+      
+<!-- LOGIN -->
+        <div class="tab-pane fade" id="user">
+          <br>
+          <fieldset>
+            <div class="form-group">
+              <div class="right-inner-addon">
+                <i class="fa fa-envelope"></i>
+                <%= text_field_tag :email, nil, class: 'form-control input-lg', placeholder: 'Email Address'  %>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="right-inner-addon">
+                <i class="fa fa-key"></i>
+                <%= password_field_tag :password, nil, class: 'form-control input-lg', placeholder: 'Password'   %>
+              </div>
+            </div>
+          </fieldset>
+          <br>
+          <hr>
+          <div class=" text-center">
+          <input class="btn btn-primary" name="commit" type="submit" value="Log In">
+          </div>
+          <hr>
+        </div>  <!-- /.tab-pane fade -->
+
+      </div>  <!-- /.tab-content -->
+    </div>  <!-- /. col-md-4 col-md-offset-4 -->
+  </div>  <!-- /. row -->
+</div>  <!-- /.container sign-in-up -->
 <% end %>
-
-
- 
-
-   

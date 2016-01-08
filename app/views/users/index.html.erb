@@ -1,101 +1,173 @@
 <!-- USER INDEX -->
-
-<!-- Ryan Users Page Title –––––––––––––––––––––––––––––––––-->
 <div class="row">
-   <div class="col-xs-12 page-title">
-      <h1> Users </h1>
-   </div>
+    <div class="col-xs-12 page-title">
+         <span class="section-title">
+            <span class="section-title-bookends">:::::</span> 
+            Ryan Overflow Users
+            <span class="section-title-bookends">:::::</span>
+        </span>
+    </div>
 </div>
 
-<!-- Ryan Users Container –––––––––––––––––––––––––––––––––-->
+<!-- Headers –––––––––––––––––––––––––––––––––-->
+<div class="container header-container">
+	<div class="row ryanoverflow-vertical-column row header-row">
+		<div class="header-cell col-xs-3">
+			Profile
+		</div>
+		<div class="header-cell col-xs-5">
+			Bio
+		</div>
+		<div class="header-cell col-xs-4">
+			Q & A's 
+		</div>
+	</div>  <!-- /.row ryanoverflow-vertical-column row header-row -->
+</div>  <!-- / .container header-container -->
+	
+	
+
 <div class="container">
-   <div class="row container-column-header-row">
-      <div class="container-column-header col-xs-3">
-           Profile
-      </div>
-      <div class="container-column-header col-xs-5">
-           Bio
-      </div>
-      <div class="container-column-header col-xs-1">
-           Questions
-      </div>
-      <div class="container-column-header col-xs-2">
-           Answers
-      </div>
-      <div class="container-column-header col-xs-1">
-           Votes
-      </div>
-   </div>
+<!-- Profile Column –––––––––––––––––––––––––––––––––-->
+  <% @users.each do |user| %>         
+  <div class="row ryanoverflow-vertical-column">
 
-   <% @users.each do |user| %>					
-      <div class="row user-index-row">
-        <div class="index-profile col-xs-3">
-         <div class="user-profile-badge">
-            <%= link_to user do %>
-               <img class="index-profile-image" src="<%= user.profile_pic %>">
-            <% end %>
-            <h4> 
-               <u> <%= link_to user.username, user %> </u> 
-            </h4>
-            <div class="index-reputation">
-               <h5>  Reputation:  user.votes.count %> </h5> 
+  
+    <div class="col-xs-3">
+      <div class="ryanoverflow-horizontal-rows">
+        <%= link_to user do %>
+        <div class="profile-image" >
+          <img src="<%= user.profile_pic %>">
+        </div>
+        <% end %>
+        <div class="username bg-w-border">
+          <%= link_to user.username.capitalize, user %>  
+        </div>
+        <div class="reputation bg-w-border">
+          <u>Reputation:</u>
+          <br>
+          <strong> <%= user.votes.map(&:vote_value).inject(0, &:+) %></strong>
+        </div>
+        <div class="email bg-w-border">
+          <u>Email:</u>
+          <br>
+             <div class="email-address">
+                <%= mail_to user.email, truncate(user.email, length:18) %>
             </div>
-            <!-- Close user-profile-badge -->
-         </div>
-      <!-- Close User Column -->
-      </div>
-         <div class="user-index-profile col-xs-5">
-            <h3>
-            <%= link_to user.bio, user %> <br>
-            </h3>
-            <h4>
-            <%= link_to user.email, user %> <br>
-            </h4>
-            <h4>
-            Location: <%= link_to user.location, user %> <br>
-            </h4>
-            <h5>
-               <%= user.created_at.strftime("Joined date: %I:%M%P on %B %e, %Y") %>
-            </h5>
-         </div>
-         <div class="col-xs-1">
-            <h3>
-            <%= link_to user.questions.count, user %>
-            </h3>
-            <h4>
-             Tags: <br>
-            </h4>
-             <div class="tags">
-            <% user.questions.last.tags.split.to_a.each do |tags| %>
-            <div class="index-tag">
-               <%= tags %>
-               </div>
-            <% end %>
-            </div>
-         </div>
-         <div class="user-index-answers col-xs-2">
-            <%= link_to user.answers.count, user %>
-         </div>
-         <div class="col-xs-1">
-            <div class="votes-container">
-               <h4>
-                  <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
-                  </div>
-                 <div class="votes-container-text">
-                     Votes
-                     <br>
-                      user.votes.count %>
-                  </div>
-                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
-               </h4>
-            </div>
-         </div>
-         <!-- Close User Row –––––––––––––––––––––––––––––––––-->
-      </div>
-      <br>
-   <% end %>
+        </div>
+      </div>  <!-- /.ryanoverflow-horizontal-rows -->
+    </div>  <!-- /.col-xs-3 -->
 
-</div>						
+<!-- Bio Column –––––––––––––––––––––––––––––––––-->
+    <div class="col-xs-5">
+      <div class="ryanoverflow-horizontal-rows">
+        <div class="bio-preview-header"> 
+            <u>About <%= user.username.capitalize %></u><br>
+        </div>
+        <div class="bio bg-w-border">
+          <%= link_to truncate(user.bio, length:300), user %>
+        </div>
+
+        <div class="col-xs-12">
+          <div class="col-xs-6 location bg-w-border">
+            <strong><u>Location:</u></strong>
+            <br>
+            <%= link_to user.location, "http://maps.google.com/?q=#{user.location}", target: "_blank" %>
+          </div>
+          <div class="col-xs-6 join-date bg-w-border">
+              <strong><u>Joined:</u></strong>
+            <br>
+            <%= user.created_at.strftime(" %D") %>
+          </div>
+        </div>  <!-- /.col-xs-12 -->
+
+        <div class="col-xs-10 latest-activity bg-w-border">
+          <strong><u>Latest Activity</u></strong>
+          <br>
+<% unless (user.questions.last.blank?) || (user.answers.last.blank?) %>
+          <% if (user.questions.last.created_at > user.answers.last.created_at) && (user.questions.last.created_at >  user.updated_at) %>
+          Question asked: <br>
+          <%= user.questions.last.created_at.strftime("%l:%M%P on %D") %>
+          <% elsif (user.answers.last.created_at > user.questions.last.created_at)  && (user.answers.last.created_at > user.updated_at) %>
+          Answered: <br>
+          <%= user.answers.last.created_at.strftime("%l:%M%P on %D") %>
+          <% else %>  <!-- if (user.questions.last.created_at > user.answers.last.created_at) && -->
+          Profile Updated at <br>
+          <%= user.updated_at.strftime("%l:%M%P on %D") %>
+          <% end %>  <!-- if (user.questions.last.created_at > user.answers.last.created_at) && -->
+    <% else %>  <!-- unless (user.questions.last.blank?) || (user.answers.last.blank?) -->
+    New Member <br>
+    No Activity Yet
+<% end %>  <!-- unless (user.questions.last.blank?) || (user.answers.last.blank?) -->
+        </div>  <!-- /.col-xs-10 latest-activity bg-w-border -->
 
 
+      </div>  <!-- /.ryanoverflow-horizontal-rows -->
+    </div>  <!-- /.col-xs-5 -->
 
+<!-- Question & Answer Column –––––––––––––––––––––––––––––––––-->
+    <div class="col-xs-4">
+      <div class="ryanoverflow-horizontal-rows">
+        <!-- <div> -->
+        <% if !user.questions.empty? %>
+        <div class="questions-preview-header"> 
+          Questions: <%= user.questions.count %> 
+        </div>
+        <div class="questions-preview bg-w-border">
+          <% user.questions.limit(3).each do |question| %>
+          <div style="border-bottom: 1px solid #FF5C2B;">
+            <%= link_to truncate("##{question.id} - " + "#{question.title}", length:58), question %> <br>
+          </div>
+          <% end %>
+        </div>  
+        <% else %>  <!-- if !user.questions.empty? -->
+        <div class="user-no-questions bg-w-border">
+          <%= user.username.capitalize %> <br>
+          Has No Questions Yet
+        </div>
+        <% end %>  <!-- if !user.questions.empty? -->
+
+
+        <% if !user.answers.empty? %>
+        <div class="answers-preview-header"> 
+          Answers: <%= user.answers.count %> 
+        </div>
+        <div class="answers-preview bg-w-border">
+          <% user.answers.limit(3).each do |answer| %>
+          <div style="border-bottom: 1px solid #FF5C2B;">
+            <%= link_to truncate("##{answer.id} - " + "#{answer.content}", length:58), answer %> <br>
+          </div>
+          <% end %>
+        </div>
+        <% else %>
+        <div class="user-no-answers bg-w-border">
+          <%= user.username.capitalize %> <br>
+          Has No Answers Yet
+        </div>
+        <% end %> <!-- !user.answers.empty? -->
+
+        <% if !user.questions.empty? %>
+        <div class="questions-preview-header"> 
+          Tags:
+        </div>
+        <div class="tag-grouping">
+          <% tags_array = user.questions.first.tags.split.to_a %>
+          <% tags_array[0..5].each do |single_tag| %>
+          <div class="tags-individualized bg-w-border">
+            <%= single_tag %>
+          </div>
+          <% end %>
+        </div>
+        <% else %>
+        <div class="content-column-tags">
+          <div class="bg-w-border">
+            No Tags Yet
+          </div>
+        </div>
+        <% end %>  <!-- if !user.questions.empty? -->
+        <!-- </div> -->
+      </div>  <!-- /.ryanoverflow-horizontal-rows -->
+    </div>  <!-- /.col-xs-4 -->
+
+  </div>  <!-- /.row ryanoverflow-vertical-column -->
+  <% end %>  <!-- @users.each do |user| -->
+</div>  <!-- /.container -->

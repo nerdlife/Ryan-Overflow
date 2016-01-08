@@ -1,196 +1,323 @@
 <!-- QUESTION SHOW -->
-   <div class="container">
-       <div class="row question-show-header">
-           <div class="question-title col-sm-offset-1 col-sm-10">
-            <h3><%= @question.title %></h3>
-           </div>
-       </div>
-       <div class="row">
-         <div class="activity-column col-xs-2">
-            <div class="votes-container">
-               <h4>
-                  <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
-                  </div>
-                  <div class="votes-container-text">
-                     Votes<br>
-                      @question.votes.count %>
-                  </div>               
-                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote">
-                  </div>
-               </h4>
-            </div>
-         </div>
+<div class="row">
+    <div class="col-xs-12 page-title">
+               <span class="section-title">
+                    <span class="section-title-bookends">:::::</span> 
+                      Question # <%= @question.id %>
+                    <span class="section-title-bookends">:::::</span>
+              </span>
+    </div>
+</div>
+
+<!-- Headers –––––––––––––––––––––––––––––––––-->
+  <div class="container header-container">
+  <div class="row ryanoverflow-vertical-column row header-row">
+    <div class="header-cell col-xs-3">
+      Activity 
+    </div>
+    <div class="header-cell col-xs-9">
+      Question
+    </div>
+  </div>  <!-- /.row ryanoverflow-vertical-column row header-row -->
+</div>  <!-- / ."container header-container -->
 
 
+<div class="container">
+  <div class="row ryanoverflow-vertical-column" style="border:none;">
 
-
-           <div class="col-xs-11 col-sm-9">
-               <h4>
-               <%= @question.content %>
-               </h4>
-           </div>
-       </div>
-       <div class="row">
-           <div class="question-tags col-sm-offset-2 col-sm-9">
-            <h5>
-               <u>Tags: </u>
-            </h5>
-            <% @question.tags.split.to_a.each do |tag| %>
-            <div class="index-tag">
-               <%= tag %>
-            </div>
-            <% end %>
-           </div>
-       </div>
-       <div class="row">
-           <div class="question-edit col-sm-offset-2 col-sm-4">
-            <!-- share edit flag -->
-           </div>
-           <div class="question-user col-sm-offset-1 col-sm-4">
-            <%= @question.created_at.strftime("%B %e, %Y") %>
-            <%= link_to @question.user do %>
-            <img class="question-profile-image" src="<%= @question.user.profile_pic %>">
-            <%= @question.user.username %>
-            <% end %>
-            @question.user.votes.count %>
-           </div>
-       </div>
-       <div class="row">
-           <div class="question-comments col-sm-offset-2 col-sm-9">
-            COMMENTS HERE
-           </div>
-       </div>
-       <div class="row">
-           <div class="question-add-comment col-sm-offset-2 col-sm-4">
-            ADD COMMENT
-           </div>
-       </div>
-<!-- Edit & Delete Buttons if Belongs to Current User –––––––––––––––––––––––––––––––––-->
-<% if (@current_user.id == @question.id)  %>
-   <div class="edit-delete-buttons">
-      <div class="edit-button">
-            <%= button_to edit_question_path(@question), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                  <div class="glyphicon glyphicon-trash"></div> 
-                  Edit 
-               <% end %>
-      </div>
-      <div class="edit-button">
-            <%= button_to @question, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
-                  <div class="glyphicon glyphicon-trash"></div> 
-                  Delete 
-               <% end %>
-      </div>
-   </div>
-<% else %>
-<% end %>
-		
-           
-         
-<!-- Answers ––––––––––––––––––––––––––––––––––––––-->
-	<div class="row question-show-header">
-	        <div class="question-answer-header col-sm-offset-1 col-sm-3">
-	        	<h3><%= @question.answers.count %> Answers</h3>
-	        </div>
-	        <div class="question-answer-sort col-sm-offset-3 col-sm-4">
-	        	Best | Date | Votes
-	        </div>
-	    </div>
-<% unless @question.answers.empty? %>
-<% @question.answers.each do |answer| %>
-	    <div class="row">
-
-       <div class="activity-column col-xs-2">
-            <div class="votes-container">
-               <h4>
-                  <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
-                  </div>
-                  <div class="votes-container-text">
-                     Votes<br>
-                     answer.votes.count %>
-                  </div>               
-                  <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote">
-                  </div>
-               </h4>
-            </div>
-         </div>
-	        <div class="question-answer-content col-sm-offset-0 col-sm-9">
-	        	 <%= link_to answer.content, answer %>
-	        </div>
-	    </div>
-	    <div class="row">
-	        <div class="answer-edit col-sm-offset-2 col-sm-4">
-	        	<!-- share edit flag -->
-	        </div>
-	        <div class="answer-user col-sm-offset-1 col-sm-4">
-	        	<%= answer.created_at.strftime("%B %e, %Y") %>
-	        	<br>
-	        	<%= link_to answer.user do %>
-	        	<img class="answer-profile-image" src="<%= answer.user.profile_pic %>">
-	        	<%= answer.user.username %>
-	        	<% end %>
-	        	 answer.user.votes.count %>
-	        </div>
-	    </div>
-	    <div class="row">
-	        <div class="answer-comment col-sm-offset-1 col-sm-10">
-	        	<%= answer.id %> <br>
-	        	COMMENT HERE
-	        </div>
-	    </div>
-	    <% if (@current_user.id == answer.user.id)  %>
-                <div class="edit-delete-buttons">
-                  <div class="edit-button">
-                        <%= button_to edit_answer_path(answer), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <div class="glyphicon glyphicon-trash"></div> 
-                              Edit 
-                           <% end %>
-                  </div>
-                  <div class="edit-button">
-                        <%= button_to answer, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
-                              <div class="glyphicon glyphicon-trash"></div> 
-                              Delete 
-                           <% end %>
-                  </div>
-               </div>
-<% else %>
-<% end %>
-	    <!-- CLOSE CONTAINER -->
-	</div>
-	<br>
-	<br>
-	<br>
-
-<% end %>
-				 
-<% else %>
-		<strong>No Answers Yet</strong>
-<% end %>
-		<div class="row">
-			<div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-top: 25px;">
-				<h3>Answer this question:</h3>
-			</div>
-		</div>
-<%= form_for @answer do |f| %>
-	<div class="container" style="border-top: 2px solid #4C4646">
-		<div class="form-group">
-			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-				<%= f.label :content, "Your Answer", class: "form-input-label"  %>
-			</div>
-			<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-				<%= f.text_area :content, :placeholder => 'Your Answer',  rows: "12",class: "form-control" %>
-			</div>
-			<%= f.hidden_field :question_id, value: @question.id  %>
-			<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
-				<%= f.submit "Submit", class: "btn btn-default btn-primary" %>
-<% end %>
-            </div>
+<!-- Activity Column –––––––––––––––––––––––––––––––––-->
+    <div class="col-xs-3">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="votes-container bg-w-border">
+          <div class="glyphicon glyphicon-chevron-up">
+          </div>
+          <div class="votes-container-text">
+            Votes
+            <br>
+            <%= @question.votes.map(&:vote_value).inject(0, &:+) %>
+          </div>
+          <div class="glyphicon glyphicon-chevron-down">
+          </div>
+        </div>
+        <div class="activity-answers">
+          <u>Answers</u> <br>
+          <%= @question.answers.count %>
+        </div>
+        <!-- Edit & Delete Buttons if Belongs to Current User –––––––––––––––––––––––––––––––––-->
+  <% if (@current_user.id == @question.user.id)  %>
+  <div class="edit-delete-buttons" style="margin-top: 10px;">
+    <div class="edit-button">
+      <%= button_to edit_question_path(@question), class: "btn btn-outline btn-warning", method: :get do %>
+      <div class="glyphicon glyphicon-trash">
+      </div> 
+      Edit 
+      <% end %>
+    </div>
+    <div class="edit-button"  style="margin-top: 10px;">
+      <%= button_to @question, class: "btn btn-outline btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
+      <div class="glyphicon glyphicon-trash">
+      </div> 
+      Delete 
+      <% end %>
     </div>
   </div>
-  <br>
-  <br>
-  <br>
+  <% else %>
+  <% end %>
+      </div>  <!-- /.col-xs-8 col-xs-offset-2 -->
+  </div>  <!-- /.col-xs-3 -->
+
+<!-- Question Column –––––––––––––––––––––––––––––––––-->
+    <div class="col-xs-9">
+      <div class="ryanoverflow-horizontal-rows">
+        <div class="bio bg-w-border">
+        <div class="question-title">
+          <%= @question.title %>
+          <br>
+        </div>
+        <div class="question-content">
+          <%= @question.content %>
+        </div>
+        </div>
+
+        <div class="col-xs-12">
+        <div class="bio-preview-header" style="margin-top: 15px;"> 
+        <u> Tags:</u>
+        </div>
+        <div class="tag-grouping">
+          <%@question.tags.split.to_a.each do |single_tag|%>
+          <div class="tags-individualized bg-w-border">
+            <%= single_tag %>
+          </div>
+          <% end %>
+        </div>
+        </div>  <!-- /.col-xs-12 -->
+
+      </div>  <!-- /.ryanoverflow-horizontal-rows -->
+    </div>  <!-- /.col-xs-12 -->
+
+ </div>  <!-- /.row ryanoverflow-vertical-column -->
+
+
+
+<!-- Asked By ROW –––––––––––––––––––––––––––––––––-->
+<div class="row ryanoverflow-vertical-column">
+    <div class="col-xs-11 question-asked-by-row"> 
+    <div class="col-xs-2">
+        <%= link_to @question.user do %>
+        <div class="question-profile-image" >
+          <img src="<%= @question.user.profile_pic %>">
+        </div>
+        <% end %>
+        <div class="bio-preview-header" style="text-decoration: none; overflow:hidden;">
+        <%= @question.user.username %>
+      </div>
+      </div>
+      <div class="col-xs-5">
+         <div class="bio-preview-header"> 
+        <u> Question Asked:</u>
+        </div>
+        <div class="username bg-w-border" style="overflow:hidden;">
+          <%= @question.created_at.strftime("%l:%M%P on %D") %>  
+        </div>
+      </div>
+       <div class="col-xs-5">
+        <div class="bio-preview-header"> 
+        <u> Last Answered:</u>
+        </div>
+        <div class="username bg-w-border" style="overflow:hidden;">
+        <% if !@question.answers.empty? %>
+          <%= @question.answers.last.created_at.strftime("%l:%M%P on %D") %>  
+        <% else %>
+          No Answers Yet
+        <% end %>
+        </div> 
+      </div>
+    </div>  <!-- /.col-xs-12 -->
+  </div>  <!-- /.row ryanoverflow-vertical-column -->
+</div>  <!-- /.container -->
+
+
+
+<br>
+<br>
+<br>
 
 
 
 
 
+<!-- Answers ––––––––––––––––––––––––––––––––––––––-->
+	<div class="row">
+    <div class="col-xs-12 page-title">
+               <span class="section-title">
+                    <% if !@question.answers.empty? %>
+                    <span class="section-title-bookends">:::::</span> 
+                    <%= @question.answers.count %> Answers   
+                    <span class="section-title-bookends">:::::</span>
+                    <!-- <br> -->
+                      <!-- (Descending By Votes) -->
+              </span>
+                      <br>
+                      <br>
+    </div>
+</div>
+
+ <div class="container header-container">
+  <div class="row ryanoverflow-vertical-column row header-row">
+    <div class="header-cell col-xs-3">
+      Activity 
+    </div>
+    <div class="header-cell col-xs-9">
+      Answer
+    </div>
+  </div>  <!-- /.row ryanoverflow-vertical-column row header-row -->
+</div>  <!-- / ."container header-container -->
+  <div class="col-xs-12">
+  <div class="best-answer" style="text-align: center;">
+                    ----- Best Answer -----  	   
+                    <% else %>
+                      No Answers Yet
+                    <% end %>
+  </div>
+  </div>
+  
+
+  <% unless @question.answers.empty? %>
+  <% @order_answers = @question.answers.sort { |a,b| (b.votes.map(&:vote_value).inject(0, &:+) <=> a.votes.map(&:vote_value).inject(0, &:+)) } %>
+  <% @order_answers.each do |answer| %>
+  <div class="container">
+  <div class="row ryanoverflow-vertical-column" style="border:none;">
+
+<!-- Answer Activity Column –––––––––––––––––––––––––––––––––-->
+    <div class="col-xs-3">
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="votes-container bg-w-border">
+          <div class="glyphicon glyphicon-chevron-up">
+          </div>
+          <div class="votes-container-text">
+            Votes
+            <br>
+            <%= answer.votes.map(&:vote_value).inject(0, &:+) %>
+          </div>
+          <div class="glyphicon glyphicon-chevron-down">
+          </div>
+        </div>
+        <!-- Answer Edit & Delete Buttons if Belongs to Current User –––––––––––––––––––––––––––––––––-->
+  <% if (@current_user.id == answer.user.id)  %>
+  <div class="edit-delete-buttons" style="margin-top: 10px;">
+    <div class="edit-button">
+      <%= button_to edit_answer_path(answer), class: "btn btn-outline btn-warning", method: :get do %>
+      <div class="glyphicon glyphicon-trash">
+      </div> 
+      Edit 
+      <% end %>
+    </div>
+    <div class="edit-button"  style="margin-top: 10px;">
+      <%= button_to answer, class: "btn btn-outline btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
+      <div class="glyphicon glyphicon-trash">
+      </div> 
+      Delete 
+      <% end %>
+    </div>
+  </div>
+  <% else %>
+  <% end %>
+      </div>  <!-- /.col-xs-8 col-xs-offset-2 -->
+  </div>  <!-- /.col-xs-3 -->
+
+<!-- Answer Column –––––––––––––––––––––––––––––––––-->
+    <div class="col-xs-9">
+      <div class="ryanoverflow-horizontal-rows">
+        <div class="bio-preview-header"> 
+        <u> Answer:</u>
+        </div>
+        <div class="bio bg-w-border">
+        <div class="answer-title">
+          <%= answer.content %>
+        </div>
+        </div>
+
+        <div class="col-xs-12">
+        <div class="bio-preview-header" style="margin-top: 15px;"> 
+        <u> Tags:</u>
+        </div>
+        <div class="tag-grouping">
+          <% answer.question.tags.split.to_a.each do |single_tag|%>
+          <div class="tags-individualized bg-w-border">
+            <%= single_tag %>
+          </div>
+          <% end %>
+        </div>
+        </div>  <!-- /.col-xs-12 -->
+
+      </div>  <!-- /.ryanoverflow-horizontal-rows -->
+    </div>  <!-- /.col-xs-12 -->
+
+ </div>  <!-- /.row ryanoverflow-vertical-column -->
+
+
+
+<!-- Answered By ROW –––––––––––––––––––––––––––––––––-->
+<div class="row ryanoverflow-vertical-column">
+    <div class="col-xs-11 question-asked-by-row"> 
+    <div class="col-xs-2">
+        <%= link_to answer.user do %>
+        <div class="question-profile-image" >
+          <img src="<%= answer.user.profile_pic %>">
+        </div>
+        <% end %>
+        <div class="bio-preview-header" style="text-decoration: none; overflow:hidden;">
+        <%= answer.user.username %>
+      </div>
+      </div>
+      <div class="col-xs-10">
+         <div class="bio-preview-header"> 
+        <u> Answered at:</u>
+        </div>
+        <div class="username bg-w-border" style="overflow:hidden;">
+          <%= answer.created_at.strftime("%l:%M%P on %D") %>  
+        </div>
+      </div>
+    </div>  <!-- /.col-xs-12 -->
+  </div>  <!-- /.row ryanoverflow-vertical-column -->
+</div>  <!-- /.container -->
+	
+<% end %>
+
+<% end %>
+
+
+<div class="row">
+    <div class="col-xs-12 page-title">
+               <span class="section-title">
+                    <span class="section-title-bookends">:::::</span> 
+                      Answer This Question
+                    <span class="section-title-bookends">:::::</span>
+              </span>
+    </div>
+</div>
+<%= form_for @answer do |f| %>
+<div class="container" style="border-top: 2px solid #4C4646">
+	<div class="form-group">
+		<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align:center; margin-top: 18px;">
+			<h4 style="color:#fff;">
+				<%= f.label :content, "Your Answer", class: "form-input-label", style: "text-decoration: underline" %> 
+			</h4>
+		</div>
+		<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+			<%= f.text_area :content, :placeholder => 'Your Answer',  rows: "6",class: "form-control" %>
+		</div>
+		<%= f.hidden_field :question_id, value: @question.id  %>
+		<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center; margin-top: 18px;">
+			<%= button_to @answer, class: "btn btn-outline btn-success", method: :create do %>
+			<div class="glyphicon glyphicon-share">
+			</div> 
+			Submit
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+</div>
+<br>
+<br>
+<br>

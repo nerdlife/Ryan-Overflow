@@ -15,10 +15,11 @@ gem 'factory_girl'
 gem 'faker'
 gem 'dynamic_form'
 gem 'bootstrap-sass', '~> 3.3'
- 
+gem 'hirb'
+
+
 group :development, :test do
 	gem 'byebug'
-	# gem 'pry-rails'
 end
 
 group :development do

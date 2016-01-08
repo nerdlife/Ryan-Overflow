@@ -1,226 +1,494 @@
-<!-- USER SHOW -->
-<!-- Ryan Overflow Comments –––––––––––––––––––––––––––––––––-->
-<div class="row">
-   <div class="col-xs-10 col-xs-offset-1" style="text-align:center; text-decoration:underline; margin-bottom: 25px;">
-      <h3><%= @user.username %>'s Profile</h3>
-      <h3><%= session[:user_id] %>'s Session ID</h3>
-   </div>
-</div>
+<!-- USER SHOW PAGE –––––––––––––––––––––––––––––––––-->
+    <div class="row">
+        <div class="col-xs-12 page-title">
+            <span class="section-title">
+                <span class="section-title-bookends">:::::</span> 
+                <%= @user.username.capitalize %>
+                <span class="section-title-bookends">:::::</span>
+            </span>
+        </div>   <!-- /.col-xs-12 page-title -->
+    </div>  <!-- /.row -->
+
+
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<!-- User Show Profile ––––––––––––––––––––––––––––––––––––––––––-->
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+
+<!-- Headers - User Profile –––––––––––––––––––––––––––––––––-->
+    <div class="container header-container">
+        <div class="row ryanoverflow-vertical-column row header-row">
+            <div class="header-cell col-xs-3">
+                Profile
+            </div>
+            <div class="header-cell col-xs-5">
+                Bio
+            </div>
+            <div class="header-cell col-xs-4">
+                About
+            </div>
+        </div>  <!-- /.row ryanoverflow-vertical-column row header-row -->
+    </div>  <!-- / .container header-container -->
+
 <div class="container">
-   <div class="row user-show-row">
-      <div class="user-show-profile-pic col-xs-2 col-sm-offset-1">
-         Profile
-      </div>
-      <div class="user-show-profile col-xs-6 col-sm-4">
-         Bio
-      </div>
-      <div class="user-show-questions col-xs-1 col-sm-offset-1">
-         Questions
-      </div>
-      <div class="user-show-answers col-xs-1">
-         Answers
-      </div>
-      <div class=" col-xs-2 col-sm-1">
-         Votes
-      </div>
-   </div>
-   <div class="row user-show-row">
-      <div class="user-show-profile-pic col-xs-2 col-sm-offset-1">
-         <%= link_to @user do %>
-            <img class="user-show-profile-image" src="<%= @user.profile_pic %>">
-         <% end %>
-         <%= link_to @user.username, @user %><br>
-         <%= link_to @user.email, @user %><br>
-            User I.D. # <%= @user.id %><br>
-      </div>
-      <div class="user-show-profile col-xs-6 col-sm-4">
-         <%= link_to @user.bio, @user %><br>
-            Location: <%= @user.location %><br>
-         <div class="form-group">
+    <div class="col-xs-12">
+        <div class="row ryanoverflow-vertical-column">
+
+<!-- If Current User Profile Column ––––––––––––––––––––––––––––––-->
             <% if (@current_user.id == @user.id)  %>
-               <div class="edit-delete-buttons">
-                  <div class="edit-button">
-                        <%= button_to edit_user_path(@user.id), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <div class="glyphicon glyphicon-trash"></div> 
-                              Edit 
-                           <% end %>
-                  </div>
-                  <div class="edit-button">
-                        <%= button_to @user, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your User?' } do %>
-                              <div class="glyphicon glyphicon-trash"></div> 
-                              Delete 
-                           <% end %>
-                  </div>
-               </div>
-            <% else %>
-            <% end %>
-         </div>
-      </div>	
-      <div class="user-show-questions col-xs-1 col-sm-offset-1">
-         <%= link_to @user.questions.count, @user %>
-      </div>
-      <div class="user-show-answers col-xs-1">
-         <%= link_to @user.answers.count, @user %>
-      </div>
-      <div class="user-show-votes col-xs-2 col-sm-1">
-         <div class="votes-container">
-            <h4>
-               @user.votes.count %>
-            </h4>
-         </div>
-      </div>
-   </div>
-   <!-- CLOSE CONTAINER -->
-</div>
-<!-- -----------------------------USERS Questions ------------------------------------ -->
-<h3 class="user-headers"> 
-   <%= @user.username %>'s  Questions: 
-</h3>
-<div class="container">		
-   <div class="row questions-index-row">
-      <div class="questions-index-title col-xs-3 col-sm-offset-1">
-         Title
-      </div>
-      <div class="questions-index-content col-xs-4">
-         Content
-      </div>
-      <div class="col-xs-2 col-sm-1">
-         Votes
-      </div>
-      <div class="questions-index-user col-xs-3 col-sm-2">
-         Answers
-      </div>
-   </div>
-   <% if !@user.questions.empty? %>
-      <% @user.questions.each do |question| %>
-         <div class="row questions-index-row">
-            <div class="questions-index-title col-xs-3 col-sm-offset-1">
-               <%= link_to question.title, question %>
-            </div>
-            <div class="questions-index-content col-xs-4">
-               <%= link_to question.content, question %><br><br>
-                  <% question.tags.split.to_a.each do |tag| %>
-               <div class="index-tag">
-                  <%= link_to tag, question %>
-               </div>   
-                  <% end %>
-            </div>
-            <div class="col-xs-2 col-sm-1">
-               <div class="votes-container">
-                  <h4>
-                     <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
-                     </div>
-                     <strong><u>Votes:</u></strong>
-                     <br>
-                     question.votes.count %>
-                     <br>
-                     <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
-                  </h4>
-               </div>
-            </div>
-            <div class="questions-index-user col-xs-3 col-sm-2">
-               <%= question.answers.count %>
-            </div>
-            <% if (@current_user.id == question.user.id)  %>
-               <div class="edit-delete-buttons">
-                  <div class="edit-button">
-                        <%= button_to edit_question_path(question), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <div class="glyphicon glyphicon-trash"></div> 
-                              Edit 
-                           <% end %>
-                  </div>
-                  <div class="edit-button">
-                        <%= button_to question, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
-                              <div class="glyphicon glyphicon-trash"></div> 
-                              Delete 
-                           <% end %>
-                  </div>
-               </div>
-            <% else %>
-            <% end %>
-         </div>
-      <% end %>
-   <% else %>
-   <div class="row">
-      <div class="questions-index-user col-xs-12">
-         <strong><%= @user.username %> hasn't asked any questions yet</strong>
-      </div>
-   </div>
-   <% end %>
-   <!-- Close Container -->
-</div>
-<!-- -----------------------------USERS Answers ------------------------------------ -->
-<h3 class="user-headers"> 
-   <%= @user.username %>'s Answers: 
-</h3>
-<div class="container">		
-   <div class="row questions-index-row">
-      <div class="questions-index-title col-xs-3 col-sm-offset-1">
-         Question
-      </div>
-      <div class="questions-index-content col-xs-4">
-         Content
-      </div>
-      <div class="answers col-xs-2 col-sm-1">
-         Votes
-      </div>
-      <div class="questions-index-user col-xs-3 col-sm-2">
-         Question #
-      </div>
-   </div>
-   <% if !@user.answers.empty? %>
-      <% @user.answers.each do |answer| %>
-         <div class="row questions-index-row">
-            <div class="questions-index-title col-xs-3 col-sm-offset-1">
-               <%= link_to answer.question.title, answer.question %>
-            </div>
-            <div class="questions-index-content col-xs-4">
-               <%= link_to answer.content, answer %>
-            </div>
-            <div class="questions-index-votes-answers col-xs-2 col-sm-1">
-               <div class="votes-container">
-                  <h4>
-                     <div class="glyphicon glyphicon-chevron-up votes-container-buttons up-vote" >
-                     </div>
-                     <strong><u>Votes:</u></strong>
-                     <br>
-                     answer.votes.count %>
-                     <br>
-                     <div class="glyphicon glyphicon-chevron-down votes-container-buttons down-vote"></div>
-                  </h4>
-               </div>
-            </div>
-            <div class="questions-index-user col-xs-3 col-sm-2">
-               <%= link_to answer.question.id, answer.question %>
-            </div>
-         <% if (@current_user.id == answer.user.id)  %>
-               <div class="edit-delete-buttons">
-                  <div class="edit-button">
-                        <%= button_to edit_answer_path(answer), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                              <div class="glyphicon glyphicon-trash"></div> 
-                              Edit 
-                           <% end %>
-                  </div>
-                  <div class="edit-button">
-                        <%= button_to answer, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
-                              <div class="glyphicon glyphicon-trash"></div> 
-                              Delete 
-                           <% end %>
-                  </div>
-               </div>
-            <% else %>
-            <% end %>
-         </div>
-      <% end %>
-   <% else %>
-      <div class="row index-row-cell">
-         <div class="questions-index-user col-xs-12">
-            <strong>No answers for this  question yet</strong>
-         </div>
-      </div>
-   <% end %>
-   <!-- Close Container -->
-</div>
 
-<br><br><br><br>
+            <div class="col-xs-3">
+                <div class="ryanoverflow-horizontal-rows">
+                    <img src="<%= @user.profile_pic %>">
+                    <div class="username bg-w-border">
+                        <u>Name</u> <br>
+                        <%= @user.name.capitalize %>
+                    </div>
+                    <div class="username bg-w-border">
+                        <u>Username</u> <br>
+                        <%= @user.username.capitalize %>
+                    </div>
+<!-- Current User Edit Buttons –––––––––––––––––––––––––––––––––-->
+                    <div class="user-show-profile-column-buttons" style="margin-top: 10px;">
+                        <div class="user-show-edit-button">
+                            <%= button_to edit_user_path(@user.id), class: "btn btn-outline btn-warning", method: :get do %>
+                            <div class="glyphicon glyphicon-edit"></div> 
+                            Edit 
+                            <% end %>
+                        </div>
+                        <div class="user-show-delete-button" style="margin-top: 10px;">
+                            <%= button_to @user, class: "btn btn-outline btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete your Profile?' } do %>
+                            <div class="glyphicon glyphicon-trash"></div> 
+                            Delete 
+                            <% end %>
+                        </div>
+                    </div>  <!-- /.user-show-profile-column-buttons -->
+                </div>  <!-- /.ryanoverflow-horizontal-rows -->
+            </div>  <!-- / .col-xs-3 -->  <!-- End Current User Profile Column --> 
+            <% else %>  <!--  if (@current_user.id == user.user.id)  -->
+            
+<!-- Not Current User Profile Column –––––––––––––––––––––––––––––––––-->
+            <div class="col-xs-3">
+                <div class="ryanoverflow-horizontal-rows">
+                    <div class="profile-image" >
+                        <img src="<%= @user.profile_pic %>">
+                    </div>
+                    <div class="username bg-w-border">
+                        <u>Name</u> <br>
+                        <%= @user.name.capitalize %>
+                    </div>
+                    <div class="username bg-w-border">
+                        <u>Username</u> <br>
+                        <%= @user.username.capitalize %>
+                    </div>
+                </div>  <!-- /.ryanoverflow-horizontal-rows --> 
+            </div>  <!-- /.col-xs-3 -->  <!-- End Not Current User Profile Column --> 
 
+            <% end %>  <!--  if (@current_user.id == user.user.id)  -->
+
+<!-- Bio Column –––––––––––––––––––––––––––––––––-->
+            <div class="col-xs-5" >
+                <div class="ryanoverflow-horizontal-rows">
+                    <div class="bio bg-w-border">
+                        <%= @user.bio %>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="user-show-user-questions col-xs-6">
+                            <div class="bio-preview-header"> 
+                                Questions:
+                            </div>
+                            <div class="bg-w-border" style="overflow:hidden;">
+                                <%=  @user.questions.count %>
+                            </div>
+                        </div>
+                        <div class="user-show-user-answers  col-xs-6">
+                            <div class="questions-preview-header"> 
+                                Answers:
+                            </div>
+                            <div class="bg-w-border" style="overflow:hidden;">
+                                <%=  @user.answers.count %>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-xs-12">
+                        <div class="questions-preview-header">
+                            Tags:
+                        </div>
+                        <div class="tag-grouping">
+                            <% @user.questions.each do |question| %>
+                            <% tags_array = question.tags.split(/\W+/).to_a %>
+                            <div class="tags-individualized bg-w-border">
+                                <% 11.times do %>
+                                <%=  tags_array.sample %>
+                                <% end %>
+                            </div>   
+                            <% end %>
+                        </div>
+                    </div>
+                </div>  <!-- /.ryanoverflow-horizontal-rows -->
+            </div>  <!-- /.col-xs-5 -->  <!-- End Bio Column -->
+
+<!-- About Column –––––––––––––––––––––––––––––––––-->
+            <div class="col-xs-4">
+                <div class="ryanoverflow-horizontal-rows">
+                    <div class="bio-preview-header"> 
+                        <u>Location</u>
+                    </div>
+                    <div class="bg-w-border" style="overflow:hidden;">
+                        <%= @user.location.capitalize %> 
+                    </div>
+                    <div class="bio-preview-header"> 
+                        <u>Reputation</u> <br>
+                    </div>
+                    <div class="bg-w-border" style="overflow:hidden;">
+                        <%= @user.votes.map(&:vote_value).inject(0, &:+) %>
+                    </div>
+                    <div class="bio-preview-header"> 
+                        <u>Email</u> <br>
+                    </div>
+                    <div class="bg-w-border" style="overflow:hidden;">
+                        <%= @user.email.capitalize %>
+                    </div>
+                    <div class="bio-preview-header"> 
+                        <u>Join Date</u> <br>
+                    </div>
+                    <div class="bg-w-border" style="overflow:hidden;">
+                        <%= @user.created_at.strftime(" %B %e, %Y") %>
+                    </div>
+
+                    <div class="bio-preview-header"> 
+                        <u>Latest Activity</u> <br>
+                    </div>
+                    <% if !@user.questions.empty? %>
+                    <div class="bg-w-border" style="overflow:hidden;">
+                        <% if @user.questions.last.created_at < @user.answers.last.created_at  && @user.questions.last.created_at <  @user.updated_at %>
+                        Question asked at<br>
+                        <%= @user.questions.last.created_at.strftime("%l:%M%P on %D") %>
+                        <% elsif @user.answers.last.created_at < @user.questions.last.created_at  && @user.answers.last.created_at <  @user.updated_at %>
+                        Answer given at <br>
+                        <%= @user.answers.last.created_at.strftime("%l:%M%P on %D") %>
+                        <% else %>
+                        Profile Updated at<br>
+                        <%= @user.updated_at.strftime("%l:%M%P on %D") %>
+                        <% end %>
+                    </div>  <!-- /.username bg-w-border -->
+                    <% else %>  <!-- if !@user.questions.empty? -->
+                    <div class="bg-w-border" style="overflow:hidden;">
+                        New Member, no activity yet!
+                    </div>
+                    <% end %>  <!-- if !@user.questions.empty? -->
+                </div>  <!-- /.ryanoverflow-horizontal-rows -->
+            </div>  <!-- /.col-xs-4 --> <!-- Close About Column -->
+
+        </div>  <!-- /.row ryanoverflow-vertical-column -->
+    </div>  <!--  /.col-xs-12 -->
+</div>  <!-- /.container -->
+
+<br>
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<!-- End User Show Profile –––––––––––––––––––––––––––––––––-->
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+
+
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<!-- User Show Questions –––––––––––––––––––––––––––––––––-->
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<div class="row ryanoverflow-vertical-column">
+    <div class="col-xs-8 col-xs-offset-2 bg-w-border user-show-question-header"> 
+        <%= link_to @user do %>
+        <div class="question-profile-image" style="margin-right: 20px;">
+            <img src="<%= @user.profile_pic %>">
+        </div>
+        <% end %>
+        <div class="bio-preview-header">
+            <%= @user.username.capitalize %>'s 
+        </div>
+        <br>
+        <br>
+        <div class="bio-preview-header" style="text-decoration: none;">
+            <%= @user.questions.count %> Questions
+        </div>
+    </div> 
+</div>  <!-- /.row ryanoverflow-vertical-column -->
+
+
+<% if !@user.questions.empty? %>
+<div class="container">
+    <% @user.questions.each do |question| %>
+    <div class="row ryanoverflow-vertical-column question-row">
+
+<!-- Question Column –––––––––––––––––––––––––––––––––-->
+        <div class="col-xs-8">
+            <div class="ryanoverflow-horizontal-rows">
+            
+<!-- Question Content –––––––––––––––––––––––––––––––––-->
+                <div class="col-xs-12">
+                    <div class="bio-preview-header"> 
+                        <u> Question:</u>
+                    </div>
+                    <div class="bio bg-w-border">
+                        <div class="question-title">
+                            <%= link_to question.title, question %>
+                        </div>
+                        <div class="question-content">
+                            <%= link_to question.content, question %>
+                        </div>
+                    </div>
+                </div> 
+
+                <br>
+<!-- Tags Content –––––––––––––––––––––––––––––––––-->
+                <div class="col-xs-12">
+                    <div class="bio-preview-header" style="margin-top: 15px;"> 
+                        <u> Tags:</u>
+                    </div>
+                    <div class="tag-grouping">
+                        <% question.tags.split.to_a.each do |single_tag|%>
+                        <div class="tags-individualized bg-w-border">
+                            <%= single_tag %>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>  
+
+            </div>  <!-- /.ryanoverflow-horizontal-rows -->
+        </div>  <!-- /.col-xs-8 -->   <!-- End Question Column -->
+
+<!-- Current User Activity Column –––––––––––––––––––––––––––––––––-->
+        <% if (@current_user.id == question.user.id)  %>
+        <div class="user-show-activity-column col-xs-2">
+            <div class="ryanoverflow-horizontal-rows">
+                <div class="votes-container bg-w-border">
+                    <div class="glyphicon glyphicon-chevron-up" >
+                    </div>
+                    <div class="votes-container-text">
+                        Votes<br>
+                        <%= question.votes.map(&:vote_value).inject(0, &:+) %>
+                    </div>
+                    <div class="glyphicon glyphicon-chevron-down">
+                    </div>
+                </div>
+                <% if !question.answers.empty? %>
+                <div class="activity-answers">
+                    <u>Answers</u> <br>
+                    <%= question.answers.count %>
+                </div>
+                <% end %>
+            </div>
+        </div>  <!-- / .user-show-activity-column col-xs-2 -->
+
+<!-- Current User Edit Buttons –––––––––––––––––––––––––––––––––-->
+        <div class="content-column-buttons col-xs-2">
+            <div class="ryanoverflow-horizontal-rows">
+                <div class="button-column-buttons">
+                    <div class="edit-button">
+                        <%= button_to edit_question_path(question.id), class: "btn btn-outline btn-warning", method: :get do %>
+                        <div class="glyphicon glyphicon-edit"></div> 
+                        Edit 
+                        <% end %>
+                    </div>
+                    <div class="delete-button">
+                        <%= button_to question, class: "btn btn-outline btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete your Question?' } do %>
+                        <div class="glyphicon glyphicon-trash"></div> 
+                        Delete 
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>  <!-- /.content-column-buttons col-xs-2 -->
+
+    <% else %>  <!-- / if (@current_user.id == question.user.id)  -->
+
+<!-- Not Current User Activity Column –––––––––––––––––––––––––––––––––-->
+        <div class="user-show-activity-column col-xs-2 col-xs-offset-2">
+            <div class="ryanoverflow-horizontal-rows">
+                <div class="votes-container bg-w-border">
+                    <div class="glyphicon glyphicon-chevron-up" >
+                    </div>
+                    <div class="votes-container-text">
+                        Votes<br>
+                        <%= question.votes.map(&:vote_value).inject(0, &:+) %>
+                    </div>
+                    <div class="glyphicon glyphicon-chevron-down">
+                    </div>
+                </div>
+                <% if !question.answers.empty? %>
+                <div class="activity-answers">
+                    <u>Answers</u> <br>
+                    <%= question.answers.count %>
+                </div>
+                <% end %>
+            </div>
+        </div>  <!-- / .user-show-activity-column col-xs-2 col-xs-offset-2 -->
+
+    <% end %>  <!-- / if (@current_user.id == question.user.id)  -->
+
+    </div>  <!-- /.row ryanoverflow-vertical-column question-row -->
+
+    <% end %>  <!-- @user.questions.each do |question| -->
+
+    <% else %> <!-- /if !@user.questions.empty? -->
+
+<!-- Users Profile has no Questions -->
+        <div class="col-xs-8 col-xs-offset-2">
+            <div class="ryanoverflow-horizontal-rows">
+                <div class="ryanoverflow-horizontal-rows question-row">
+                    <div class="bio-preview-header"> 
+                        <%= @user.username.capitalize %> hasn't asked any questions yet!!
+                    </div>
+                </div>  
+            </div>  <!-- /.ryanoverflow-horizontal-row -->
+        </div>  <!-- /.col-xs-8 col-xs-offset-2 -->
+
+</div>  <!-- /.container -->
+<% end %>  <!-- /.if !@user.questions.empty? -->
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<!-- End User Show Questions –––––––––––––––––––––––––––––––––-->
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+
+
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<!-- User Show Answers –––––––––––––––––––––––––––––––––-->
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<div class="row ryanoverflow-vertical-column">
+    <div class="col-xs-8 col-xs-offset-2 bg-w-border user-show-question-header"> 
+        <%= link_to @user do %>
+        <div class="question-profile-image" style="margin-right: 20px;">
+            <img src="<%= @user.profile_pic %>">
+        </div>
+        <% end %>
+        <div class="bio-preview-header">
+            <%= @user.username.capitalize %>'s 
+        </div>
+        <br>
+        <br>
+        <div class="bio-preview-header" style="text-decoration: none;">
+            <%= @user.answers.count %> Answers
+        </div>
+    </div>
+</div>  <!-- /.row ryanoverflow-vertical-column -->
+
+
+<% if !@user.answers.empty? %>
+<div class="container">
+    <% @user.answers.each do |answer| %>
+
+<!-- Answer Row –––––––––––––––––––––––––––––––––-->
+    <div class="row ryanoverflow-vertical-column question-row">
+
+        <div class="col-xs-8">
+            <div class="ryanoverflow-horizontal-rows">
+<!-- Answer Content Column –––––––––––––––––––––––––––––––––-->
+                <div class="col-xs-12">
+                    <div class="bio-preview-header"> 
+                        <u> Answer:</u>
+                    </div>
+                    <div class="bio bg-w-border">
+                        <div class="question-title" style="border:none">
+                            <%= answer.content %>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="bio-preview-header"> 
+                        <u> Answer to Question:</u>
+                    </div>
+                    <div class="bio bg-w-border">
+                        <div class="question-title" style="border:none">
+                            <%= link_to answer.question.title, answer.question %>
+                        </div>
+                    </div>
+                </div>  <!-- /.col-xs-12 -->
+                <br>
+<!-- Answer Tags –––––––––––––––––––––––––––––––––-->
+                <div class="col-xs-12">
+                    <div class="bio-preview-header" style="margin-top: 15px;"> 
+                        <u> Tags:</u>
+                    </div>
+                    <div class="tag-grouping">
+                        <% answer.question.tags.split.to_a.each do |single_tag|%>
+                        <div class="tags-individualized bg-w-border">
+                            <%= single_tag %>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>  <!-- /.col-xs-12 -->
+            </div>  <!-- /.ryanoverflow-horizontal-rows -->
+        </div>  <!-- /.col-xs-8 -->  <!-- End Answer Column --> 
+
+        <% if (@current_user.id == answer.user.id)  %>
+
+<!-- Current User Activity Column –––––––––––––––––––––––––––––––––-->
+        <div class="user-show-activity-column col-xs-2">
+            <div class="ryanoverflow-horizontal-rows">
+                <div class="votes-container bg-w-border">
+                    <div class="glyphicon glyphicon-chevron-up" ></div>
+                    <div class="votes-container-text">
+                        Votes<br>
+                        <%= answer.votes.map(&:vote_value).inject(0, &:+) %>
+                    </div>
+                    <div class="glyphicon glyphicon-chevron-down"></div>
+                </div>
+            </div>
+        </div>  <!-- / .user-show-activity-column col-xs-2 -->  <!-- End Current User Activity Column -->
+
+<!-- Current User Edit Buttons –––––––––––––––––––––––––––––––––-->
+    <div class="content-column-buttons col-xs-2">
+        <div class="ryanoverflow-horizontal-rows">
+            <div class="button-column-buttons">
+                <div class="edit-button">
+                    <%= button_to edit_answer_path(answer.id), class: "btn btn-outline btn-warning", method: :get do %>
+                    <div class="glyphicon glyphicon-edit"></div> 
+                    Edit 
+                    <% end %>
+                </div>
+                <div class="delete-button">
+                    <%= button_to answer, class: "btn btn-outline btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
+                    <div class="glyphicon glyphicon-trash"></div> 
+                    Delete 
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>  <!-- /.content-column-buttons col-xs-2 --> <!-- End Edit Buttons Column -->
+
+    <% else %>  <!-- / if (@current_user.id == answer.user.id)  -->
+
+<!-- Not Current User Activity Column –––––––––––––––––––––––––––––––––-->
+    <div class="user-show-activity-column col-xs-2 col-xs-offset-2">
+        <div class="ryanoverflow-horizontal-rows">
+            <div class="votes-container bg-w-border">
+                <div class="glyphicon glyphicon-chevron-up" ></div>
+                <div class="votes-container-text">
+                    Votes<br>
+                    <%= answer.votes.map(&:vote_value).inject(0, &:+) %>
+                </div>
+                <div class="glyphicon glyphicon-chevron-down"></div>
+            </div>
+        </div>
+    </div>  <!-- / .user-show-activity-column col-xs-2 col-xs-offset-2 -->  <!-- End Not Current User Activity Column -->
+
+    <% end %>  <!-- / if (@current_user.id == answer.user.id)  -->
+
+</div>  <!-- /.row ryanoverflow-vertical-column question-row -->
+
+<% end %>  <!-- @user.answer.each do |answer| -->
+
+<% else %> <!-- /if !@user.answers.empty? -->
+
+<!-- Users Profile has no Answers -->
+    <div class="col-xs-8 col-xs-offset-2">
+        <div class="ryanoverflow-horizontal-rows">
+            <div class="ryanoverflow-horizontal-rows question-row">
+                <div class="bio-preview-header"> 
+                    <%= @user.username.capitalize %> no answered yet!!
+                </div>
+            </div>  
+        </div>  
+    </div>
+
+</div>  <!-- /.container -->
+<% end %>  <!-- /.if !@user.answers.empty? -->
+
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<!-- End User Show Answers  –––––––––––––––––––––––––––––––––-->
+<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->

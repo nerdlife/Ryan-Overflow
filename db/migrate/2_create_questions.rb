@@ -1,13 +1,15 @@
- class CreateQuestions < ActiveRecord::Migration
-  def change
-    create_table :questions do |t|
-    	t.text :title, null: false
-    	t.text :content, null: false
-    	t.integer :user_id, null: false
-    	t.integer :votes, default: 0
-    	t.text :tags
+class CreateQuestions < ActiveRecord::Migration
 
-      t.timestamps null: false
-    end
-  end
+def change
+create_table :questions do |t|
+t.text :title, null: false
+t.text :content, null: false
+t.integer :user_id, null: false
+# t.integer  :vote_count, default: 0
+t.text :tags
+
+t.timestamps null: false
+end
+end
+
 end

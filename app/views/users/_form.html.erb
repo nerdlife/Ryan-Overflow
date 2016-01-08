@@ -1,97 +1,93 @@
 <!-- USER FORM -->
+
 <%= form_for @user do |f| %>
-   <div class="container">
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.label :email, "Email", class: "form-input-label"%>
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_field :email, :placeholder => 'Email Address', class: "form-control" %>
-         </div>
-      </div>
-      <br><br>
+<div class="container sign-in-up">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <br>
 
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.label :name, "Name", class: "form-input-label"%>
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_field :name, :placeholder => 'Your Name', class: "form-control" %>
-         </div>
-      </div>
-      <br><br>
+            <div class="tab-content">
+                <!-- SIGN UP -->
+                <div class="tab-pane fade in active" id="new">
+                    <br>
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-user"></i>
+                                <%= f.text_field :name, :placeholder => 'Name', class: "form-control input-lg" %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-globe"></i>
+                                <%= f.text_field :username, :placeholder => 'Username', class: "form-control input-lg" %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-envelope"></i>
+                                <%= f.text_field :email, :placeholder => 'Email', class: "form-control input-lg" %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-key"></i>
+                                <%= f.text_field :password, :placeholder => 'Password', class: "form-control input-lg" %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-key"></i>
+                                <%= f.text_field :password_confirmation, :placeholder => 'Confirm Password', class: "form-control input-lg" %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-camera"></i>
+                                <%= f.text_field :profile_pic, :placeholder => 'Profile Pic', class: "form-control input-lg" %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-book"></i>
+                                <%= f.text_area :bio, :placeholder => 'Bio', rows: "12", class: "form-control input-lg" %>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <hr>
 
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.label :username, "Username", class: "form-input-label"%>
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_field :username, placeholder: 'Username', class: "form-control input-xlg" %>
-         </div>
-      </div>
-      <br><br>
+                    <% if @current_user && @current_user.id == @user.id %>
+                    <div class="form-group">
+                        <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
+                            <div class="edit-delete-buttons">
+                                <div class="edit-button col-xs-6">
+                                    <%= button_to @user, class: "btn btn-outline btn-success", method: :update do %>
+                                    <div class="glyphicon glyphicon-ok"></div>
+                                    Submit
+                                    <% end %>
+                                </div>     
+                                <div class="edit-button col-xs-6">    
+                                    <%= button_to users_path, class: "btn btn-outline btn-info", method: :get do %>
+                                    <div class="glyphicon glyphicon-remove"></div>
+                                    Cancel
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <% else %>
+                    <div class=" text-center">
+                        <button type="submit" class="btn btn-outline btn-success"><div class="glyphicon glyphicon-ok-sign"></div> &nbsp SIGN UP</button>
+                    </div>
+                    <% end %>
+                </div>
+                <hr>
+            </div>  <!-- /.tab-content -->
+        </div>  <!-- /. col-md-4 col-md-offset-4 -->
+    </div>  <!-- /. row -->
+</div>  <!-- /.container sign-in-up -->
 
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.label :password, "Password", class: "form-input-label"%>
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_field :password, type: "password", class: "form-control input-xlg" %>
-         </div>
-      </div>
-      <br><br>
 
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.label :password_confirmation, "Confirm Password", class: "form-input-label"%>
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_field :password_confirmation,  type: "password", class: "form-control input-xlg" %>
-         </div>
-      </div>
-      <br><br>
-
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.label :bio, "Profile Bio", class: "form-input-label"%>
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_area :bio, placeholder: 'Bio...', rows: "12", class: "form-control input-xlg" %>
-         </div>
-      </div>
-      <br><br>
-
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.label :title, "Profile Pic Url", class: "form-input-label"%>
-         </div>
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-            <%= f.text_field :profile_pic, placeholder: 'Url of Pic', class: "form-control input-xlg" %>
-         </div>
-      </div>
-    <% if @current_user && @current_user.id == @user.id %>
-      <div class="form-group">
-         <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center;">
-            <div class="edit-delete-buttons">
-               <div class="edit-button">
-                  <%= button_to @user, class: "btn btn-outline btn-success btn-lg", method: :update do %>
-                     <div class="glyphicon glyphicon-trash"></div>
-                     Submit
-                  <% end %>
-               </div>     
-               <div class="edit-button">    
-                  <%= button_to user_path, class: "btn btn-outline btn-info btn-lg", method: :update do %>
-                     <div class="glyphicon glyphicon-trash"></div>
-                     Cancel
-                   <% end %>
-               </div>
-   <% else %>
-   <% end %>
-            </div>
-         </div>
-      </div>
-      <br><br>
-      <!-- CLOSE CONTAINER -->
-   </div>		
+<!-- CLOSE CONTAINER -->
+</div>    
 <% end %>
-

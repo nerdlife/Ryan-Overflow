@@ -11,28 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 3) do
+ActiveRecord::Schema.define(version: 4) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
-    t.text     "content",                 null: false
-    t.integer  "question_id",             null: false
-    t.integer  "user_id",                 null: false
-    t.integer  "votes",       default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.text     "content",     null: false
+    t.integer  "question_id", null: false
+    t.integer  "user_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "questions", force: :cascade do |t|
-    t.text     "title",                  null: false
-    t.text     "content",                null: false
-    t.integer  "user_id",                null: false
-    t.integer  "votes",      default: 0
+    t.text     "title",      null: false
+    t.text     "content",    null: false
+    t.integer  "user_id",    null: false
     t.text     "tags"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,9 +41,19 @@ ActiveRecord::Schema.define(version: 3) do
     t.text     "location",        default: "Portland, Oregon"
     t.text     "bio",             default: "This is my empty bio that I will fill out soon"
     t.text     "profile_pic",     default: "http://static1.businessinsider.com/image/525bfb4a69bedda83f84c289-480/bill-belichick.jpg"
-    t.integer  "votes",           default: 0
     t.datetime "created_at",                                                                                                           null: false
     t.datetime "updated_at",                                                                                                           null: false
   end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "vote_value"
+    t.integer  "user_id"
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "votes", ["votable_id", "votable_type"], name: "index_votes_on_votable_id_and_votable_type", using: :btree
 
 end

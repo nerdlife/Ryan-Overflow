@@ -1,61 +1,60 @@
 <!-- ANSWER SHOW -->
 <div class="container">
-   <div class="row answer-show-row">
-      <div class="answer-headers col-xs-2 col-sm-offset-1 col-sm-1">
-         Question#
-      </div>
-      <div class="answer-headers col-xs-3">
-         Question
-      </div>
-      <div class="answer-headers col-xs-4">
-         Answer Content
-      </div>
-      <div class="answer-headers col-xs-1">
-         Answer Votes
-      </div>
-      <div class="answer-headers col-xs-2 col-sm-1">
-         Answered By
-      </div>
-   </div>
-   <div class="row answer-show-row">
-      <div class="answer-show-question-number col-xs-2 col-sm-offset-1 col-sm-1">
-         <%= link_to @answer.question.id, @answer.question %>
-      </div>
-      <div class="answer-show-question-title col-xs-3">
-         <%= link_to @answer.question.title, @answer.question %>
-      </div>
-      <div class="answer-show-content col-xs-4">
-         <%= @answer.content %><br>
-         <%= @answer.created_at.strftime("%B %e, %Y") %>
-      </div>
-      <div class="answer-show-votes col-xs-1">
-         <%= @answer.votes.count %>
-      </div>
-      <div class="answer-show-user col-xs-2 col-sm-1">
-         <%= link_to @answer.user do %>
-            <img class="answer-profile-image" src="<%= @answer.user.profile_pic %>">
-         <% end %><br>
-         <%= @answer.user.username %><br>
-         <%= @answer.user.votes.count %><br>
-      </div>
-      <% if (@current_user.id == @answer.user_id)  %>
-         <div class="edit-delete-buttons">
-            <div class="edit-button">
-                  <%= button_to edit_answer_path(@answer), class: "btn btn-outline btn-warning btn-lg", method: :get do %>
-                        <div class="glyphicon glyphicon-trash"></div> 
-                        Edit 
-                     <% end %>
-            </div>
-            <div class="edit-button">
-                  <%= button_to @answer, class: "btn btn-outline btn-danger btn-lg", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
-                        <div class="glyphicon glyphicon-trash"></div> 
-                        Delete 
-                     <% end %>
-            </div>
-         </div>
-      <% else %>
-      <% end %>
-   </div>
-   <!-- CLOSE CONTAINER -->
+	<div class="row answer-show-row">
+		<div class="answer-headers col-xs-2 col-sm-offset-1 col-sm-1">
+			Question#
+		</div>
+		<div class="answer-headers col-xs-3">
+			Question
+		</div>
+		<div class="answer-headers col-xs-4">
+			Answer Content
+		</div>
+		<div class="answer-headers col-xs-1">
+			Answer Votes
+		</div>
+		<div class="answer-headers col-xs-2 col-sm-1">
+			Answered By
+		</div>
+	</div>
+	<div class="row answer-show-row">
+		<div class="answer-show-question-number col-xs-2 col-sm-offset-1 col-sm-1">
+			<%= link_to @answer.question.id, @answer.question %>
+		</div>
+		<div class="answer-show-question-title col-xs-3">
+			<%= link_to @answer.question.title, @answer.question %>
+		</div>
+		<div class="answer-show-content col-xs-4">
+			<%= @answer.content %><br>
+			<%= @answer.created_at.strftime("%B %e, %Y") %>
+		</div>
+		<div class="answer-show-votes col-xs-1">
+			<%= @answer.votes.map(&:vote_value).inject(0, &:+) %>
+		</div>
+		<div class="answer-show-user col-xs-2 col-sm-1">
+			<%= link_to @answer.user do %>
+			<img class="answer-profile-image" src="<%= @answer.user.profile_pic %>">
+			<% end %><br>
+			<%= @answer.user.username.capitalize %><br>
+			Reputation: <%= @answer.user.votes.map(&:vote_value).inject(0, &:+) %><br>
+		</div>
+		<% if (@current_user.id == @answer.user_id)  %>
+		<div class="edit-delete-buttons">
+			<div class="edit-button">
+				<%= button_to edit_answer_path(@answer), class: "btn btn-outline btn-warning", method: :get do %>
+				<div class="glyphicon glyphicon-trash"></div> 
+				Edit 
+				<% end %>
+			</div>
+			<div class="edit-button">
+				<%= button_to @answer, class: "btn btn-outline btn-danger", method: :delete, data: { confirm: 'Are you sure you want to delete your Answer?' } do %>
+				<div class="glyphicon glyphicon-trash"></div> 
+				Delete 
+				<% end %>
+			</div>
+		</div>
+		<% else %>
+		<% end %>
+	</div>
 </div>
 <br><br><br><br>

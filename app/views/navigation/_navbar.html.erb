@@ -1,131 +1,138 @@
 <!-- Nav - LOGGED IN USER –––––––––––––––––––––––––––––––––-->
 <% if @current_user %>
-   <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
-         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
-               <div class="sr-only">Toggle navigation</div>
-               <div class="icon-bar"></div>
-               <div class="icon-bar"></div>
-               <div class="icon-bar"></div>
-            </button>
-            <!-- Home Brand Link –––––––––––––––––––––––––––––––––––––––––-->
-            <div id="nav-brand-roverflow">
-               <%= link_to root_path do %>
-                  <img class="navbar-brand" src="../assets/icon-small.jpg">
-               <% end %>
-               <%= link_to "Ryan Overflow", root_path, class: 'navbar-brand' %>
-            </div>
-         </div>
-         <div class="navbar-collapse collapse" id="navbar-collapsible">
-            <!-- Nav Items –––––––––––––––––––––––––––––––––––-->
-            <ul class="nav navbar-nav navbar-right">
-               <li>
-                  <%= link_to "Questions", "/questions"  %>
-               </li>
-               <li>
-                  <%= link_to "Ask", "/questions/new"  %>
-               </li>
-               <li>
-                  <%= link_to "Users", "/users"  %>
-               </li>
-               <!--Search ––––––––––––––––––––––––––––––––––––––-->
-               <li class="search-nav-item">
-                  <%= form_tag(questions_path, method: 'get', class: "navbar-form", id: "search-form") do %>
-                     <div class="form-group" style="display:inline;">
-                        <div class="input-group">
-                           <%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow..." %>
-                           <div class="input-group-addon">
-                              <button type="submit">
-                                 <div class="glyphicon glyphicon-search">	
-                                 </div>
-                              </button>
-                           </div>
-                        </div>
-                     </div>
-                  <% end %>
-               </li>
-               <!-- Buttons - Log Out ––––––––––––––––––––––––-->
-               <li>
-                  <button type="button" class="btn btn-default">
-                     <div class="glyphicon glyphicon-off"></div>
-                     <%= link_to 'Logout', "/logout" %>
-                  </button>
-               </li>
-            </ul>
-         </div>
-      </div>
-   </nav>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+				<div class="sr-only">Toggle navigation</div>
+				<div class="icon-bar"></div>
+				<div class="icon-bar"></div>
+				<div class="icon-bar"></div>
+			</button>
+			<!-- Home Brand Link –––––––––––––––––––––––––––––––––––––––––-->
+			<div id="nav-brand-roverflow">
+				<%= link_to root_path do %>
+				<img class="navbar-brand" src="../assets/icon-small.jpg">
+				<% end %>
+				<%= link_to "Ryan Overflow", root_path, class: 'navbar-brand' %>
+			</div>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-collapsible">
+			<!-- Nav Items –––––––––––––––––––––––––––––––––––-->
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<%= link_to "Questions", "/questions"  %>
+				</li>
+				<li>
+					<%= link_to "Ask", "/questions/new"  %>
+				</li>
+				<li>
+					<%= link_to "Users", "/users"  %>
+				</li>
+				<!--Search ––––––––––––––––––––––––––––––––––––––-->
+				<li class="search-nav-item">
+					<%= form_tag(questions_path, method: 'get', class: "navbar-form", id: "search-form") do %>
+					<div class="form-group" style="display:inline;">
+						<div class="input-group">
+							<%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow..." %>
+							<div class="input-group-addon">
+								<button type="submit">
+									<div class="glyphicon glyphicon-search">	
+									</div>
+								</button>
+							</div>
+						</div>
+					</div>
+					<% end %>
+				</li>
+				<!-- Buttons - Log Out ––––––––––––––––––––––––-->
+				<li>
+					<button type="button" class="btn btn-default">
+						<div class="glyphicon glyphicon-off"></div>
+						<%= link_to 'Logout', "/logout" %>
+					</button>
+				</li>
+				<li>
+					<%= button_to user_path(@current_user.id), class: "btn btn-default right-nav-btn",  method: :get do %>
+					<img class="current-image" src="<%= @current_user.profile_pic %>">
+					<span class= "nav-user"><%= truncate(@current_user.username.capitalize, length:10) %></span>
+					<% end %>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+</nav>
 
 <!-- Nav - USER NOT LOGGED IN –––––––––––––––––––––––––––––––––––-->
 
 <% else %>
 
-   <nav class="navbar navbar-default" role="navigation">
-      <div class="container">
-         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
-               <div class="sr-only">Toggle navigation</div>
-               <div class="icon-bar"></div>
-               <div class="icon-bar"></div>
-               <div class="icon-bar"></div>
-            </button>
-            <!-- Home Brand Link –––––––––––––––––––––––––––––––––––––––––-->
-            <div id="nav-brand-roverflow">
-               <%= link_to root_path do %>
-                  <img class="navbar-brand" src="../assets/icon-small.jpg">
-               <% end %>
-               <%= link_to "Ryan Overflow", root_path, class: 'navbar-brand name-nav' %>
-            </div>
-         </div>
-         <div class="navbar-collapse collapse" id="navbar-collapsible">
-            <!-- Nav Items –––––––––––––––––––––––––––––––––––-->
-            <ul class="nav navbar-nav navbar-right">
-               <li>
-                  <%= link_to "Questions", "/questions"  %>
-               </li>
-               <li>
-                  <%= link_to "Ask", "/questions/new"  %>
-               </li>
-               <li>
-                  <%= link_to "Users", "/users"  %>
-               </li>
-               <!--Search ––––––––––––––––––––––––––––––––––––––-->
-               <li class="search-nav-item">
-                  <%= form_tag(questions_path, method: 'get', class: "navbar-form", id: "search-form") do %>
-                     <div class="form-group" style="display:inline;">
-                        <div class="input-group">
-                           <%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow..." %>
-                           <div class="input-group-addon">
-                              <button type="submit">
-                                 <div class="glyphicon glyphicon-search">
-                                 </div>
-                              </button>
-                           </div>
-                        </div>
-                     </div>
-                  <% end %>
-               </li>
-               <!-- Buttons - Log In & Sign Up ––––––––––––––––––––––––-->
-               <li>
-                  <button type="button" class="btn btn-default left-nav-button">
-                     <div class="glyphicon glyphicon-log-in"></div>
-                        <%= link_to 'Log In', "login" %>
-                  </button>
-               </li>
-               <li>
-                  <button type="button" class="btn btn-default">
-                     <div class="glyphicon glyphicon-pencil"></div>
-                     <%= link_to 'Sign up', "/signup" %>
-                  </button>
-               </li>
-            </ul>
-         </div>
-      </div>
-   </nav>
+<nav class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapsible">
+				<div class="sr-only">Toggle navigation</div>
+				<div class="icon-bar"></div>
+				<div class="icon-bar"></div>
+				<div class="icon-bar"></div>
+			</button>
+			<!-- Home Brand Link –––––––––––––––––––––––––––––––––––––––––-->
+			<div id="nav-brand-roverflow">
+				<%= link_to root_path do %>
+				<img class="navbar-brand" src="../assets/icon-small.jpg">
+				<% end %>
+				<%= link_to "Ryan Overflow", root_path, class: 'navbar-brand name-nav' %>
+			</div>
+		</div>
+		<div class="navbar-collapse collapse" id="navbar-collapsible">
+			<!-- Nav Items –––––––––––––––––––––––––––––––––––-->
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<%= link_to "Questions", "/questions"  %>
+				</li>
+				<li>
+					<%= link_to "Ask", "/questions/new"  %>
+				</li>
+				<li>
+					<%= link_to "Users", "/users"  %>
+				</li>
+				<!--Search ––––––––––––––––––––––––––––––––––––––-->
+				<li class="search-nav-item">
+					<%= form_tag(questions_path, method: 'get', class: "navbar-form", id: "search-form") do %>
+					<div class="form-group" style="display:inline;">
+						<div class="input-group">
+							<%= text_field_tag :search, params[:search], class: "form-control pholder-text", placeholder: "Search Ryan Overflow..." %>
+							<div class="input-group-addon">
+								<button type="submit">
+									<div class="glyphicon glyphicon-search">
+									</div>
+								</button>
+							</div>
+						</div>
+					</div>
+					<% end %>
+				</li>
+				<!-- Buttons - Log In & Sign Up ––––––––––––––––––––––––-->
+				<li>
+					<button type="button" class="btn btn-default">
+						<div class="glyphicon glyphicon-log-in"></div>
+						<%= link_to 'Log In', "login" %>
+					</button>
+				</li>
+				<li>
+					<button type="button" class="btn btn-default right-nav-btn">
+						<div class="glyphicon glyphicon-pencil"></div>
+						<%= link_to 'Sign up', "/signup" %>
+					</button>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
 
 <% end %>
 
 
-                                 
+
 

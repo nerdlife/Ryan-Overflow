@@ -1,14 +1,16 @@
 class CreateAnswers < ActiveRecord::Migration
-  def change
-    create_table :answers do |t|
-    	t.text :content, null: false
-    	t.integer :question_id, null: false
-    	t.integer :user_id, null: false
-    	t.integer :votes, default: 0
-  
-    	
-      t.timestamps null: false
-    end
-  end
+
+def change
+create_table :answers do |t|
+t.text :content, null: false
+t.integer :question_id, null: false
+t.integer :user_id, null: false
+# t.integer  :vote_count, default: 0
+
+
+t.timestamps null: false
 end
- 
+end
+
+end
+
