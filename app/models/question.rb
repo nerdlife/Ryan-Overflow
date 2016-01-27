@@ -1,7 +1,8 @@
 class Question < ActiveRecord::Base
     belongs_to :user
     has_many :answers, dependent: :destroy
-    has_many :votes, as: :votable
+    
+    acts_as_votable
 
     validates :title, presence: true, uniqueness: true,
     length: { in: 8..125,
@@ -17,6 +18,10 @@ class Question < ActiveRecord::Base
 
     def self.search(query)
         where("title || content || tags  ilike ?", "%#{query}%")
+    end
+
+    def votes_total
+        get_upvotes.count - get_downvotes.count
     end
 
 end

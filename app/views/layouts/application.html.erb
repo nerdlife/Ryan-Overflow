@@ -33,26 +33,32 @@
      </head>
 
      <body>
-       <div class="body-container">
-       	<!-- Navigation Bar ––––––––––––––––––––––––––––––––––––––-->
-       	<%= render partial: "navigation/navbar" %>      
-       	<!-- Error / Success Messages ––––––––––––––––––––––––––––––––––––––-->
-       	<div class="row">
-       		<div class="col-xs-10 col-xs-offset-1">
-       			<div class="flash-message-alert">
-       				<% flash.each do |k, message| %>
-       				<p> <div> <%=  message %> </div> </p>
-       				<% end %>
-       			</div>
-       		</div>
-       	</div>
-       	<!-- Main Content ––––––––––––––––––––––––––––––––––––––-->
-       	<%= yield %>
-       	<!-- Footer ––––––––––––––––––––––––––––––––––––––-->
-        <footer>
-        <h4>Ryan Overflow 2015 &copy</h4>
-        <h6><a href="http://www.RyanUrie.com" target="_blank">www.RyanUrie.com</a></h6>
-        </footer>
+           <div class="body-container">
+           	<!-- Navigation Bar ––––––––––––––––––––––––––––––––––––––-->
+           	<%= render partial: "navigation/navbar" %>      
+           	<!-- Error / Success Messages ––––––––––––––––––––––––––––––––––––––-->
+                <div class="row">
+                    <div class="col-xs-10 col-xs-offset-1">
+                        <div class="flash-message-alert">
+                            <% flash.each do |k, message| %>
+                            <p> <div> <%=  message %> </div> </p>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+
+
+           	<!-- Main Content ––––––––––––––––––––––––––––––––––––––-->
+           	<%= yield %>
+
+
+           	<!-- Footer ––––––––––––––––––––––––––––––––––––––-->
+            <footer>
+                <h4>Ryan Overflow 2015 &copy</h4>
+                <h6><a href="http://www.RyanUrie.com" target="_blank">www.RyanUrie.com</a></h6>
+            </footer>
+
         </div>  <!-- /.body-container -->
+        
      </body>
      </html>

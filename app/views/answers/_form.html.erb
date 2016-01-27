@@ -1,41 +1,43 @@
 <!-- ANSWER FORM -->
 <%= form_for @answer do |f| %>
-<div class="container">
-	<div class="form-group">
-		<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align:center; margin-top: 18px;" >
-			<h3>
-				Edit your answer <%= answer.user.username.capitalize %><br>
-			</h3>
-			<h4> 
-				<%= f.label :content, "Answer Content", class: "form-input-label", style: "text-decoration: underline" %> 
-			</h4>
-		</div>
-		<div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
-			<%= f.text_area :content, placeholder: 'Answer Title', rows: "12", class: "form-control" %>
-		</div>
+    <div class="container">
 
-	</div>
-	<div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center; margin-top: 18px;" >
-		<div class="content-column-tags">
-			<% answer.question.tags.split.to_a.each do |tag| %>
-			<div class="content-column-tags-individual">
-				<%= tag %>
-			</div>
-			<% end %>
-		</div>
-		<div class="col-xs-6">
-			<%= button_to answer.question, class: "btn btn-outline btn-success", method: :update do %>
-			<div class="glyphicon glyphicon-ok"></div> Submit
-			<% end %>
-		</div>
-		<div class="col-xs-6">
-			<%= button_to questions_path, class: "btn btn-outline btn-info", method: :get do %>
-			<div class="glyphicon glyphicon-remove"></div> Cancel
-			<% end %>
-		</div>
-	</div>
-</div>
-<% end %>
+        <div class="form-group">
+            <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align:center; margin-top: 18px;" >
+                <h3>
+                    Edit your answer <%= answer.user.username.capitalize %><br>
+                </h3>
+                <h4> 
+                    <%= f.label :content, "Answer Content", class: "form-input-label", style: "text-decoration: underline" %> 
+                </h4>
+            </div>
+            <div class="form-input-field col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10">
+                <%= f.text_area :content, placeholder: 'Answer Title', rows: "12", class: "form-control" %>
+                </div>
+        </div>  <!-- /.form-group -->
+
+        <div class="col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10" style="text-align: center; margin-top: 18px;" >
+            <div class="content-column-tags">
+                <% answer.question.tags.split.to_a.each do |tag| %>
+                <div class="content-column-tags-individual">
+                    <%= tag %>
+                </div>
+                <% end %>
+            </div>
+            <div class="col-xs-6">
+                <%= button_to answer.question, class: "btn btn-outline btn-success", method: :update do %>
+                <div class="glyphicon glyphicon-ok"></div> Submit
+                <% end %>
+            </div>
+            <div class="col-xs-6">
+                <%= button_to questions_path, class: "btn btn-outline btn-info", method: :get do %>
+                <div class="glyphicon glyphicon-remove"></div> Cancel
+                <% end %>
+            </div>
+            </div>  <!-- /.col-sm-offset-0 col-sm-12 col-md-offset-1 col-md-10 -->
+
+    </div>  <!-- /.container -->
+<% end %>  <!-- / form_for @answer do |f| -->
 <br>
 <br>
 <br>

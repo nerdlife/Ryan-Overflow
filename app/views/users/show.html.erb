@@ -1,14 +1,13 @@
 <!-- USER SHOW PAGE –––––––––––––––––––––––––––––––––-->
-    <div class="row">
-        <div class="col-xs-12 page-title">
-            <span class="section-title">
-                <span class="section-title-bookends">:::::</span> 
-                <%= @user.username.capitalize %>
-                <span class="section-title-bookends">:::::</span>
-            </span>
-        </div>   <!-- /.col-xs-12 page-title -->
-    </div>  <!-- /.row -->
-
+<div class="row">
+    <div class="col-xs-12 page-title">
+        <span class="section-title">
+            <span class="section-title-bookends">:::::</span> 
+            <%= @user.username.capitalize %>
+            <span class="section-title-bookends">:::::</span>
+        </span>
+    </div>   <!-- /.col-xs-12 page-title -->
+</div>  <!-- /.row -->
 
 <!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
 <!-- User Show Profile ––––––––––––––––––––––––––––––––––––––––––-->
@@ -47,6 +46,7 @@
                         <u>Username</u> <br>
                         <%= @user.username.capitalize %>
                     </div>
+
 <!-- Current User Edit Buttons –––––––––––––––––––––––––––––––––-->
                     <div class="user-show-profile-column-buttons" style="margin-top: 10px;">
                         <div class="user-show-edit-button">
@@ -62,8 +62,10 @@
                             <% end %>
                         </div>
                     </div>  <!-- /.user-show-profile-column-buttons -->
+
                 </div>  <!-- /.ryanoverflow-horizontal-rows -->
-            </div>  <!-- / .col-xs-3 -->  <!-- End Current User Profile Column --> 
+            </div>  <!-- / .col-xs-3 -->
+
             <% else %>  <!--  if (@current_user.id == user.user.id)  -->
             
 <!-- Not Current User Profile Column –––––––––––––––––––––––––––––––––-->
@@ -81,7 +83,7 @@
                         <%= @user.username.capitalize %>
                     </div>
                 </div>  <!-- /.ryanoverflow-horizontal-rows --> 
-            </div>  <!-- /.col-xs-3 -->  <!-- End Not Current User Profile Column --> 
+            </div>  <!-- /.col-xs-3 -->
 
             <% end %>  <!--  if (@current_user.id == user.user.id)  -->
 
@@ -126,7 +128,7 @@
                         </div>
                     </div>
                 </div>  <!-- /.ryanoverflow-horizontal-rows -->
-            </div>  <!-- /.col-xs-5 -->  <!-- End Bio Column -->
+            </div>  <!-- /.col-xs-5 -->
 
 <!-- About Column –––––––––––––––––––––––––––––––––-->
             <div class="col-xs-4">
@@ -141,7 +143,9 @@
                         <u>Reputation</u> <br>
                     </div>
                     <div class="bg-w-border" style="overflow:hidden;">
-                        <%= @user.votes.map(&:vote_value).inject(0, &:+) %>
+                        USER REPUTATION HERE
+                        <!-- Created first model method, finish this next -->
+                        <%#  @user.questions.last.votes_total %>
                     </div>
                     <div class="bio-preview-header"> 
                         <u>Email</u> <br>
@@ -155,10 +159,10 @@
                     <div class="bg-w-border" style="overflow:hidden;">
                         <%= @user.created_at.strftime(" %B %e, %Y") %>
                     </div>
-
                     <div class="bio-preview-header"> 
                         <u>Latest Activity</u> <br>
                     </div>
+
                     <% if !@user.questions.empty? %>
                     <div class="bg-w-border" style="overflow:hidden;">
                         <% if @user.questions.last.created_at < @user.answers.last.created_at  && @user.questions.last.created_at <  @user.updated_at %>
@@ -167,28 +171,30 @@
                         <% elsif @user.answers.last.created_at < @user.questions.last.created_at  && @user.answers.last.created_at <  @user.updated_at %>
                         Answer given at <br>
                         <%= @user.answers.last.created_at.strftime("%l:%M%P on %D") %>
-                        <% else %>
+
+                        <% else %>  <!-- /if @user.questions.last.created_at < if @user.questions.last.created_at < .. -->
                         Profile Updated at<br>
                         <%= @user.updated_at.strftime("%l:%M%P on %D") %>
-                        <% end %>
-                    </div>  <!-- /.username bg-w-border -->
+
+                        <% end %>  <!-- /if @user.questions.last.created_at < if @user.questions.last.created_at < .. -->
+
+                    </div>  <!-- /.bg-w-border -->
+
                     <% else %>  <!-- if !@user.questions.empty? -->
+
                     <div class="bg-w-border" style="overflow:hidden;">
                         New Member, no activity yet!
                     </div>
+
                     <% end %>  <!-- if !@user.questions.empty? -->
+
                 </div>  <!-- /.ryanoverflow-horizontal-rows -->
-            </div>  <!-- /.col-xs-4 --> <!-- Close About Column -->
+            </div>  <!-- /.col-xs-4 -->
 
         </div>  <!-- /.row ryanoverflow-vertical-column -->
     </div>  <!--  /.col-xs-12 -->
 </div>  <!-- /.container -->
-
 <br>
-<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-<!-- End User Show Profile –––––––––––––––––––––––––––––––––-->
-<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-
 
 <!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
 <!-- User Show Questions –––––––––––––––––––––––––––––––––-->
@@ -208,7 +214,7 @@
         <div class="bio-preview-header" style="text-decoration: none;">
             <%= @user.questions.count %> Questions
         </div>
-    </div> 
+    </div>  <!-- /.col-xs-8 col-xs-offset-2 bg-w-border user-show-question-header -->
 </div>  <!-- /.row ryanoverflow-vertical-column -->
 
 
@@ -235,9 +241,9 @@
                         </div>
                     </div>
                 </div> 
-
                 <br>
-<!-- Tags Content –––––––––––––––––––––––––––––––––-->
+
+                <!-- Tags Content –––––––––––––––––––––––––––––––––-->
                 <div class="col-xs-12">
                     <div class="bio-preview-header" style="margin-top: 15px;"> 
                         <u> Tags:</u>
@@ -251,35 +257,47 @@
                     </div>
                 </div>  
 
-            </div>  <!-- /.ryanoverflow-horizontal-rows -->
-        </div>  <!-- /.col-xs-8 -->   <!-- End Question Column -->
+        </div>  <!-- /.ryanoverflow-horizontal-rows -->
+    </div>  <!-- /.col-xs-8 -->
 
 <!-- Current User Activity Column –––––––––––––––––––––––––––––––––-->
         <% if (@current_user.id == question.user.id)  %>
         <div class="user-show-activity-column col-xs-2">
             <div class="ryanoverflow-horizontal-rows">
+
                 <div class="votes-container bg-w-border">
-                    <div class="glyphicon glyphicon-chevron-up" >
-                    </div>
+                     <!-- Upvote -->
+                    <%= link_to like_question_path(question), method: :put do %>
+                       <div class="glyphicon glyphicon-chevron-up">
+                      </div>
+                      <% end %>
+                      <!-- Vote Tally -->
                     <div class="votes-container-text">
-                        Votes<br>
-                        <%= question.votes.map(&:vote_value).inject(0, &:+) %>
-                    </div>
-                    <div class="glyphicon glyphicon-chevron-down">
-                    </div>
-                </div>
+                        Votes
+                        <br>
+                        <%= (question.get_upvotes.size -  question.get_downvotes.size) %>
+                      </div>
+                      <!-- Down Vote -->
+                      <%= link_to dislike_question_path(question), method: :put do %>
+                      <div class="glyphicon glyphicon-chevron-down">
+                      </div>
+                      <% end %>
+                </div>  <!-- /.votes-container bg-w-border -->
+
                 <% if !question.answers.empty? %>
                 <div class="activity-answers">
                     <u>Answers</u> <br>
                     <%= question.answers.count %>
                 </div>
-                <% end %>
-            </div>
+                <% end %>  <!-- / !question.answers.empty?  -->
+
+            </div>  <!-- /.ryanoverflow-horizontal-rows -->
         </div>  <!-- / .user-show-activity-column col-xs-2 -->
 
 <!-- Current User Edit Buttons –––––––––––––––––––––––––––––––––-->
         <div class="content-column-buttons col-xs-2">
             <div class="ryanoverflow-horizontal-rows">
+
                 <div class="button-column-buttons">
                     <div class="edit-button">
                         <%= button_to edit_question_path(question.id), class: "btn btn-outline btn-warning", method: :get do %>
@@ -293,8 +311,9 @@
                         Delete 
                         <% end %>
                     </div>
-                </div>
-            </div>
+                </div>  <!-- /.button-column-buttons -->
+
+            </div>  <!-- /.ryanoverflow-horizontal-rows -->
         </div>  <!-- /.content-column-buttons col-xs-2 -->
 
     <% else %>  <!-- / if (@current_user.id == question.user.id)  -->
@@ -302,23 +321,34 @@
 <!-- Not Current User Activity Column –––––––––––––––––––––––––––––––––-->
         <div class="user-show-activity-column col-xs-2 col-xs-offset-2">
             <div class="ryanoverflow-horizontal-rows">
+
                 <div class="votes-container bg-w-border">
-                    <div class="glyphicon glyphicon-chevron-up" >
-                    </div>
+                     <!-- Upvote -->
+                    <%= link_to like_question_path(question), method: :put do %>
+                       <div class="glyphicon glyphicon-chevron-up">
+                      </div>
+                      <% end %>
+                      <!-- Vote Tally -->
                     <div class="votes-container-text">
-                        Votes<br>
-                        <%= question.votes.map(&:vote_value).inject(0, &:+) %>
-                    </div>
-                    <div class="glyphicon glyphicon-chevron-down">
-                    </div>
-                </div>
+                        Votes
+                        <br>
+                        <%= (question.get_upvotes.size -  question.get_downvotes.size) %>
+                      </div>
+                      <!-- Downvote -->
+                      <%= link_to dislike_question_path(question), method: :put do %>
+                      <div class="glyphicon glyphicon-chevron-down">
+                      </div>
+                      <% end %>
+                    </div>  <!-- /.votes-container bg-w-border -->
+
                 <% if !question.answers.empty? %>
                 <div class="activity-answers">
                     <u>Answers</u> <br>
                     <%= question.answers.count %>
                 </div>
-                <% end %>
-            </div>
+                <% end %>  <!-- /!question.answers.empty? -->
+
+            </div>  <!-- /.ryanoverflow-horizontal-rows -->
         </div>  <!-- / .user-show-activity-column col-xs-2 col-xs-offset-2 -->
 
     <% end %>  <!-- / if (@current_user.id == question.user.id)  -->
@@ -340,12 +370,8 @@
             </div>  <!-- /.ryanoverflow-horizontal-row -->
         </div>  <!-- /.col-xs-8 col-xs-offset-2 -->
 
-</div>  <!-- /.container -->
+    </div>  <!-- /.container -->
 <% end %>  <!-- /.if !@user.questions.empty? -->
-<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-<!-- End User Show Questions –––––––––––––––––––––––––––––––––-->
-<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-
 
 <!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
 <!-- User Show Answers –––––––––––––––––––––––––––––––––-->
@@ -375,9 +401,9 @@
 
 <!-- Answer Row –––––––––––––––––––––––––––––––––-->
     <div class="row ryanoverflow-vertical-column question-row">
-
         <div class="col-xs-8">
             <div class="ryanoverflow-horizontal-rows">
+
 <!-- Answer Content Column –––––––––––––––––––––––––––––––––-->
                 <div class="col-xs-12">
                     <div class="bio-preview-header"> 
@@ -399,6 +425,7 @@
                     </div>
                 </div>  <!-- /.col-xs-12 -->
                 <br>
+
 <!-- Answer Tags –––––––––––––––––––––––––––––––––-->
                 <div class="col-xs-12">
                     <div class="bio-preview-header" style="margin-top: 15px;"> 
@@ -412,28 +439,42 @@
                         <% end %>
                     </div>
                 </div>  <!-- /.col-xs-12 -->
+
             </div>  <!-- /.ryanoverflow-horizontal-rows -->
-        </div>  <!-- /.col-xs-8 -->  <!-- End Answer Column --> 
+        </div>  <!-- /.col-xs-8 -->
 
         <% if (@current_user.id == answer.user.id)  %>
 
 <!-- Current User Activity Column –––––––––––––––––––––––––––––––––-->
         <div class="user-show-activity-column col-xs-2">
             <div class="ryanoverflow-horizontal-rows">
+
                 <div class="votes-container bg-w-border">
-                    <div class="glyphicon glyphicon-chevron-up" ></div>
-                    <div class="votes-container-text">
-                        Votes<br>
-                        <%= answer.votes.map(&:vote_value).inject(0, &:+) %>
-                    </div>
-                    <div class="glyphicon glyphicon-chevron-down"></div>
-                </div>
-            </div>
-        </div>  <!-- / .user-show-activity-column col-xs-2 -->  <!-- End Current User Activity Column -->
+                     <!-- Upvote -->
+                    <%= link_to like_answer_path(answer), method: :put do %>
+                       <div class="glyphicon glyphicon-chevron-up">
+                      </div>
+                      <% end %>
+                      <!-- Vote Tally -->
+                     <div class="votes-container-text">
+                        Votes
+                        <br>
+                        <%= (answer.get_upvotes.size -  answer.get_downvotes.size) %>
+                      </div>
+                      <!-- Downvote -->
+                      <%= link_to dislike_answer_path(answer), method: :put do %>
+                      <div class="glyphicon glyphicon-chevron-down">
+                      </div>
+                      <% end %>
+                </div>  <!-- /.votes-container bg-w-border -->
+
+            </div>  <!-- /.ryanoverflow-horizontal-rows -->
+        </div>  <!-- / .user-show-activity-column col-xs-2 -->
 
 <!-- Current User Edit Buttons –––––––––––––––––––––––––––––––––-->
     <div class="content-column-buttons col-xs-2">
         <div class="ryanoverflow-horizontal-rows">
+
             <div class="button-column-buttons">
                 <div class="edit-button">
                     <%= button_to edit_answer_path(answer.id), class: "btn btn-outline btn-warning", method: :get do %>
@@ -447,25 +488,38 @@
                     Delete 
                     <% end %>
                 </div>
-            </div>
-        </div>
-    </div>  <!-- /.content-column-buttons col-xs-2 --> <!-- End Edit Buttons Column -->
+            </div>  <!-- /.button-column-buttons -->
 
-    <% else %>  <!-- / if (@current_user.id == answer.user.id)  -->
+        </div>  <!-- /.ryanoverflow-horizontal-rows -->
+    </div>  <!-- /.content-column-buttons col-xs-2 --> 
+
+    <% else %>  <!-- if (@current_user.id == answer.user.id)  -->
 
 <!-- Not Current User Activity Column –––––––––––––––––––––––––––––––––-->
     <div class="user-show-activity-column col-xs-2 col-xs-offset-2">
         <div class="ryanoverflow-horizontal-rows">
+            
             <div class="votes-container bg-w-border">
-                <div class="glyphicon glyphicon-chevron-up" ></div>
+                 <!-- Upvote -->
+                <%= link_to like_answer_path(answer), method: :put do %>
+                   <div class="glyphicon glyphicon-chevron-up">
+                  </div>
+                  <% end %>
+                  <!-- Vote Tally -->
                 <div class="votes-container-text">
-                    Votes<br>
-                    <%= answer.votes.map(&:vote_value).inject(0, &:+) %>
-                </div>
-                <div class="glyphicon glyphicon-chevron-down"></div>
-            </div>
-        </div>
-    </div>  <!-- / .user-show-activity-column col-xs-2 col-xs-offset-2 -->  <!-- End Not Current User Activity Column -->
+                    Votes
+                    <br>
+                    <%= (answer.get_upvotes.size -  answer.get_downvotes.size) %>
+                  </div>
+                  <!-- Downvote -->
+                  <%= link_to dislike_answer_path(answer), method: :put do %>
+                  <div class="glyphicon glyphicon-chevron-down">
+                  </div>
+                  <% end %>
+            </div>  <!-- /.votes-container bg-w-border -->
+        
+        </div>  <!-- /.ryanoverflow-horizontal-rows -->
+    </div>  <!-- / .user-show-activity-column col-xs-2 col-xs-offset-2 -->
 
     <% end %>  <!-- / if (@current_user.id == answer.user.id)  -->
 
@@ -480,15 +534,12 @@
         <div class="ryanoverflow-horizontal-rows">
             <div class="ryanoverflow-horizontal-rows question-row">
                 <div class="bio-preview-header"> 
-                    <%= @user.username.capitalize %> no answered yet!!
+                    <%= @user.username.capitalize %> has no answers yet!!
                 </div>
             </div>  
         </div>  
     </div>
 
 </div>  <!-- /.container -->
-<% end %>  <!-- /.if !@user.answers.empty? -->
 
-<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
-<!-- End User Show Answers  –––––––––––––––––––––––––––––––––-->
-<!--  –––––––––––––––––––––––––––––––––––––––––––––––––––––––––-->
+<% end %>  <!-- /.if !@user.answers.empty? -->

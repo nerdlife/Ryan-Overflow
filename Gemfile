@@ -11,22 +11,21 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rspec-rails'
 gem 'capybara'
 gem 'shoulda-matchers'
+gem 'acts_as_votable', '~> 0.10.0'
 gem 'factory_girl'
-gem 'faker'
-gem 'dynamic_form'
 gem 'bootstrap-sass', '~> 3.3'
-gem 'hirb'
-
+gem 'dynamic_form'
+gem 'faker'
 
 group :development, :test do
-	gem 'byebug'
+    gem 'byebug'
 end
 
 group :development do
-	gem 'better_errors'
-	gem 'web-console', '~> 2.0'
-	gem 'rails_layout'
-	gem 'spring'
+    gem 'better_errors'
+    gem 'web-console', '~> 2.0'
+    gem 'rails_layout'
+    gem 'spring'
 end
 
 

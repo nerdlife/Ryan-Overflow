@@ -1,20 +1,21 @@
 == Ryans StackOverflow Clone
-  
-* Still To Do when have time:
-- Vote buttons - add logic & Ajax
-- Move logic out of the Views
-- create Helper methods
+  Still in development when I have a spare minute here or there.
+
+
+::::: Still To Do when have time :::::
+
+- Move logic out of the views, they're so amateur hour its gross. Fatten up those models
+- create helpers
+- Vote buttons - Ajax
 - Email password recovery/reset
-- Tags - makeclickable searches
-- Create separate Search page instead of using Index. Add Answers back into search range
-- Add Google & FB Signup/Login
-- Add photos
+- Tags - make them searchable links
+- Create separate Search page instead of using Index. Add Answers back into search
+- Add Google & FB Signup
 - Add comments
-- Fix indentation(Beautify & auto has gone off the reservation w comments present suddenly?!?!)
-- Css - go back & make more uniform (forms, etc)
--
--
--
--
--
--
+- Css - make uniform, mobile queiries, vote containers, multiple other small fixes
+- 
+- 
+- 
+- 
+- 
+- Deploy to my Digital Ocean account

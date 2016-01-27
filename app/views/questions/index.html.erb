@@ -1,121 +1,139 @@
 <!-- QUESTION INDEX -->
 <div class="row">
     <div class="col-xs-12 page-title">
-               <span class="section-title">
-                    <span class="section-title-bookends">:::::</span> 
-                      Ryan Overflow Questions
-                    <span class="section-title-bookends">:::::</span>
-              </span>
+        <span class="section-title">
+            <span class="section-title-bookends">:::::</span> 
+            Ryan Overflow Questions
+            <span class="section-title-bookends">:::::</span>
+        </span>
     </div>
 </div>
 
 <!-- Headers –––––––––––––––––––––––––––––––––-->
 <div class="container header-container">
-  <div class="row ryanoverflow-vertical-column row header-row">
-    <div class="header-cell col-xs-3">
-      Asked By
-    </div>
-    <div class="header-cell col-xs-6">
-      Question
-    </div>
-    <div class="header-cell col-xs-3">
-      Activity 
-    </div>
-  </div>  <!-- /.row ryanoverflow-vertical-column row header-row -->
+    <div class="row ryanoverflow-vertical-column row header-row">
+        <div class="header-cell col-xs-3">
+            Asked By
+        </div>
+        <div class="header-cell col-xs-6">
+            Question
+        </div>
+        <div class="header-cell col-xs-3">
+            Activity 
+        </div>
+    </div>  <!-- /.row ryanoverflow-vertical-column row header-row -->
 </div>  <!-- / .container header-container -->
   
   
 <% @questions.each do |question| %>
 <div class="container">
-  <div class="row ryanoverflow-vertical-column">
-<!-- Profile Column –––––––––––––––––––––––––––––––––-->
-    <div class="col-xs-3">
-      <div class="ryanoverflow-horizontal-rows">
-        <%= link_to question.user do %>
-        <div class="profile-image" >
-          <img src="<%= question.user.profile_pic %>">
-        </div>
-        <% end %>
-        <div class="username bg-w-border">
-          <%= link_to question.user.username.capitalize, question.user %>  
-        </div>
-        <div class="reputation bg-w-border">
-          <u>Reputation:</u>
-          <br>
-          <strong> <%= question.user.votes.map(&:vote_value).inject(0, &:+) %></strong>
-        </div>
-        <div class="location bg-w-border">
-          <strong><u>Location:</u></strong>
-            <br>
-            <%= link_to question.user.location, "http://maps.google.com/?q=#{question.user.location}", target: "_blank" %>
-        </div>
-      </div>  <!-- /.ryanoverflow-horizontal-rows -->
-    </div>  <!-- /.col-xs-3 -->
+    <div class="row ryanoverflow-vertical-column">
 
-<!-- Question Column –––––––––––––––––––––––––––––––––-->
-    <div class="col-xs-6">
-      <div class="ryanoverflow-horizontal-rows">
-        <div class="bio-preview-header"> 
-        <u>Question:</u>
-        </div>
-        <div class="bio bg-w-border">
-        <div class="question-title">
-          <%= link_to truncate(question.title, length:125), question %>
-          <br>
-        </div>
-        <div class="question-content">
-          <%= link_to truncate(question.content, length:280), question %>
-        </div>
-        </div>
+        <!-- Profile Column –––––––––––––––––––––––––––––––––-->
+        <div class="col-xs-3">
+            <div class="ryanoverflow-horizontal-rows">
+                <%= link_to question.user do %>
+                <div class="profile-image" >
+                    <img src="<%= question.user.profile_pic %>">
+                </div>
+                <% end %>
+                <div class="username bg-w-border">
+                    <%= link_to question.user.username.capitalize, question.user %>  
+                </div>
+                <div class="reputation bg-w-border">
+                    <u>Reputation:</u>
+                    <br>
+                    <strong> User_reputation HERE </strong>
+                    <!-- Created first model method, finish this next -->
+                        <%#  @user.questions.last.votes_total %>
+                </div>
+                <div class="location bg-w-border">
+                    <strong><u>Location:</u></strong>
+                    <br>
+                    <%= link_to question.user.location, "http://maps.google.com/?q=#{question.user.location}", target: "_blank" %>
+                </div>
+            </div>  <!-- /.ryanoverflow-horizontal-rows -->
+        </div>  <!-- /.col-xs-3 -->
 
-        <div class="col-xs-12">
-          <div class="questions-preview-header"> 
-          Tags:
-        </div>
-        <div class="tag-grouping">
-          <%question.tags.split.to_a.each do |single_tag|%>
-          <div class="tags-individualized bg-w-border">
-            <%= single_tag %>
-          </div>
-          <% end %>
-        </div>
-        </div>  <!-- /.col-xs-12 -->
+        <!-- Question Column –––––––––––––––––––––––––––––––––-->
+        <div class="col-xs-6">
+            <div class="ryanoverflow-horizontal-rows">
 
-        <div class="col-xs-6 col-xs-offset-3"> 
-        <div class="latest-activity bg-w-border">
-           <strong><u>Question asked:</u></strong>
-          <br>
-          <%= question.created_at.strftime("%l:%M%P on %D") %>
-        </div>  <!-- /.latest-activity bg-w-border -->
-        </div>  <!-- /.col-xs-12 -->
+                <div class="bio-preview-header"> 
+                    <u>Question:</u>
+                </div>
+                <div class="bio bg-w-border">
+                    <div class="question-title">
+                        <%= link_to truncate(question.title, length:125), question %>
+                        <br>
+                    </div>
+                    <div class="question-content">
+                        <%= link_to truncate(question.content, length:280), question %>
+                    </div>
+                </div>
 
-      </div>  <!-- /.ryanoverflow-horizontal-rows -->
-    </div>  <!-- /.col-xs-5 -->
+                <div class="col-xs-12">
+                    <div class="questions-preview-header"> 
+                        Tags:
+                    </div>
+                    <div class="tag-grouping">
+                        <%question.tags.split.to_a.each do |single_tag|%>
+                        <div class="tags-individualized bg-w-border">
+                            <%= single_tag %>
+                        </div>
+                        <% end %>
+                    </div>
+                </div>  <!-- /.col-xs-12 -->
 
-<!-- Activity Column –––––––––––––––––––––––––––––––––-->
-    <div class="col-xs-3">
-    <div class="ryanoverflow-horizontal-rows">
-        <div class="votes-container bg-w-border col-xs-6 col-xs-offset-3">
-          <div class="glyphicon glyphicon-chevron-up">
-          </div>
-          <div class="votes-container-text">
-            Votes
-            <br>
-            <%= question.votes.map(&:vote_value).inject(0, &:+) %>
-          </div>
-          <div class="glyphicon glyphicon-chevron-down">
-          </div>
-        </div>
-        <div class="activity-answers col-xs-8 col-xs-offset-2">
-          <u>Answers</u> <br>
-          <%= question.answers.count %>
-        </div>
-      </div>  <!-- / .ryanoverflow-horizontal-rows -->
-      </div>  <!-- col-xs-3  -->
+                <div class="col-xs-6 col-xs-offset-3"> 
+                    <div class="latest-activity bg-w-border">
+                        <strong><u>Question asked:</u></strong>
+                        <br>
+                        <%= question.created_at.strftime("%l:%M%P on %D") %>
+                    </div>  <!-- /.latest-activity bg-w-border -->
+                </div>  <!-- /.col-xs-12 -->
 
-  </div>  <!-- /.row ryanoverflow-vertical-column -->
+            </div>  <!-- /.ryanoverflow-horizontal-rows -->
+        </div>  <!-- /.col-xs-6 -->
+
+        <!-- Activity Column –––––––––––––––––––––––––––––––––-->
+        <div class="col-xs-3">
+            <div class="ryanoverflow-horizontal-rows">
+
+                <div class="votes-container bg-w-border col-xs-6 col-xs-offset-3">
+                    <!-- Upvote -->
+                    <%= link_to like_question_path(question), method: :put do %>
+                    <div class="glyphicon glyphicon-chevron-up">
+                    </div>
+                    <% end %>
+                    <!-- Vote Tally -->
+                    <div class="votes-container-text">
+                        <u>Rep:</u>
+                        <%= (question.get_upvotes.size -  question.get_downvotes.size) %>
+                    </div>
+                    <!-- Down Vote -->
+                    <%= link_to dislike_question_path(question), method: :put do %>
+                    <div class="glyphicon glyphicon-chevron-down">
+                    </div>
+                    <% end %>
+                </div>  <!-- /.votes-container bg-w-border -->
+
+                <div class="activity-answers col-xs-8 col-xs-offset-2">
+                    <u>Answers</u> <br>
+                    <%= question.answers.count %>
+                    <br>
+                    <u>Votes:</u>
+                    <br>
+                    <%= (question.get_upvotes.count +  question.get_downvotes.count) %>
+                </div>  <!-- /.activity-answers col-xs-8 col-xs-offset-2 -->
+
+            </div>  <!-- / .ryanoverflow-horizontal-rows -->
+        </div>  <!-- col-xs-3  -->
+
+    </div>  <!-- /.row ryanoverflow-vertical-column -->
 </div>  <!-- /.container -->
-  <% end %>  <!-- @users.each do |user| -->
+
+<% end %>  <!-- @questions.each do |question| -->
 
 
 

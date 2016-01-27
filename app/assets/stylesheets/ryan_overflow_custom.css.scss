@@ -8,7 +8,7 @@ www.RyanUrie.com :: RyanUrie@gmail.com ::
 1. Body
 2. Header 
 3. Navigation
-4. Search
+4. Profile Elements
 5. Sign Up & Login
 6. Buttons
 7. Flash Messages
@@ -62,13 +62,11 @@ border-bottom: 6px solid rgba(128,128,128,0.5);
 padding-bottom: 10px;
 margin-bottom: 10px;
 width: 100%;
-// border: 8px solid brown;
 }
 .ryanoverflow-horizontal-rows {
 display: flex;
 flex-direction: column;
 width: 100%;
-// border: 2px solid red;
 }
 .ryanoverflow-vertical-column > [class^="col-"],
 .ryanoverflow-vertical-column > [class*=" col-"] {
@@ -128,7 +126,7 @@ font-weight: bold;
 
 
 /*------------------------------------------------------------------
-[3. Elements]
+[3. Nav]
 */
 .pholder-text::-webkit-input-placeholder {
 color: #FF5C2B; 
@@ -169,7 +167,7 @@ text-decoration: underline;
 }
 
 /*------------------------------------------------------------------
-[4. Elements ]
+[4. Profile Elements ]
 */
 /* 2.1 Profile Elements */
 .bg-w-border {
@@ -569,15 +567,12 @@ margin-bottom: 14px;
     border-bottom: 6px solid rgba(128,128,128,0.5);
 }
 // .user-show-answer-row {
-    // border: 5px solid green;
+   
 // }
 .user-show-question-header {
     padding: 10px;
     font-size: 2vw;
 }
-
-/*11.1 Profile Column*/
-
 
 
 /*------------------------------------------------------------------
@@ -626,10 +621,6 @@ color: #FF5C2B;
 // 	and (max-device-width: 1024px) 
 //  		and (-webkit-min-device-pixel-ratio: 1) {
 
-// 	// .this-div {
-// 	// 	color:orange;
-// 	// }
-
 // }
 
 
@@ -639,10 +630,6 @@ color: #FF5C2B;
 // */
 // 	@media only screen 
 // 		and (max-device-width: 1024px)  {
-// 
-// 		.that-div {
-// 			color:orange;
-// 		}
 
 // 	}
 

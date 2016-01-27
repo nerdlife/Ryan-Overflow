@@ -34,26 +34,30 @@ ActiveRecord::Schema.define(version: 4) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                                                                                                                null: false
+    t.string   "email",                                                                                                             null: false
     t.string   "name"
     t.string   "username"
     t.string   "password_digest"
     t.text     "location",        default: "Portland, Oregon"
     t.text     "bio",             default: "This is my empty bio that I will fill out soon"
-    t.text     "profile_pic",     default: "http://static1.businessinsider.com/image/525bfb4a69bedda83f84c289-480/bill-belichick.jpg"
-    t.datetime "created_at",                                                                                                           null: false
-    t.datetime "updated_at",                                                                                                           null: false
+    t.text     "profile_pic",     default: "http://findicons.com/files/icons/1580/devine_icons_part_2/128/account_and_control.png"
+    t.datetime "created_at",                                                                                                        null: false
+    t.datetime "updated_at",                                                                                                        null: false
   end
 
   create_table "votes", force: :cascade do |t|
-    t.integer  "vote_value"
-    t.integer  "user_id"
     t.integer  "votable_id"
     t.string   "votable_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  add_index "votes", ["votable_id", "votable_type"], name: "index_votes_on_votable_id_and_votable_type", using: :btree
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
 end

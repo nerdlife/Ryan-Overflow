@@ -6,8 +6,8 @@
         <div class="col-md-4 col-md-offset-4">
             <br>
 
+            <!-- SIGN UP -->
             <div class="tab-content">
-                <!-- SIGN UP -->
                 <div class="tab-pane fade in active" id="new">
                     <br>
                     <fieldset>
@@ -74,20 +74,22 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <% else %>
+                    </div>  <!-- /.form-group -->
+
+                    <% else %>  <!-- if @current_user && @current_user.id == @user.id -->
+
                     <div class=" text-center">
                         <button type="submit" class="btn btn-outline btn-success"><div class="glyphicon glyphicon-ok-sign"></div> &nbsp SIGN UP</button>
                     </div>
-                    <% end %>
-                </div>
+
+                    <% end %>  <!-- /if @current_user && @current_user.id == @user.id -->
+
+                </div>  <!-- /.tab-pane fade in active -->
                 <hr>
             </div>  <!-- /.tab-content -->
+
         </div>  <!-- /. col-md-4 col-md-offset-4 -->
     </div>  <!-- /. row -->
 </div>  <!-- /.container sign-in-up -->
 
-
-<!-- CLOSE CONTAINER -->
-</div>    
-<% end %>
+<% end %>  <!-- /form_for @user do |f| -->

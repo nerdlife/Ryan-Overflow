@@ -19,6 +19,7 @@ User.create(
                      bio: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
                      location: 'Portland, OR',
                   )
+
 8.times do
    User.create(
                         email: Faker::Internet.email, 
@@ -41,7 +42,6 @@ end
                               )
 end
 
-
 100.times do 
    Answer.create(
                               content: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
@@ -50,9 +50,6 @@ end
                            )
 end
 
-
-
-# ------Ryan Seed------
 User.create( 
                      email: 'ryan@ryan.com',
                      username: 'RyansUsername',
@@ -81,29 +78,33 @@ end
                            )
 end
 
+User.create( 
+                     email: 'katy@katy.com',
+                     username: 'katy',
+                     name: 'katy', 
+                     password: 'ryan', 
+                     password_confirmation: 'ryan', 
+                     profile_pic:"https://cdn.tutsplus.com/mac/authors/jacob-penderworth/user-black.png" , 
+                     bio: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
+                     location: 'Portland, OR',
+                  )
 
-200.times do 
-   Vote.create(
-                             vote_value: rand(-1..1),
-                              user_id: rand(1..10),
-                              votable_id: rand(1..36),
-                              votable_type: "Question", 
-                           )
-end
+User.create( 
+                     email: 'moses@moses.com',
+                     username: 'moses',
+                     name: 'moses', 
+                     password: 'ryan', 
+                     password_confirmation: 'ryan', 
+                     profile_pic:"https://cdn.tutsplus.com/mac/authors/jacob-penderworth/user-black.png" , 
+                     bio: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
+                     location: 'Portland, OR',
+                  )
 
-1000.times do 
-   Vote.create(
-                             vote_value: rand(-1..1),
-                              user_id: rand(1..10),
-                              votable_id: rand(1..200),
-                              votable_type: "Answer", 
-                           )
-end
 # ------User w No Q&A's Seed------
 User.create( 
-                     email: 'noQuesAnswerUse@noQuesAnswerUse.com',
-                     username: 'noQuesAnswerUse',
-                     name: 'noQuesAnswerUse', 
+                     email: 'noqa@noqa.com',
+                     username: 'noqa',
+                     name: 'noqa', 
                      password: 'ryan', 
                      password_confirmation: 'ryan', 
                      profile_pic:"http://coachestrainingblog.com/becomeacoach/wp-content/uploads/2011/09/Image-by-brandextenders-e1316413379713.jpg" , 
@@ -113,6 +114,7 @@ User.create(
 
 
 Question.create(
+    id: 222,
                               title: "My Test Question My Test Question My Test My Test My Test My Test My Test My My Test Question My TDone Done Done Done Done125", 
                               content: "My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My My Test Question My Test Question My Test Question My Test Question My Test Questiouestion My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My Test Question My My Test Question My Test Question My Test My Test My Test My Test My Test My My Test Question My TDone Done Done Done Done 1250", 
                               user_id: 10,  
@@ -122,42 +124,7 @@ Question.create(
 10.times do 
    Answer.create(
                               content: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart  + ".  " + Faker::Hacker.say_something_smart,
-                              question_id: 37, 
+                              question_id: 222, 
                               user_id: rand(1..9)
                            )
 end
-20.times do 
-   Vote.create(
-                             vote_value: rand(-1..1),
-                              user_id: rand(1..10),
-                              votable_id: 37,
-                              votable_type: "Question", 
-                           )
-end
-
-100.times do 
-   Vote.create(
-                             vote_value: rand(-1..1),
-                              user_id: rand(1..10),
-                              votable_id: rand(201..236),
-                              votable_type: "Answer", 
-                           )
-end
-
-25.times do
-   Question.create(
-                              title: Faker::Hacker.say_something_smart, 
-                              content: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart, 
-                              user_id: 1,  
-                              tags: Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun + " " + Faker::Hacker.noun
-                              )
-end
-
-15.times do 
-   Answer.create(
-                              content: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart  + ".  " + Faker::Hacker.say_something_smart,
-                              question_id: rand(1..36), 
-                              user_id: 1
-                           )
-end
-

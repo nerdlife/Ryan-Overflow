@@ -1,11 +1,11 @@
 <!-- SESSIONS LOGIN FORM -->
 <div class="row">
     <div class="col-xs-12 page-title">
-               <span class="section-title">
-                    <span class="section-title-bookends">:::::</span> 
-                      Welcome To Ryan Overflow
-                    <span class="section-title-bookends">:::::</span>
-              </span>
+        <span class="section-title">
+            <span class="section-title-bookends">:::::</span> 
+            Welcome To Ryan Overflow
+            <span class="section-title-bookends">:::::</span>
+        </span>
     </div>
 </div>
 
@@ -21,46 +21,49 @@
 
 
 <%= form_tag(:action => 'create') do %>
-<div class="container sign-in-up">
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4">
-      <br>
-      <!-- Nav tabs -->
-      <div class="text-center">
-        <div class="btn-group">
-          <a href="/signup" role="tab" class="big btn btn-success"><i class="fa fa-plus"></i> Sign Up</a>
-          <a href="#user" role="tab" data-toggle="tab" class="big btn btn-primary"><i class="fa fa-user"></i> Sign In</a>
-        </div>
-      </div>
-      <div class="tab-content">
-      
-<!-- LOGIN -->
-        <div class="tab-pane fade" id="user">
-          <br>
-          <fieldset>
-            <div class="form-group">
-              <div class="right-inner-addon">
-                <i class="fa fa-envelope"></i>
-                <%= text_field_tag :email, nil, class: 'form-control input-lg', placeholder: 'Email Address'  %>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="right-inner-addon">
-                <i class="fa fa-key"></i>
-                <%= password_field_tag :password, nil, class: 'form-control input-lg', placeholder: 'Password'   %>
-              </div>
-            </div>
-          </fieldset>
-          <br>
-          <hr>
-          <div class=" text-center">
-          <input class="btn btn-primary" name="commit" type="submit" value="Log In">
-          </div>
-          <hr>
-        </div>  <!-- /.tab-pane fade -->
 
-      </div>  <!-- /.tab-content -->
-    </div>  <!-- /. col-md-4 col-md-offset-4 -->
-  </div>  <!-- /. row -->
+<div class="container sign-in-up">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <br>
+
+            <!-- Nav tabs -->
+            <div class="text-center">
+                <div class="btn-group">
+                    <a href="/signup" role="tab" class="big btn btn-success"><i class="fa fa-plus"></i> Sign Up</a>
+                    <a href="#user" role="tab" data-toggle="tab" class="big btn btn-primary"><i class="fa fa-user"></i> Sign In</a>
+                </div>
+            </div>
+
+            <!-- Login -->
+            <div class="tab-content">
+                <div class="tab-pane fade" id="user">
+                    <br>
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-envelope"></i>
+                                <%= text_field_tag :email, nil, class: 'form-control input-lg', placeholder: 'Email Address'  %>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="right-inner-addon">
+                                <i class="fa fa-key"></i>
+                                <%= password_field_tag :password, nil, class: 'form-control input-lg', placeholder: 'Password'   %>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <br>
+                    <hr>
+                    <div class=" text-center">
+                        <input class="btn btn-primary" name="commit" type="submit" value="Log In">
+                    </div>
+                    <hr>
+                </div>  <!-- /.tab-pane fade -->
+            </div>  <!-- /.tab-content -->
+
+        </div>  <!-- /. col-md-4 col-md-offset-4 -->
+    </div>  <!-- /. row -->
 </div>  <!-- /.container sign-in-up -->
-<% end %>
+
+<% end %>  <!-- /form_tag(:action => 'create') do -->

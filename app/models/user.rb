@@ -1,17 +1,13 @@
 class User < ActiveRecord::Base
     has_many :questions, dependent: :destroy
     has_many :answers, dependent: :destroy
-    has_many :votes, dependent: :destroy
     has_secure_password
-
 
     validates :username, presence: true, 
                                       uniqueness: { message: "Username is already taken" }
 
-                                      
-# Commented out bc of Faker Seeds
+# Commented out temporarily bc of  Seeds
     # validates :username, length: {minimum: 3, maximum: 12}
-
 
     validates :email, presence: true, 
     uniqueness: {
@@ -20,5 +16,10 @@ class User < ActiveRecord::Base
         format: {
             with: /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
         }
+
+    # Create User Reputation Method
+    # def user_reputation
+        
+    # end
 
     end
