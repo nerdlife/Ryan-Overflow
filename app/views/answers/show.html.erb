@@ -39,9 +39,7 @@
             <%= @answer.user.username.capitalize %><br>
              <u>Reputation:</u>
             <br>
-            <strong> User_reputation HERE </strong>
-            <!-- Created first model method, finish this next -->
-            <%#  @user.questions.last.votes_total %>
+            <strong> <%= @answer.user.user_reputation %> </strong>
         </div>
         
         <% if (@current_user.id == @answer.user_id)  %>

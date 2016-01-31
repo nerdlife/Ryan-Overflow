@@ -18,8 +18,16 @@ class User < ActiveRecord::Base
         }
 
     # Create User Reputation Method
-    # def user_reputation
-        
-    # end
+    def user_reputation
+        tally = []
+        answers.each do |answer|
+            tally.push(answer.answer_votes_total)
+        end
+        questions.each do |question|
+            tally.push(question.question_votes_total)
+        end
+        tally = tally.inject(:+)
+        return tally
+    end
 
     end

@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
         where("title || content || tags  ilike ?", "%#{query}%")
     end
 
-    def votes_total
+    def question_votes_total
         get_upvotes.count - get_downvotes.count
     end
 

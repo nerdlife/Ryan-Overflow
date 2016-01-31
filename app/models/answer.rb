@@ -14,7 +14,7 @@ class Answer < ActiveRecord::Base
         where("content like ?", "%#{query}%")
     end
 
-     def votes_total
+     def answer_votes_total
         get_upvotes.count - get_downvotes.count
     end
 

@@ -3,7 +3,6 @@
 
 
 ::::: Still To Do when have time :::::
-
 - Move logic out of the views, they're so amateur hour its gross. Fatten up those models
 - create helpers
 - Vote buttons - Ajax

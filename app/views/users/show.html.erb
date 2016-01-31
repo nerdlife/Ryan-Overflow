@@ -143,9 +143,7 @@
                         <u>Reputation</u> <br>
                     </div>
                     <div class="bg-w-border" style="overflow:hidden;">
-                        USER REPUTATION HERE
-                        <!-- Created first model method, finish this next -->
-                        <%#  @user.questions.last.votes_total %>
+                        <%= @user.user_reputation %>
                     </div>
                     <div class="bio-preview-header"> 
                         <u>Email</u> <br>
@@ -275,7 +273,7 @@
                     <div class="votes-container-text">
                         Votes
                         <br>
-                        <%= (question.get_upvotes.size -  question.get_downvotes.size) %>
+                        <%= question.votes_total %>
                       </div>
                       <!-- Down Vote -->
                       <%= link_to dislike_question_path(question), method: :put do %>

@@ -100,7 +100,7 @@ User.create(
                      location: 'Portland, OR',
                   )
 
-# ------User w No Q&A's Seed------
+# ------Seed User with no Question & Answers ------
 User.create( 
                      email: 'noqa@noqa.com',
                      username: 'noqa',
@@ -128,3 +128,48 @@ Question.create(
                               user_id: rand(1..9)
                            )
 end
+
+
+# ACTS_AS_VOTABLE SEED INSTANCES
+@guest = User.where(id: 1).first
+@ryan = User.where(id: 10).first
+@katy = User.where(id: 11).first
+@moses = User.where(id: 12).first
+@q_twenty_five = Question.where(id: 25).first
+@q_twenty_six = Question.where(id: 26).first
+@q_twenty_seven = Question.where(id: 27).first
+@q_twenty_eight = Question.where(id: 28).first
+@q_twenty_nine = Question.where(id: 29).first
+@q_thirty = Question.where(id: 30).first
+@q_thirty_one = Question.where(id: 31).first
+
+# Question 25 Acts_As_Votable Seeds -- Total = 2 (3up, 1 down)
+@q_twenty_five.liked_by @katy
+@q_twenty_five.liked_by @moses
+@q_twenty_five.liked_by @guest
+@q_twenty_five.disliked_by @ryan
+
+# Question 26 Acts_As_Votable Seeds -- Total = -2  (1up, 3 down)
+@q_twenty_six.liked_by @ryan
+@q_twenty_six.disliked_by @katy
+@q_twenty_six.disliked_by @moses
+@q_twenty_six.disliked_by @guest
+
+# Question 27 Acts_As_Votable Seeds -- Total = 0 (1up, 1down)
+@q_twenty_seven.liked_by @ryan
+@q_twenty_seven.disliked_by @guest
+
+# Question 28 Acts_As_Votable Seeds -- Total = 1 (1up)
+@q_twenty_eight.liked_by @katy
+
+# Question 29 Acts_As_Votable Seeds -- Total = 2 (3up, 1down)
+@q_twenty_nine.liked_by @katy
+@q_twenty_nine.liked_by @moses
+@q_twenty_nine.liked_by @guest
+@q_twenty_nine.disliked_by @ryan
+
+# Question 30 Acts_As_Votable Seeds -- Total = 1 (1up)
+@q_thirty.liked_by @moses
+
+# Question 31 Acts_As_Votable Seeds -- Total = 1 (1up)
+@q_thirty_one.liked_by @katy

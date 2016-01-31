@@ -26,6 +26,7 @@ group :development do
     gem 'web-console', '~> 2.0'
     gem 'rails_layout'
     gem 'spring'
+    # gem 'quiet_assets', group: :development
 end
 
 
