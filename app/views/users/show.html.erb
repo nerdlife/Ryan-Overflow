@@ -273,7 +273,9 @@
                     <div class="votes-container-text">
                         Votes
                         <br>
+                        <% if !question.answers.empty? %>
                         <%= question.votes_total %>
+                        <% end %>
                       </div>
                       <!-- Down Vote -->
                       <%= link_to dislike_question_path(question), method: :put do %>

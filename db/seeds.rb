@@ -10,14 +10,24 @@ avatar_array = [
                      ]
 
 User.create( 
-                     email: 'guest@guest.com',
-                     username: 'guest',
-                     name: 'guest', 
-                     password: 'guest', 
-                     password_confirmation: 'guest', 
+                     email: 'you@you.com',
+                     username: 'you',
+                     name: 'you', 
+                     password: 'you', 
+                     password_confirmation: 'you', 
                      profile_pic:"https://cdn.tutsplus.com/mac/authors/jacob-penderworth/user-black.png" , 
                      bio: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart,
                      location: 'Portland, OR',
+                  )
+User.create( 
+                     email: 'ryan@ryan.com',
+                     username: 'RyansUsername',
+                     name: 'Ryan Urie', 
+                     password: 'ryan', 
+                     password_confirmation: 'ryan', 
+                     profile_pic:"http://avatars0.githubusercontent.com/u/11891327?v=3&s=460" , 
+                     bio: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart ,
+                     location: 'Portland, OR'
                   )
 
 8.times do
@@ -50,16 +60,7 @@ end
                            )
 end
 
-User.create( 
-                     email: 'ryan@ryan.com',
-                     username: 'RyansUsername',
-                     name: 'Ryan Urie', 
-                     password: 'ryan', 
-                     password_confirmation: 'ryan', 
-                     profile_pic:"http://avatars0.githubusercontent.com/u/11891327?v=3&s=460" , 
-                     bio: Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart + ".  " + Faker::Hacker.say_something_smart ,
-                     location: 'Portland, OR'
-                  )
+
 
 12.times do
    Question.create(
